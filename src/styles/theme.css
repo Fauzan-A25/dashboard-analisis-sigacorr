@@ -1,0 +1,70 @@
+:root {
+  /* Modern Dark Theme Colors */
+  --bg-primary: #0A0F1E;
+  --bg-secondary: rgba(15, 23, 42, 0.6);
+  --bg-tertiary: rgba(30, 41, 59, 0.6);
+  --bg-hover: rgba(51, 65, 85, 0.4);
+
+  /* Modern Accent Colors */
+  --primary-blue: #3B82F6;
+  --primary-blue-rgb: 59, 130, 246;
+  --primary-blue-dark: #2563EB;
+  --primary-blue-light: #60A5FA;
+  --primary-purple: #8B5CF6;
+  --primary-teal: #06B6D4;
+
+  /* Enhanced Status Colors */
+  --success: #10B981;
+  --warning: #F59E0B;
+  --danger: #EF4444;
+  --info: #3B82F6;
+
+  /* Refined Text Colors */
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+
+  /* Glass Effect Borders */
+  --border: rgba(148, 163, 184, 0.1);
+  --divider: rgba(148, 163, 184, 0.05);
+
+  /* Vibrant Chart Colors */
+  --chart-blue: #3B82F6;
+  --chart-purple: #8B5CF6;
+  --chart-teal: #06B6D4;
+  --chart-orange: #F59E0B;
+  --chart-green: #10B981;
+  --chart-red: #EF4444;
+
+  /* Font Sizes */
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-lg: 18px;
+  --text-xl: 20px;
+  --text-2xl: 24px;
+  --text-3xl: 30px;
+  --text-4xl: 36px;
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.3);
+
+  /* Spacing Scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+}

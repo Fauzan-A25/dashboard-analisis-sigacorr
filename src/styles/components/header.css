@@ -1,0 +1,122 @@
+/* Header Container */
+.app-header {
+  height: 70px;
+  padding: 0 2rem;
+  background: linear-gradient(180deg, rgba(15,23,42,0.7), rgba(10,15,30,0.6));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+  z-index: 50; /* ADD THIS - Higher than FilterBar */
+  position: fixed; /* Ensure it's positioned */
+}
+
+/* Left Section - Title */
+.app-header h2 {
+  margin: 0;
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+}
+
+.app-header p {
+  margin: 0.25rem 0 0 0;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+/* Right Section - Controls */
+.app-header .flex.items-center {
+  gap: 0.75rem;
+}
+
+/* Respondents Info Badge */
+.app-header .flex.items-center.gap-2.px-4 {
+  padding: 0.625rem 1rem;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: all 0.2s ease;
+}
+
+.app-header .flex.items-center.gap-2.px-4:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.1);
+}
+
+/* Export Button */
+.app-header button {
+  padding: 0.625rem 1rem;
+  border-radius: 10px;
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--primary-blue);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  user-select: none;
+}
+
+.app-header button:hover {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.3);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+}
+
+.app-header button:active {
+  transform: translateY(0);
+}
+
+/* Icon Styling */
+.app-header button svg {
+  width: 1rem;
+  height: 1rem;
+  stroke-width: 2;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .app-header {
+    left: 0;
+    padding: 0 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-header {
+    padding: 0 1rem;
+    height: 60px;
+  }
+
+  .app-header h2 {
+    font-size: 1.125rem;
+  }
+
+  .app-header p {
+    font-size: 0.8125rem;
+  }
+
+  .app-header button span {
+    display: none; /* Hide text on mobile */
+  }
+
+  .app-header .flex.items-center.gap-2.px-4 span {
+    font-size: 0.8125rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .app-header .flex.items-center {
+    gap: 0.5rem;
+  }
+
+  .app-header button {
+    padding: 0.5rem 0.75rem;
+  }
+}

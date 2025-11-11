@@ -1,0 +1,57 @@
+.filter-bar {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.06);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1; /* Low z-index by default */
+}
+
+.filter-bar:hover {
+  border-color: rgba(255,255,255,0.1);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+
+.filter-item {
+  opacity: 0;
+  animation: fadeInUp 0.5s ease forwards;
+  position: relative;
+  z-index: 1;
+}
+
+/* When dropdown is open, boost z-index */
+.filter-item:has(.custom-select-wrapper.open) {
+  z-index: 9998; /* Higher than backdrop but lower than dropdown itself */
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1024px) {
+  .filter-bar {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .filter-bar {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem;
+  }
+}

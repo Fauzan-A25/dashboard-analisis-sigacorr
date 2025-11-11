@@ -1,0 +1,264 @@
+@import './theme.css';
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+:root {
+  --card-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --card-shadow-hover: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+/* Modern Card Styles */
+.card {
+  background: var(--bg-secondary);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: var(--card-shadow);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.2s ease;
+  backdrop-filter: blur(8px);
+}
+
+.card:hover {
+  box-shadow: var(--card-shadow-hover);
+  border-color: rgba(255, 255, 255, 0.08);
+  transform: translateY(-1px);
+}
+
+/* Glass Effect */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+}
+
+/* Chart Container */
+.chart-container {
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(16px);
+}
+
+/* Glass Panel */
+.glass-panel {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  box-shadow: 
+    0 4px 24px -1px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* Glass Card */
+.glass-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  backdrop-filter: blur(16px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px -1px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Modern Table Styles */
+.table-container {
+  overflow-x: auto;
+  border-radius: 12px;
+  background: var(--bg-secondary);
+}
+
+.modern-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.modern-table th {
+  background: rgba(255, 255, 255, 0.02);
+  padding: 12px 16px;
+  font-weight: 500;
+  text-align: left;
+  color: var(--text-secondary);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.modern-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.modern-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Input Styles */
+.modern-input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+}
+
+.modern-input:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 2px rgba(var(--primary-blue-rgb), 0.1);
+}
+
+/* Badge Styles */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: var(--text-xs);
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.badge-success {
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
+}
+
+.badge-warning {
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.1);
+}
+
+.badge-danger {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+}
+
+/* Entry animations */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseChart {
+  0% { opacity: 0.98; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.01); }
+  100% { opacity: 0.98; transform: scale(1); }
+}
+
+.glass-panel {
+  animation: fadeUp 420ms cubic-bezier(.16,.84,.34,1) both;
+}
+
+.glass-card {
+  animation: fadeUp 380ms cubic-bezier(.16,.84,.34,1) both;
+}
+
+.chart-container {
+  animation: fadeUp 420ms cubic-bezier(.16,.84,.34,1) both;
+}
+
+.kpi-card {
+  animation: fadeUp 360ms cubic-bezier(.16,.84,.34,1) both;
+}
+
+/* Subtle continuous chart pulse for emphasis */
+.chart-container svg {
+  animation: pulseChart 6s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+/* Slide-in animation for filter items */
+@keyframes slideIn {
+  0% { opacity: 0; transform: translateX(-12px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+.filter-item {
+  animation: slideIn 360ms cubic-bezier(.16,.84,.34,1) both;
+}
+
+.modern-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  padding: 10px 36px 10px 12px;
+  height: 44px;
+  border-radius: 10px;
+  background: var(--bg-tertiary);
+  border: 1px solid rgba(255,255,255,0.06);
+  color: var(--text-primary);
+  font-size: 14px;
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.modern-select:hover {
+  border-color: rgba(255,255,255,0.09);
+}
+
+.modern-select:focus {
+  outline: none;
+  border-color: rgba(59,130,246,0.9); /* blue focus */
+  box-shadow: 0 6px 18px rgba(59,130,246,0.06);
+  transform: translateY(-1px);
+}
+
+.select-wrapper { position: relative; }
+.select-wrapper::after {
+  content: "";
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  opacity: 0.9;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path d='M5 7l5 5 5-5' stroke='%2394A3B8' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+}

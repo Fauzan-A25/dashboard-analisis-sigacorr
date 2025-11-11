@@ -1,0 +1,107 @@
+/* Area Chart Tooltip Styles */
+.chart-tooltip {
+  background: var(--bg-secondary);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  box-shadow: var(--shadow-lg);
+  min-width: 150px;
+  animation: tooltipFadeIn 0.2s ease-out;
+}
+
+.tooltip-label {
+  color: var(--text-primary);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  margin: 0 0 var(--space-2) 0;
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--divider);
+}
+
+.tooltip-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.tooltip-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  line-height: 1.4;
+}
+
+.tooltip-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 4px rgba(var(--primary-blue-rgb), 0.4);
+}
+
+.tooltip-name {
+  color: var(--text-secondary);
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.tooltip-value {
+  color: var(--text-primary);
+  font-weight: 600;
+  margin-left: auto;
+}
+
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Recharts Custom Overrides */
+.recharts-surface {
+  overflow: visible;
+}
+
+.recharts-cartesian-axis-tick-value {
+  font-family: inherit;
+}
+
+.recharts-legend-wrapper {
+  color: var(--text-secondary);
+}
+
+.recharts-default-legend {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-4);
+}
+
+.recharts-legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .chart-tooltip {
+    padding: var(--space-2) var(--space-3);
+    min-width: 120px;
+  }
+
+  .tooltip-label {
+    font-size: var(--text-xs);
+  }
+
+  .tooltip-item {
+    font-size: 11px;
+  }
+}
