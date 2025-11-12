@@ -6,7 +6,7 @@ import RegionalAnalysis from './pages/RegionalAnalysis';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/dashboard-analisis-sigacorr">
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/literacy" element={<FinancialLiteracy />} />
@@ -16,5 +16,6 @@ function App() {
     </Router>
   );
 }
+
 
 export default App;
