@@ -6,30 +6,20 @@ import {
 } from './dataTransformers';
 
 export const loadCSVData = async (fileName: string) => {
-  const response = await fetch(`/data/${fileName}`);
+  const basePath = import.meta.env.BASE_URL || '/';
+  const response = await fetch(`${basePath}data/${fileName}`);
   const csvText = await response.text();
 
   return new Promise((resolve, reject) => {
     Papa.parse(csvText, {
       header: true,
       dynamicTyping: true,
-      skipEmptyLines: 'greedy', // ← CHANGE: Only skip truly empty lines
+      skipEmptyLines: 'greedy',
       complete: (results) => {
-        console.log(`[${fileName}] Raw rows parsed:`, results.data.length);
-        
-        let data = results.data;
-        
-        // Remove truly empty rows manually (more control)
-        data = data.filter((row: any) => {
-          // Check if row has at least one non-null value
-          return Object.values(row).some(val => 
-            val !== null && val !== undefined && val !== ''
-          );
-        });
-        
-        console.log(`[${fileName}] After filtering empty rows:`, data.length);
-        
-        // Transform based on file name
+        let data = results.data.filter((row: any) =>
+          Object.values(row).some(val => val !== null && val !== undefined && val !== '')
+        );
+
         if (fileName.includes('Survey')) {
           data = transformSurveyData(data);
         } else if (fileName.includes('Profile')) {
@@ -37,13 +27,10 @@ export const loadCSVData = async (fileName: string) => {
         } else if (fileName.includes('Regional')) {
           data = transformRegionalData(data);
         }
-        
-        console.log(`[${fileName}] After transformation:`, data.length);
-        
+
         resolve(data);
       },
       error: (error: unknown) => {
-        console.error(`[${fileName}] Parse error:`, error);
         reject(error);
       }
     });
