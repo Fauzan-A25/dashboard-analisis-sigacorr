@@ -6,7 +6,7 @@ import {
 } from './dataTransformers';
 
 export const loadCSVData = async (fileName: string) => {
-  const response = await fetch(`/public/data/${fileName}`);
+  const response = await fetch(`./public/data/${fileName}`);
   const csvText = await response.text();
 
   return new Promise((resolve, reject) => {
