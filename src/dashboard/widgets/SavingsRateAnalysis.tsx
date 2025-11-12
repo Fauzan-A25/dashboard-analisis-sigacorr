@@ -114,7 +114,7 @@ const SavingsRateAnalysis: FC<SavingsRateAnalysisProps> = ({ profileData }) => {
                 fill="#8884d8"
                 dataKey="value"
               >
-                {savingsDistribution.map((entry, index) => (
+                {savingsDistribution.map((_, index) => (
                   <Cell key={`cell-${index}`} fill={colors[index]} />
                 ))}
               </Pie>

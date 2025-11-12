@@ -106,7 +106,7 @@ const EWalletSpending: FC<EWalletSpendingProps> = ({ profileData }) => {
                 fill="#8884d8"
                 dataKey="value"
               >
-                {spendingDistribution.map((entry, index) => (
+                {spendingDistribution.map((_, index) => (
                   <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
                 ))}
               </Pie>
