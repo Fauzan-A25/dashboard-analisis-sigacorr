@@ -1,0 +1,384 @@
+/* src/styles/components/fintech-app-usage.css */
+
+/* ===== CONTAINER ===== */
+.fintech-app-usage {
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  box-shadow: 
+    0 4px 24px -1px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+:root .fintech-app-usage,
+.light .fintech-app-usage {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(248, 250, 252, 0.95));
+  border: 1px solid rgba(203, 213, 225, 0.4);
+  box-shadow: 
+    0 4px 24px -1px rgba(100, 116, 139, 0.12),
+    0 0 0 1px rgba(203, 213, 225, 0.2);
+}
+
+.dark .fintech-app-usage {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    0 4px 24px -1px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* ===== HEADER ===== */
+.fintech-app-usage__header {
+  margin-bottom: 1rem;
+}
+
+.fintech-app-usage__title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.fintech-app-usage__subtitle {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* ===== EMPTY STATE ===== */
+.fintech-app-usage__empty {
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+/* ===== CHART CONTAINER ===== */
+.fintech-app-usage__chart {
+  margin-bottom: 1rem;
+}
+
+/* ===== TOOLTIP ===== */
+.fintech-tooltip {
+  background: rgba(17, 24, 39, 0.95);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(75, 85, 99, 1);
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+:root .fintech-tooltip,
+.light .fintech-tooltip {
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(203, 213, 225, 0.6);
+  box-shadow: 0 8px 24px rgba(100, 116, 139, 0.2);
+}
+
+.dark .fintech-tooltip {
+  background: rgba(17, 24, 39, 0.95);
+  border: 1px solid rgba(75, 85, 99, 1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.fintech-tooltip__title {
+  color: white;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  font-size: 0.875rem;
+}
+
+:root .fintech-tooltip__title,
+.light .fintech-tooltip__title {
+  color: #0f172a;
+}
+
+.dark .fintech-tooltip__title {
+  color: white;
+}
+
+.fintech-tooltip__users {
+  color: #60a5fa;
+  font-size: 0.875rem;
+  margin: 0.125rem 0;
+}
+
+:root .fintech-tooltip__users,
+.light .fintech-tooltip__users {
+  color: #3b82f6;
+}
+
+.dark .fintech-tooltip__users {
+  color: #60a5fa;
+}
+
+.fintech-tooltip__share {
+  color: #34d399;
+  font-size: 0.875rem;
+  margin: 0.125rem 0;
+}
+
+:root .fintech-tooltip__share,
+.light .fintech-tooltip__share {
+  color: #10b981;
+}
+
+.dark .fintech-tooltip__share {
+  color: #34d399;
+}
+
+/* ===== STATS GRID ===== */
+.fintech-app-usage__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 640px) {
+  .fintech-app-usage__stats {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+}
+
+/* ===== INDIVIDUAL STAT CARDS ===== */
+.fintech-stat {
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.fintech-stat--leader {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+:root .fintech-stat--leader,
+.light .fintech-stat--leader {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.dark .fintech-stat--leader {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.fintech-stat--runner {
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+:root .fintech-stat--runner,
+.light .fintech-stat--runner {
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+}
+
+.dark .fintech-stat--runner {
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.fintech-stat--total {
+  background: rgba(168, 85, 247, 0.1);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+:root .fintech-stat--total,
+.light .fintech-stat--total {
+  background: rgba(168, 85, 247, 0.08);
+  border: 1px solid rgba(168, 85, 247, 0.25);
+}
+
+.dark .fintech-stat--total {
+  background: rgba(168, 85, 247, 0.1);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+/* ===== STAT TEXT ===== */
+.fintech-stat__label {
+  font-size: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.fintech-stat--leader .fintech-stat__label {
+  color: #6ee7b7;
+}
+
+:root .fintech-stat--leader .fintech-stat__label,
+.light .fintech-stat--leader .fintech-stat__label {
+  color: #059669;
+}
+
+.fintech-stat--runner .fintech-stat__label {
+  color: #93c5fd;
+}
+
+:root .fintech-stat--runner .fintech-stat__label,
+.light .fintech-stat--runner .fintech-stat__label {
+  color: #2563eb;
+}
+
+.fintech-stat--total .fintech-stat__label {
+  color: #c4b5fd;
+}
+
+:root .fintech-stat--total .fintech-stat__label,
+.light .fintech-stat--total .fintech-stat__label {
+  color: #7c3aed;
+}
+
+.fintech-stat__app {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin: 0.25rem 0;
+  line-height: 1.2;
+}
+
+.fintech-stat--leader .fintech-stat__app {
+  color: #34d399;
+}
+
+:root .fintech-stat--leader .fintech-stat__app,
+.light .fintech-stat--leader .fintech-stat__app {
+  color: #10b981;
+}
+
+.fintech-stat--runner .fintech-stat__app {
+  color: #60a5fa;
+}
+
+:root .fintech-stat--runner .fintech-stat__app,
+.light .fintech-stat--runner .fintech-stat__app {
+  color: #3b82f6;
+}
+
+.fintech-stat__value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 0.25rem;
+}
+
+.fintech-stat__value--large {
+  font-size: 1.875rem;
+}
+
+.fintech-stat--leader .fintech-stat__value {
+  color: #6ee7b7;
+}
+
+:root .fintech-stat--leader .fintech-stat__value,
+.light .fintech-stat--leader .fintech-stat__value {
+  color: #059669;
+}
+
+.fintech-stat--runner .fintech-stat__value {
+  color: #93c5fd;
+}
+
+:root .fintech-stat--runner .fintech-stat__value,
+.light .fintech-stat--runner .fintech-stat__value {
+  color: #2563eb;
+}
+
+.fintech-stat--total .fintech-stat__value {
+  color: #a78bfa;
+}
+
+:root .fintech-stat--total .fintech-stat__value,
+.light .fintech-stat--total .fintech-stat__value {
+  color: #8b5cf6;
+}
+
+/* ===== INSIGHT ===== */
+.fintech-app-usage__insight {
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: 0.5rem;
+}
+
+:root .fintech-app-usage__insight,
+.light .fintech-app-usage__insight {
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+}
+
+.dark .fintech-app-usage__insight {
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.fintech-app-usage__insight-text {
+  font-size: 0.875rem;
+  color: #93c5fd;
+  margin: 0;
+  line-height: 1.5;
+}
+
+:root .fintech-app-usage__insight-text,
+.light .fintech-app-usage__insight-text {
+  color: #2563eb;
+}
+
+.dark .fintech-app-usage__insight-text {
+  color: #93c5fd;
+}
+
+.fintech-app-usage__insight-text strong {
+  font-weight: 600;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .fintech-app-usage {
+    padding: 1rem;
+  }
+
+  .fintech-app-usage__title {
+    font-size: 1rem;
+  }
+
+  .fintech-app-usage__subtitle {
+    font-size: 0.8125rem;
+  }
+
+  .fintech-stat {
+    padding: 0.625rem;
+  }
+
+  .fintech-stat__value {
+    font-size: 1.25rem;
+  }
+
+  .fintech-stat__value--large {
+    font-size: 1.5rem;
+  }
+
+  .fintech-app-usage__insight {
+    padding: 0.625rem;
+  }
+
+  .fintech-app-usage__insight-text {
+    font-size: 0.8125rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .fintech-tooltip {
+    padding: 0.625rem;
+  }
+
+  .fintech-tooltip__title,
+  .fintech-tooltip__users,
+  .fintech-tooltip__share {
+    font-size: 0.8125rem;
+  }
+}

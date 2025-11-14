@@ -1,0 +1,293 @@
+/* src/styles/components/question-performance.css */
+
+/* ===== CONTAINER ===== */
+.question-performance {
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  box-shadow: 
+    0 4px 24px -1px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+:root .question-performance,
+.light .question-performance {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(248, 250, 252, 0.95));
+  border: 1px solid rgba(203, 213, 225, 0.4);
+  box-shadow: 
+    0 4px 24px -1px rgba(100, 116, 139, 0.12),
+    0 0 0 1px rgba(203, 213, 225, 0.2);
+}
+
+.dark .question-performance {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    0 4px 24px -1px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* ===== HEADER ===== */
+.question-performance__header {
+  margin-bottom: 1rem;
+}
+
+.question-performance__title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.question-performance__subtitle {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* ===== EMPTY STATE ===== */
+.question-performance__empty {
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+/* ===== CHARTS GRID ===== */
+.question-performance__charts {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .question-performance__charts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ===== CHART SECTION ===== */
+.question-performance-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.question-performance-section__title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.question-performance-section__title--worst {
+  color: #f87171;
+}
+
+:root .question-performance-section__title--worst,
+.light .question-performance-section__title--worst {
+  color: #ef4444;
+}
+
+.dark .question-performance-section__title--worst {
+  color: #f87171;
+}
+
+.question-performance-section__title--best {
+  color: #34d399;
+}
+
+:root .question-performance-section__title--best,
+.light .question-performance-section__title--best {
+  color: #10b981;
+}
+
+.dark .question-performance-section__title--best {
+  color: #34d399;
+}
+
+.question-performance-section__icon {
+  font-size: 1.25rem;
+}
+
+.question-performance-section__chart {
+  flex: 1;
+}
+
+/* ===== TOOLTIP ===== */
+.question-performance-tooltip {
+  background: rgba(17, 24, 39, 0.95);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(75, 85, 99, 1);
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+:root .question-performance-tooltip,
+.light .question-performance-tooltip {
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(203, 213, 225, 0.6);
+  box-shadow: 0 8px 24px rgba(100, 116, 139, 0.2);
+}
+
+.dark .question-performance-tooltip {
+  background: rgba(17, 24, 39, 0.95);
+  border: 1px solid rgba(75, 85, 99, 1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.question-performance-tooltip__title {
+  color: white;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  font-size: 0.875rem;
+}
+
+:root .question-performance-tooltip__title,
+.light .question-performance-tooltip__title {
+  color: #0f172a;
+}
+
+.dark .question-performance-tooltip__title {
+  color: white;
+}
+
+.question-performance-tooltip__average {
+  color: #60a5fa;
+  font-size: 0.875rem;
+  margin: 0.125rem 0;
+}
+
+:root .question-performance-tooltip__average,
+.light .question-performance-tooltip__average {
+  color: #3b82f6;
+}
+
+.dark .question-performance-tooltip__average {
+  color: #60a5fa;
+}
+
+.question-performance-tooltip__percentage {
+  color: #34d399;
+  font-size: 0.875rem;
+  margin: 0.125rem 0;
+}
+
+:root .question-performance-tooltip__percentage,
+.light .question-performance-tooltip__percentage {
+  color: #10b981;
+}
+
+.dark .question-performance-tooltip__percentage {
+  color: #34d399;
+}
+
+.question-performance-tooltip__dimension {
+  color: #9ca3af;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+:root .question-performance-tooltip__dimension,
+.light .question-performance-tooltip__dimension {
+  color: #64748b;
+}
+
+.dark .question-performance-tooltip__dimension {
+  color: #9ca3af;
+}
+
+/* ===== INSIGHT ===== */
+.question-performance__insight {
+  margin-top: 1.5rem;
+  padding: 0.75rem;
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: 0.5rem;
+}
+
+:root .question-performance__insight,
+.light .question-performance__insight {
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.dark .question-performance__insight {
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.question-performance__insight-text {
+  font-size: 0.875rem;
+  color: #fbbf24;
+  margin: 0;
+  line-height: 1.5;
+}
+
+:root .question-performance__insight-text,
+.light .question-performance__insight-text {
+  color: #d97706;
+}
+
+.dark .question-performance__insight-text {
+  color: #fbbf24;
+}
+
+.question-performance__insight-text strong {
+  font-weight: 600;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .question-performance__charts {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .question-performance {
+    padding: 1rem;
+  }
+
+  .question-performance__title {
+    font-size: 1rem;
+  }
+
+  .question-performance__subtitle {
+    font-size: 0.8125rem;
+  }
+
+  .question-performance-section__title {
+    font-size: 0.8125rem;
+  }
+
+  .question-performance__insight {
+    padding: 0.625rem;
+  }
+
+  .question-performance__insight-text {
+    font-size: 0.8125rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .question-performance-tooltip {
+    padding: 0.625rem;
+  }
+
+  .question-performance-tooltip__title,
+  .question-performance-tooltip__average,
+  .question-performance-tooltip__percentage {
+    font-size: 0.8125rem;
+  }
+
+  .question-performance-tooltip__dimension {
+    font-size: 0.6875rem;
+  }
+}

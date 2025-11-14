@@ -1,0 +1,555 @@
+/* src/styles/components/pdrb-vs-loans.css */
+
+/* ===== CONTAINER ===== */
+.pdrb-vs-loans {
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  box-shadow: 
+    0 4px 24px -1px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+:root .pdrb-vs-loans,
+.light .pdrb-vs-loans {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(248, 250, 252, 0.95));
+  border: 1px solid rgba(203, 213, 225, 0.4);
+  box-shadow: 
+    0 4px 24px -1px rgba(100, 116, 139, 0.12),
+    0 0 0 1px rgba(203, 213, 225, 0.2);
+}
+
+.dark .pdrb-vs-loans {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    0 4px 24px -1px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* ===== HEADER ===== */
+.pdrb-vs-loans__header {
+  margin-bottom: 1.5rem;
+}
+
+.pdrb-vs-loans__header-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.pdrb-vs-loans__icon {
+  font-size: 1.5rem;
+}
+
+.pdrb-vs-loans__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+  color: #ffffff;
+}
+
+:root .pdrb-vs-loans__title,
+.light .pdrb-vs-loans__title {
+  color: #0f172a;
+}
+
+.dark .pdrb-vs-loans__title {
+  color: #ffffff;
+}
+
+.pdrb-vs-loans__subtitle {
+  font-size: 0.875rem;
+  line-height: 1.4;
+  margin: 0;
+  color: #9ca3af;
+}
+
+:root .pdrb-vs-loans__subtitle,
+.light .pdrb-vs-loans__subtitle {
+  color: #64748b;
+}
+
+.dark .pdrb-vs-loans__subtitle {
+  color: #9ca3af;
+}
+
+/* ===== STATISTICS CARDS ===== */
+.pdrb-vs-loans__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .pdrb-vs-loans__stats {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+}
+
+.pdrb-vs-loans-stat {
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid;
+}
+
+/* PDRB Card */
+.pdrb-vs-loans-stat--pdrb {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+:root .pdrb-vs-loans-stat--pdrb,
+.light .pdrb-vs-loans-stat--pdrb {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(5, 150, 105, 0.1) 100%);
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+.dark .pdrb-vs-loans-stat--pdrb {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+/* Loans Card */
+.pdrb-vs-loans-stat--loans {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(37, 99, 235, 0.05) 100%);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+:root .pdrb-vs-loans-stat--loans,
+.light .pdrb-vs-loans-stat--loans {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(37, 99, 235, 0.1) 100%);
+  border-color: rgba(59, 130, 246, 0.4);
+}
+
+.dark .pdrb-vs-loans-stat--loans {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(37, 99, 235, 0.05) 100%);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+/* Count Card */
+.pdrb-vs-loans-stat--count {
+  background: linear-gradient(135deg, rgba(96, 165, 250, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%);
+  border-color: rgba(96, 165, 250, 0.3);
+}
+
+:root .pdrb-vs-loans-stat--count,
+.light .pdrb-vs-loans-stat--count {
+  background: linear-gradient(135deg, rgba(96, 165, 250, 0.15) 0%, rgba(59, 130, 246, 0.1) 100%);
+  border-color: rgba(96, 165, 250, 0.4);
+}
+
+.dark .pdrb-vs-loans-stat--count {
+  background: linear-gradient(135deg, rgba(96, 165, 250, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%);
+  border-color: rgba(96, 165, 250, 0.3);
+}
+
+/* Stat Labels */
+.pdrb-vs-loans-stat__label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  letter-spacing: 0.02em;
+}
+
+.pdrb-vs-loans-stat--pdrb .pdrb-vs-loans-stat__label {
+  color: #10b981;
+}
+
+:root .pdrb-vs-loans-stat--pdrb .pdrb-vs-loans-stat__label,
+.light .pdrb-vs-loans-stat--pdrb .pdrb-vs-loans-stat__label {
+  color: #047857;
+}
+
+.dark .pdrb-vs-loans-stat--pdrb .pdrb-vs-loans-stat__label {
+  color: #10b981;
+}
+
+.pdrb-vs-loans-stat--loans .pdrb-vs-loans-stat__label {
+  color: #3b82f6;
+}
+
+:root .pdrb-vs-loans-stat--loans .pdrb-vs-loans-stat__label,
+.light .pdrb-vs-loans-stat--loans .pdrb-vs-loans-stat__label {
+  color: #1d4ed8;
+}
+
+.dark .pdrb-vs-loans-stat--loans .pdrb-vs-loans-stat__label {
+  color: #3b82f6;
+}
+
+.pdrb-vs-loans-stat--count .pdrb-vs-loans-stat__label {
+  color: #60a5fa;
+}
+
+:root .pdrb-vs-loans-stat--count .pdrb-vs-loans-stat__label,
+.light .pdrb-vs-loans-stat--count .pdrb-vs-loans-stat__label {
+  color: #2563eb;
+}
+
+.dark .pdrb-vs-loans-stat--count .pdrb-vs-loans-stat__label {
+  color: #60a5fa;
+}
+
+/* Stat Values */
+.pdrb-vs-loans-stat__value {
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.pdrb-vs-loans-stat--pdrb .pdrb-vs-loans-stat__value {
+  color: #10b981;
+}
+
+:root .pdrb-vs-loans-stat--pdrb .pdrb-vs-loans-stat__value,
+.light .pdrb-vs-loans-stat--pdrb .pdrb-vs-loans-stat__value {
+  color: #059669;
+}
+
+.dark .pdrb-vs-loans-stat--pdrb .pdrb-vs-loans-stat__value {
+  color: #10b981;
+}
+
+.pdrb-vs-loans-stat--loans .pdrb-vs-loans-stat__value {
+  color: #3b82f6;
+}
+
+:root .pdrb-vs-loans-stat--loans .pdrb-vs-loans-stat__value,
+.light .pdrb-vs-loans-stat--loans .pdrb-vs-loans-stat__value {
+  color: #2563eb;
+}
+
+.dark .pdrb-vs-loans-stat--loans .pdrb-vs-loans-stat__value {
+  color: #3b82f6;
+}
+
+.pdrb-vs-loans-stat--count .pdrb-vs-loans-stat__value {
+  color: #60a5fa;
+}
+
+:root .pdrb-vs-loans-stat--count .pdrb-vs-loans-stat__value,
+.light .pdrb-vs-loans-stat--count .pdrb-vs-loans-stat__value {
+  color: #3b82f6;
+}
+
+.dark .pdrb-vs-loans-stat--count .pdrb-vs-loans-stat__value {
+  color: #60a5fa;
+}
+
+/* ===== EMPTY STATE ===== */
+.pdrb-vs-loans__empty {
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 0.75rem;
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+:root .pdrb-vs-loans__empty,
+.light .pdrb-vs-loans__empty {
+  background: rgba(241, 245, 249, 0.5);
+  border: 1px dashed rgba(148, 163, 184, 0.3);
+}
+
+.dark .pdrb-vs-loans__empty {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.pdrb-vs-loans__empty-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.pdrb-vs-loans__empty-text {
+  font-size: 1rem;
+  margin: 0;
+  color: #9ca3af;
+}
+
+:root .pdrb-vs-loans__empty-text,
+.light .pdrb-vs-loans__empty-text {
+  color: #64748b;
+}
+
+.dark .pdrb-vs-loans__empty-text {
+  color: #9ca3af;
+}
+
+/* ===== CHART CONTAINER ===== */
+.pdrb-vs-loans__chart {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: 1rem;
+}
+
+:root .pdrb-vs-loans__chart,
+.light .pdrb-vs-loans__chart {
+  background: rgba(241, 245, 249, 0.5);
+  border: 1px solid rgba(203, 213, 225, 0.3);
+}
+
+.dark .pdrb-vs-loans__chart {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ===== TOOLTIP ===== */
+.pdrb-loans-tooltip {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.98) 0%, rgba(30, 41, 59, 0.98) 100%);
+  border: 2px solid rgba(96, 165, 250, 0.5);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  min-width: 220px;
+}
+
+:root .pdrb-loans-tooltip,
+.light .pdrb-loans-tooltip {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.98) 100%);
+  border: 2px solid rgba(59, 130, 246, 0.4);
+  box-shadow: 0 8px 24px rgba(100, 116, 139, 0.25);
+}
+
+.dark .pdrb-loans-tooltip {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.98) 0%, rgba(30, 41, 59, 0.98) 100%);
+  border: 2px solid rgba(96, 165, 250, 0.5);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.pdrb-loans-tooltip__title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(96, 165, 250, 0.3);
+  color: #60a5fa;
+}
+
+:root .pdrb-loans-tooltip__title,
+.light .pdrb-loans-tooltip__title {
+  color: #2563eb;
+  border-bottom: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.dark .pdrb-loans-tooltip__title {
+  color: #60a5fa;
+  border-bottom: 1px solid rgba(96, 165, 250, 0.3);
+}
+
+.pdrb-loans-tooltip__content {
+  font-size: 0.8125rem;
+  line-height: 2;
+  color: #e2e8f0;
+}
+
+:root .pdrb-loans-tooltip__content,
+.light .pdrb-loans-tooltip__content {
+  color: #1e293b;
+}
+
+.dark .pdrb-loans-tooltip__content {
+  color: #e2e8f0;
+}
+
+.pdrb-loans-tooltip__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.25rem 0;
+}
+
+.pdrb-loans-tooltip__label {
+  color: #94a3b8;
+}
+
+:root .pdrb-loans-tooltip__label,
+.light .pdrb-loans-tooltip__label {
+  color: #475569;
+}
+
+.dark .pdrb-loans-tooltip__label {
+  color: #94a3b8;
+}
+
+.pdrb-loans-tooltip__pdrb {
+  color: #10b981;
+}
+
+:root .pdrb-loans-tooltip__pdrb,
+.light .pdrb-loans-tooltip__pdrb {
+  color: #059669;
+}
+
+.dark .pdrb-loans-tooltip__pdrb {
+  color: #10b981;
+}
+
+.pdrb-loans-tooltip__loans {
+  color: #3b82f6;
+}
+
+:root .pdrb-loans-tooltip__loans,
+.light .pdrb-loans-tooltip__loans {
+  color: #2563eb;
+}
+
+.dark .pdrb-loans-tooltip__loans {
+  color: #3b82f6;
+}
+
+/* ===== LEGEND ===== */
+.pdrb-vs-loans__legend {
+  margin-top: 1.25rem;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.pdrb-vs-loans-legend__item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pdrb-vs-loans-legend__dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+}
+
+.pdrb-vs-loans-legend__dot--normal {
+  background: #60a5fa;
+  border: 1px solid rgba(96, 165, 250, 0.5);
+}
+
+:root .pdrb-vs-loans-legend__dot--normal,
+.light .pdrb-vs-loans-legend__dot--normal {
+  background: #3b82f6;
+  border: 1px solid rgba(59, 130, 246, 0.6);
+}
+
+.pdrb-vs-loans-legend__dot--selected {
+  width: 1rem;
+  height: 1rem;
+  background: #f59e0b;
+  border: 2px solid #fff;
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.6);
+}
+
+:root .pdrb-vs-loans-legend__dot--selected,
+.light .pdrb-vs-loans-legend__dot--selected {
+  background: #f59e0b;
+  border: 2px solid #475569;
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.4);
+}
+
+.pdrb-vs-loans-legend__text {
+  font-size: 0.8125rem;
+  color: #9ca3af;
+}
+
+:root .pdrb-vs-loans-legend__text,
+.light .pdrb-vs-loans-legend__text {
+  color: #64748b;
+}
+
+.dark .pdrb-vs-loans-legend__text {
+  color: #9ca3af;
+}
+
+.pdrb-vs-loans-legend__text--selected {
+  color: #f59e0b;
+  font-weight: 600;
+}
+
+:root .pdrb-vs-loans-legend__text--selected,
+.light .pdrb-vs-loans-legend__text--selected {
+  color: #d97706;
+}
+
+.dark .pdrb-vs-loans-legend__text--selected {
+  color: #f59e0b;
+}
+
+/* ===== INSIGHT ===== */
+.pdrb-vs-loans__insight {
+  margin-top: 1.25rem;
+  padding: 0.75rem 1rem;
+  background: rgba(59, 130, 246, 0.1);
+  border-radius: 0.5rem;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+:root .pdrb-vs-loans__insight,
+.light .pdrb-vs-loans__insight {
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.dark .pdrb-vs-loans__insight {
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.pdrb-vs-loans__insight-icon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.pdrb-vs-loans__insight-text {
+  font-size: 0.8125rem;
+  margin: 0;
+  line-height: 1.6;
+  color: #9ca3af;
+}
+
+:root .pdrb-vs-loans__insight-text,
+.light .pdrb-vs-loans__insight-text {
+  color: #475569;
+}
+
+.dark .pdrb-vs-loans__insight-text {
+  color: #9ca3af;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .pdrb-vs-loans {
+    padding: 1rem;
+  }
+
+  .pdrb-vs-loans__title {
+    font-size: 1rem;
+  }
+
+  .pdrb-vs-loans__subtitle {
+    font-size: 0.8125rem;
+  }
+
+  .pdrb-vs-loans-stat__value {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .pdrb-loans-tooltip {
+    padding: 0.75rem;
+    min-width: 180px;
+  }
+}

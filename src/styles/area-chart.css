@@ -1,4 +1,6 @@
-/* Area Chart Tooltip Styles */
+/* area-chart.css */
+
+/* ===== AREA CHART TOOLTIP STYLES ===== */
 .chart-tooltip {
   background: var(--bg-secondary);
   backdrop-filter: blur(12px);
@@ -11,6 +13,23 @@
   animation: tooltipFadeIn 0.2s ease-out;
 }
 
+/* Light mode tooltip */
+:root .chart-tooltip,
+.light .chart-tooltip {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(203, 213, 225, 0.6);
+  box-shadow: 0 8px 24px rgba(100, 116, 139, 0.2), 0 2px 8px rgba(100, 116, 139, 0.1);
+}
+
+.dark .chart-tooltip {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ===== TOOLTIP LABEL ===== */
 .tooltip-label {
   color: var(--text-primary);
   font-size: var(--text-sm);
@@ -20,6 +39,18 @@
   border-bottom: 1px solid var(--divider);
 }
 
+:root .tooltip-label,
+.light .tooltip-label {
+  color: #1e293b;
+  border-bottom: 1px solid rgba(203, 213, 225, 0.5);
+}
+
+.dark .tooltip-label {
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--divider);
+}
+
+/* ===== TOOLTIP CONTENT ===== */
 .tooltip-content {
   display: flex;
   flex-direction: column;
@@ -34,6 +65,7 @@
   line-height: 1.4;
 }
 
+/* ===== TOOLTIP DOT ===== */
 .tooltip-dot {
   width: 8px;
   height: 8px;
@@ -42,10 +74,29 @@
   box-shadow: 0 0 4px rgba(var(--primary-blue-rgb), 0.4);
 }
 
+:root .tooltip-dot,
+.light .tooltip-dot {
+  box-shadow: 0 0 6px rgba(59, 130, 246, 0.5);
+}
+
+.dark .tooltip-dot {
+  box-shadow: 0 0 4px rgba(var(--primary-blue-rgb), 0.4);
+}
+
+/* ===== TOOLTIP TEXT ===== */
 .tooltip-name {
   color: var(--text-secondary);
   font-weight: 500;
   flex-shrink: 0;
+}
+
+:root .tooltip-name,
+.light .tooltip-name {
+  color: #64748b;
+}
+
+.dark .tooltip-name {
+  color: var(--text-secondary);
 }
 
 .tooltip-value {
@@ -54,6 +105,16 @@
   margin-left: auto;
 }
 
+:root .tooltip-value,
+.light .tooltip-value {
+  color: #0f172a;
+}
+
+.dark .tooltip-value {
+  color: var(--text-primary);
+}
+
+/* ===== ANIMATION ===== */
 @keyframes tooltipFadeIn {
   from {
     opacity: 0;
@@ -65,7 +126,7 @@
   }
 }
 
-/* Recharts Custom Overrides */
+/* ===== RECHARTS CUSTOM OVERRIDES ===== */
 .recharts-surface {
   overflow: visible;
 }
@@ -74,7 +135,25 @@
   font-family: inherit;
 }
 
+:root .recharts-cartesian-axis-tick-value,
+.light .recharts-cartesian-axis-tick-value {
+  fill: #64748b;
+}
+
+.dark .recharts-cartesian-axis-tick-value {
+  fill: var(--text-secondary);
+}
+
 .recharts-legend-wrapper {
+  color: var(--text-secondary);
+}
+
+:root .recharts-legend-wrapper,
+.light .recharts-legend-wrapper {
+  color: #64748b;
+}
+
+.dark .recharts-legend-wrapper {
   color: var(--text-secondary);
 }
 
@@ -90,7 +169,35 @@
   gap: var(--space-2);
 }
 
-/* Responsive adjustments */
+:root .recharts-legend-item-text,
+.light .recharts-legend-item-text {
+  color: #475569 !important;
+}
+
+.dark .recharts-legend-item-text {
+  color: var(--text-secondary) !important;
+}
+
+/* Grid lines */
+:root .recharts-cartesian-grid-horizontal line,
+.light .recharts-cartesian-grid-horizontal line {
+  stroke: rgba(203, 213, 225, 0.4);
+}
+
+.dark .recharts-cartesian-grid-horizontal line {
+  stroke: rgba(255, 255, 255, 0.05);
+}
+
+:root .recharts-cartesian-grid-vertical line,
+.light .recharts-cartesian-grid-vertical line {
+  stroke: rgba(203, 213, 225, 0.4);
+}
+
+.dark .recharts-cartesian-grid-vertical line {
+  stroke: rgba(255, 255, 255, 0.05);
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
 @media (max-width: 768px) {
   .chart-tooltip {
     padding: var(--space-2) var(--space-3);

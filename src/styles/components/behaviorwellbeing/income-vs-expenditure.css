@@ -1,0 +1,441 @@
+/* src/styles/components/income-vs-expenditure.css */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+  --chart-grid-color: #d1d5db;
+  --text-primary: #111827;
+  --text-secondary: #374151;
+  --text-tertiary: #6b7280;
+  --border-color: #e5e7eb;
+  --bg-surface: #ffffff;
+  --bg-surface-secondary: #f9fafb;
+}
+
+.dark {
+  --chart-grid-color: #4b5563;
+  --text-primary: #f9fafb;
+  --text-secondary: #d1d5db;
+  --text-tertiary: #9ca3af;
+  --border-color: #374151;
+  --bg-surface: #1f2937;
+  --bg-surface-secondary: #111827;
+}
+
+/* ===== CONTAINER ===== */
+.income-vs-expenditure {
+  padding: 2rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: 
+    0 1px 3px 0 rgba(0, 0, 0, 0.1),
+    0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s ease;
+}
+
+.income-vs-expenditure:hover {
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+.dark .income-vs-expenditure {
+  background: linear-gradient(135deg, rgba(31, 41, 55, 0.95), rgba(17, 24, 39, 0.95));
+  border: 1px solid rgba(75, 85, 99, 0.5);
+  box-shadow: 
+    0 4px 12px -1px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* ===== HEADER ===== */
+.income-vs-expenditure__header {
+  margin-bottom: 1.5rem;
+}
+
+.income-vs-expenditure__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 0.5rem 0;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.income-vs-expenditure__subtitle {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ===== EMPTY STATE ===== */
+.income-vs-expenditure__empty {
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-tertiary);
+  background: var(--bg-surface-secondary);
+  border-radius: 12px;
+  border: 2px dashed var(--border-color);
+}
+
+.income-vs-expenditure__empty p {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+/* ===== CHART CONTAINER ===== */
+.income-vs-expenditure__chart {
+  margin-bottom: 1.5rem;
+  padding: 1rem 0;
+}
+
+/* Override Recharts legend for theme */
+.income-vs-expenditure .recharts-legend-item-text {
+  color: var(--text-secondary) !important;
+  font-size: 13px !important;
+}
+
+.income-vs-expenditure .recharts-default-legend {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  gap: 12px !important;
+}
+
+/* ===== TOOLTIP ===== */
+.income-expense-tooltip {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(203, 213, 225, 0.4);
+  padding: 12px 16px;
+  border-radius: 12px;
+  box-shadow: 
+    0 10px 25px -5px rgba(0, 0, 0, 0.1),
+    0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  min-width: 220px;
+}
+
+.dark .income-expense-tooltip {
+  background: rgba(31, 41, 55, 0.98);
+  border: 1px solid rgba(75, 85, 99, 0.6);
+  box-shadow: 
+    0 10px 25px -5px rgba(0, 0, 0, 0.5),
+    0 8px 10px -6px rgba(0, 0, 0, 0.4);
+}
+
+.income-expense-tooltip__title {
+  color: #0f172a;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  border-bottom: 1px solid rgba(203, 213, 225, 0.3);
+  padding-bottom: 8px;
+}
+
+.dark .income-expense-tooltip__title {
+  color: #f1f5f9;
+  border-bottom-color: rgba(75, 85, 99, 0.4);
+}
+
+.income-expense-tooltip__item {
+  margin: 6px 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.income-expense-tooltip__label {
+  color: #64748b;
+  font-weight: 500;
+}
+
+.dark .income-expense-tooltip__label {
+  color: #94a3b8;
+}
+
+.income-expense-tooltip__item:first-of-type {
+  color: #3b82f6;
+}
+
+.income-expense-tooltip__item:nth-of-type(2) {
+  color: #10b981;
+}
+
+.dark .income-expense-tooltip__item:first-of-type {
+  color: #60a5fa;
+}
+
+.dark .income-expense-tooltip__item:nth-of-type(2) {
+  color: #34d399;
+}
+
+.income-expense-tooltip__location {
+  color: #64748b;
+  font-size: 0.8125rem;
+  margin: 8px 0 0 0;
+  padding-top: 8px;
+  border-top: 1px solid rgba(203, 213, 225, 0.3);
+  line-height: 1.4;
+}
+
+.dark .income-expense-tooltip__location {
+  color: #94a3b8;
+  border-top-color: rgba(75, 85, 99, 0.4);
+}
+
+/* ===== STATS GRID ===== */
+.income-vs-expenditure__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ===== INDIVIDUAL STAT CARDS ===== */
+.income-stat {
+  padding: 1rem;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.income-stat:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.1);
+}
+
+.income-stat--income {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.05));
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+.dark .income-stat--income {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(59, 130, 246, 0.08));
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.income-stat--expense {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05));
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+.dark .income-stat--expense {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(16, 185, 129, 0.08));
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.income-stat--sample {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(168, 85, 247, 0.05));
+  border-color: rgba(168, 85, 247, 0.2);
+}
+
+.dark .income-stat--sample {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.15), rgba(168, 85, 247, 0.08));
+  border-color: rgba(168, 85, 247, 0.3);
+}
+
+/* ===== STAT TEXT ===== */
+.income-stat__label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.income-stat--income .income-stat__label {
+  color: #2563eb;
+}
+
+.dark .income-stat--income .income-stat__label {
+  color: #93c5fd;
+}
+
+.income-stat--expense .income-stat__label {
+  color: #059669;
+}
+
+.dark .income-stat--expense .income-stat__label {
+  color: #6ee7b7;
+}
+
+.income-stat--sample .income-stat__label {
+  color: #7c3aed;
+}
+
+.dark .income-stat--sample .income-stat__label {
+  color: #c4b5fd;
+}
+
+.income-stat__value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.income-stat--income .income-stat__value {
+  color: #3b82f6;
+}
+
+.dark .income-stat--income .income-stat__value {
+  color: #60a5fa;
+}
+
+.income-stat--expense .income-stat__value {
+  color: #10b981;
+}
+
+.dark .income-stat--expense .income-stat__value {
+  color: #34d399;
+}
+
+.income-stat--sample .income-stat__value {
+  color: #8b5cf6;
+}
+
+.dark .income-stat--sample .income-stat__value {
+  color: #a78bfa;
+}
+
+/* ===== INSIGHT ===== */
+.income-vs-expenditure__insight {
+  display: flex;
+  gap: 12px;
+  padding: 1rem;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.05));
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 12px;
+  align-items: flex-start;
+}
+
+.dark .income-vs-expenditure__insight {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(59, 130, 246, 0.08));
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.income-vs-expenditure__insight-icon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.income-vs-expenditure__insight-content {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: baseline;
+}
+
+.income-vs-expenditure__insight-label {
+  font-weight: 600;
+  color: #2563eb;
+  font-size: 0.875rem;
+  margin-right: 4px;
+}
+
+.dark .income-vs-expenditure__insight-label {
+  color: #93c5fd;
+}
+
+.income-vs-expenditure__insight-text {
+  font-size: 0.875rem;
+  color: #1e40af;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.dark .income-vs-expenditure__insight-text {
+  color: #bfdbfe;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .income-vs-expenditure {
+    padding: 1.5rem;
+  }
+
+  .income-vs-expenditure__title {
+    font-size: 1.125rem;
+  }
+
+  .income-vs-expenditure__subtitle {
+    font-size: 0.8125rem;
+  }
+
+  .income-vs-expenditure__chart {
+    margin-bottom: 1rem;
+  }
+
+  .income-vs-expenditure__stats {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .income-stat {
+    padding: 0.875rem;
+  }
+
+  .income-stat__value {
+    font-size: 1.375rem;
+  }
+
+  .income-vs-expenditure__insight {
+    padding: 0.875rem;
+    gap: 10px;
+  }
+
+  .income-vs-expenditure__insight-icon {
+    font-size: 1.125rem;
+  }
+
+  .income-vs-expenditure__insight-text {
+    font-size: 0.8125rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .income-vs-expenditure {
+    padding: 1rem;
+  }
+
+  .income-expense-tooltip {
+    padding: 10px 12px;
+    min-width: 200px;
+  }
+
+  .income-expense-tooltip__title {
+    font-size: 0.875rem;
+    margin-bottom: 6px;
+    padding-bottom: 6px;
+  }
+
+  .income-expense-tooltip__item {
+    font-size: 0.8125rem;
+  }
+
+  .income-expense-tooltip__location {
+    font-size: 0.75rem;
+    margin-top: 6px;
+    padding-top: 6px;
+  }
+
+  .income-stat__label {
+    font-size: 0.75rem;
+  }
+
+  .income-stat__value {
+    font-size: 1.25rem;
+  }
+}

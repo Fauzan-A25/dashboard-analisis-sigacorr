@@ -1,0 +1,561 @@
+/* src/styles/components/province-map-echarts.css */
+
+/* ===== CONTAINER ===== */
+.province-map {
+  width: 100%;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+/* ===== LOADING STATE ===== */
+.province-map__loading {
+  width: 100%;
+  height: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+:root .province-map__loading,
+.light .province-map__loading {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(248, 250, 252, 1));
+  border: 1px solid rgba(203, 213, 225, 0.4);
+}
+
+.dark .province-map__loading {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.province-map__loading-content {
+  text-align: center;
+}
+
+.province-map__loading-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.province-map__loading-text {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+:root .province-map__loading-text,
+.light .province-map__loading-text {
+  color: #0f172a;
+}
+
+.dark .province-map__loading-text {
+  color: #ffffff;
+}
+
+.province-map__loading-subtext {
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  color: #9ca3af;
+}
+
+:root .province-map__loading-subtext,
+.light .province-map__loading-subtext {
+  color: #64748b;
+}
+
+.dark .province-map__loading-subtext {
+  color: #9ca3af;
+}
+
+/* ===== LAYER CONTROLS ===== */
+.province-map__controls {
+  margin-bottom: 1.25rem;
+  display: flex;
+  gap: 0.625rem;
+  flex-wrap: wrap;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+:root .province-map__controls,
+.light .province-map__controls {
+  background: rgba(241, 245, 249, 0.8);
+  border: 1px solid rgba(203, 213, 225, 0.4);
+}
+
+.dark .province-map__controls {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.province-map__layer-btn {
+  padding: 0.75rem 1.25rem;
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.625rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 400;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+:root .province-map__layer-btn,
+.light .province-map__layer-btn {
+  background: rgba(255, 255, 255, 1);
+  color: #475569;
+  border: 1px solid rgba(203, 213, 225, 0.5);
+}
+
+.dark .province-map__layer-btn {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.province-map__layer-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+:root .province-map__layer-btn:hover,
+.light .province-map__layer-btn:hover {
+  background: rgba(241, 245, 249, 1);
+  border-color: rgba(148, 163, 184, 0.5);
+}
+
+.dark .province-map__layer-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.province-map__layer-btn--active {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: #ffffff;
+  border: none;
+  font-weight: 600;
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.5);
+}
+
+:root .province-map__layer-btn--active,
+.light .province-map__layer-btn--active {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+}
+
+.dark .province-map__layer-btn--active {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.5);
+}
+
+.province-map__layer-icon {
+  font-size: 1.125rem;
+}
+
+.province-map__layer-label {
+  font-size: 0.875rem;
+}
+
+/* ===== INSIGHTS PANEL ===== */
+.province-map__insights {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .province-map__insights {
+    grid-template-columns: 1fr;
+  }
+}
+
+.province-map__insight-card {
+  padding: 1.25rem;
+  border-radius: 0.75rem;
+  border: 1px solid;
+}
+
+/* Top Card (Green) */
+.province-map__insight-card--top {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+:root .province-map__insight-card--top,
+.light .province-map__insight-card--top {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(5, 150, 105, 0.1) 100%);
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+.dark .province-map__insight-card--top {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+/* Bottom Card (Red) */
+.province-map__insight-card--bottom {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(220, 38, 38, 0.05) 100%);
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+:root .province-map__insight-card--bottom,
+.light .province-map__insight-card--bottom {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(220, 38, 38, 0.1) 100%);
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+.dark .province-map__insight-card--bottom {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(220, 38, 38, 0.05) 100%);
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+/* Summary Card (Blue) */
+.province-map__insight-card--summary {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(37, 99, 235, 0.05) 100%);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+:root .province-map__insight-card--summary,
+.light .province-map__insight-card--summary {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(37, 99, 235, 0.1) 100%);
+  border-color: rgba(59, 130, 246, 0.4);
+}
+
+.dark .province-map__insight-card--summary {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(37, 99, 235, 0.05) 100%);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.province-map__insight-header {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.province-map__insight-card--top .province-map__insight-header {
+  color: #10b981;
+}
+
+:root .province-map__insight-card--top .province-map__insight-header,
+.light .province-map__insight-card--top .province-map__insight-header {
+  color: #059669;
+}
+
+.dark .province-map__insight-card--top .province-map__insight-header {
+  color: #10b981;
+}
+
+.province-map__insight-card--bottom .province-map__insight-header {
+  color: #ef4444;
+}
+
+:root .province-map__insight-card--bottom .province-map__insight-header,
+.light .province-map__insight-card--bottom .province-map__insight-header {
+  color: #dc2626;
+}
+
+.dark .province-map__insight-card--bottom .province-map__insight-header {
+  color: #ef4444;
+}
+
+.province-map__insight-card--summary .province-map__insight-header {
+  color: #60a5fa;
+}
+
+:root .province-map__insight-card--summary .province-map__insight-header,
+.light .province-map__insight-card--summary .province-map__insight-header {
+  color: #2563eb;
+}
+
+.dark .province-map__insight-card--summary .province-map__insight-header {
+  color: #60a5fa;
+}
+
+.province-map__insight-icon {
+  font-size: 1.5rem;
+}
+
+.province-map__insight-title {
+  font-size: 1rem;
+}
+
+.province-map__insight-item {
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+:root .province-map__insight-item,
+.light .province-map__insight-item {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.dark .province-map__insight-item {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.province-map__insight-info {
+  flex: 1;
+}
+
+.province-map__insight-name {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #e2e8f0;
+}
+
+:root .province-map__insight-name,
+.light .province-map__insight-name {
+  color: #1e293b;
+}
+
+.dark .province-map__insight-name {
+  color: #e2e8f0;
+}
+
+.province-map__insight-count {
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  color: #94a3b8;
+}
+
+:root .province-map__insight-count,
+.light .province-map__insight-count {
+  color: #64748b;
+}
+
+.dark .province-map__insight-count {
+  color: #94a3b8;
+}
+
+.province-map__insight-score {
+  font-weight: 700;
+  font-size: 1.125rem;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.5rem;
+}
+
+.province-map__insight-score--top {
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.2);
+}
+
+:root .province-map__insight-score--top,
+.light .province-map__insight-score--top {
+  color: #059669;
+  background: rgba(16, 185, 129, 0.25);
+}
+
+.dark .province-map__insight-score--top {
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.2);
+}
+
+.province-map__insight-score--bottom {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.2);
+}
+
+:root .province-map__insight-score--bottom,
+.light .province-map__insight-score--bottom {
+  color: #dc2626;
+  background: rgba(239, 68, 68, 0.25);
+}
+
+.dark .province-map__insight-score--bottom {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.2);
+}
+
+/* ===== SUMMARY STATS ===== */
+.province-map__summary {
+  font-size: 0.875rem;
+  line-height: 2;
+  color: #e2e8f0;
+}
+
+:root .province-map__summary,
+.light .province-map__summary {
+  color: #1e293b;
+}
+
+.dark .province-map__summary {
+  color: #e2e8f0;
+}
+
+.province-map__summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+:root .province-map__summary-row,
+.light .province-map__summary-row {
+  border-bottom: 1px solid rgba(203, 213, 225, 0.3);
+}
+
+.dark .province-map__summary-row {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.province-map__summary-row:last-child {
+  border-bottom: none;
+}
+
+.province-map__summary-row strong {
+  color: #60a5fa;
+}
+
+:root .province-map__summary-row strong,
+.light .province-map__summary-row strong {
+  color: #2563eb;
+}
+
+.dark .province-map__summary-row strong {
+  color: #60a5fa;
+}
+
+/* ===== CONTROLS GUIDE ===== */
+.province-map__guide {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.province-map__guide-item {
+  padding: 0.625rem 1.125rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 0.5rem;
+  font-size: 0.8125rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #9ca3af;
+}
+
+:root .province-map__guide-item,
+.light .province-map__guide-item {
+  background: rgba(241, 245, 249, 0.8);
+  color: #64748b;
+}
+
+.dark .province-map__guide-item {
+  background: rgba(255, 255, 255, 0.05);
+  color: #9ca3af;
+}
+
+.province-map__guide-icon {
+  font-size: 1.125rem;
+}
+
+.province-map__guide-text {
+  font-size: 0.8125rem;
+}
+
+.province-map__guide-text strong {
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+:root .province-map__guide-text strong,
+.light .province-map__guide-text strong {
+  color: #1e293b;
+}
+
+.dark .province-map__guide-text strong {
+  color: #e2e8f0;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .province-map__controls {
+    padding: 0.75rem;
+  }
+
+  .province-map__layer-btn {
+    padding: 0.625rem 1rem;
+    font-size: 0.8125rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .province-map__loading {
+    height: 500px;
+  }
+
+  .province-map__controls {
+    gap: 0.5rem;
+  }
+
+  .province-map__layer-btn {
+    padding: 0.5rem 0.875rem;
+  }
+
+  .province-map__insight-card {
+    padding: 1rem;
+  }
+
+  .province-map__insight-header {
+    font-size: 0.9375rem;
+  }
+
+  .province-map__insight-item {
+    padding: 0.625rem;
+  }
+
+  .province-map__insight-name {
+    font-size: 0.8125rem;
+  }
+
+  .province-map__insight-score {
+    font-size: 1rem;
+  }
+
+  .province-map__guide {
+    gap: 0.5rem;
+  }
+
+  .province-map__guide-item {
+    padding: 0.5rem 0.875rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .province-map__layer-btn {
+    flex: 1 1 calc(50% - 0.25rem);
+    justify-content: center;
+  }
+
+  .province-map__insights {
+    gap: 0.75rem;
+  }
+
+  .province-map__guide {
+    flex-direction: column;
+  }
+
+  .province-map__guide-item {
+    justify-content: center;
+  }
+}

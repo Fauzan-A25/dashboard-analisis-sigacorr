@@ -1,3 +1,5 @@
+/* kpi-card.css */
+
 .kpi-card {
   background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
   border-radius: var(--radius-lg);
@@ -6,7 +8,20 @@
   border: 1px solid rgba(255,255,255,0.04);
   position: relative;
   z-index: 1;
-  user-select: none; /* ADD: Prevent text selection */
+  user-select: none;
+}
+
+/* Light mode KPI card */
+:root .kpi-card,
+.light .kpi-card {
+  background: linear-gradient(180deg, rgba(255,255,255,1), rgba(248,250,252,1));
+  border: 1px solid rgba(203, 213, 225, 0.5);
+  box-shadow: 0 2px 8px rgba(100, 116, 139, 0.08);
+}
+
+.dark .kpi-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.04);
 }
 
 .kpi-card:hover {
@@ -15,6 +30,18 @@
   z-index: 2;
 }
 
+:root .kpi-card:hover,
+.light .kpi-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(100, 116, 139, 0.2), 0 4px 16px rgba(59, 130, 246, 0.15);
+  z-index: 2;
+}
+
+.dark .kpi-card:hover {
+  box-shadow: 0 14px 40px rgba(2,6,23,0.65), var(--shadow-glow);
+}
+
+/* ===== ICON WRAPPER ===== */
 .kpi-card .icon-wrapper {
   width: 48px;
   height: 48px;
@@ -24,23 +51,128 @@
   border-radius: 12px;
   background: linear-gradient(180deg, rgba(59,130,246,0.08), rgba(139,92,246,0.04));
   box-shadow: inset 0 -6px 18px rgba(0,0,0,0.15);
-  pointer-events: none; /* ADD: Icon doesn't capture clicks */
+  pointer-events: none;
 }
 
+:root .kpi-card .icon-wrapper,
+.light .kpi-card .icon-wrapper {
+  background: linear-gradient(180deg, rgba(59,130,246,0.12), rgba(139,92,246,0.08));
+  box-shadow: inset 0 -4px 12px rgba(59,130,246,0.15), 0 2px 8px rgba(59,130,246,0.08);
+}
+
+.dark .kpi-card .icon-wrapper {
+  background: linear-gradient(180deg, rgba(59,130,246,0.08), rgba(139,92,246,0.04));
+  box-shadow: inset 0 -6px 18px rgba(0,0,0,0.15);
+}
+
+/* Icon color */
+.kpi-card .icon-wrapper svg {
+  color: #60a5fa;
+}
+
+:root .kpi-card .icon-wrapper svg,
+.light .kpi-card .icon-wrapper svg {
+  color: #3b82f6;
+}
+
+.dark .kpi-card .icon-wrapper svg {
+  color: #60a5fa;
+}
+
+/* ===== VALUE TEXT ===== */
 .kpi-card .value {
   font-size: 1.5rem;
   font-weight: 800;
-  color: var(--text-primary);
-  user-select: none; /* ADD */
+  user-select: none;
+  color: #ffffff;
 }
 
+:root .kpi-card .value,
+.light .kpi-card .value {
+  color: #0f172a;
+}
+
+.dark .kpi-card .value {
+  color: #ffffff;
+}
+
+/* ===== SUBTITLE TEXT ===== */
 .kpi-card .subtitle { 
-  color: var(--text-secondary); 
   font-size: 0.875rem;
-  user-select: none; /* ADD */
+  user-select: none;
+  color: #9ca3af;
 }
 
+:root .kpi-card .subtitle,
+.light .kpi-card .subtitle {
+  color: #64748b;
+}
+
+.dark .kpi-card .subtitle {
+  color: #9ca3af;
+}
+
+/* ===== LABEL TEXT (jika ada) ===== */
+.kpi-card .label {
+  color: #9ca3af;
+}
+
+:root .kpi-card .label,
+.light .kpi-card .label {
+  color: #64748b;
+}
+
+.dark .kpi-card .label {
+  color: #9ca3af;
+}
+
+/* ===== CHANGE INDICATOR (untuk percentage/trend) ===== */
+.kpi-card .change-indicator {
+  color: #10b981;
+}
+
+.kpi-card .change-indicator.positive {
+  color: #10b981;
+}
+
+:root .kpi-card .change-indicator.positive,
+.light .kpi-card .change-indicator.positive {
+  color: #059669;
+}
+
+.dark .kpi-card .change-indicator.positive {
+  color: #10b981;
+}
+
+.kpi-card .change-indicator.negative {
+  color: #ef4444;
+}
+
+:root .kpi-card .change-indicator.negative,
+.light .kpi-card .change-indicator.negative {
+  color: #dc2626;
+}
+
+.dark .kpi-card .change-indicator.negative {
+  color: #ef4444;
+}
+
+/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-  .kpi-card { padding: 14px; }
-  .kpi-card .icon-wrapper { width: 40px; height: 40px; }
+  .kpi-card { 
+    padding: 14px; 
+  }
+  
+  .kpi-card .icon-wrapper { 
+    width: 40px; 
+    height: 40px; 
+  }
+
+  .kpi-card .value {
+    font-size: 1.25rem;
+  }
+
+  .kpi-card .subtitle {
+    font-size: 0.8125rem;
+  }
 }

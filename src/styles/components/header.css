@@ -1,3 +1,5 @@
+/* header.css */
+
 /* Header Container */
 .app-header {
   height: 70px;
@@ -9,32 +11,65 @@
   border-bottom: 1px solid rgba(255,255,255,0.05);
   backdrop-filter: blur(12px);
   transition: all 0.3s ease;
-  z-index: 50; /* ADD THIS - Higher than FilterBar */
-  position: fixed; /* Ensure it's positioned */
+  z-index: 50;
+  position: fixed;
 }
 
-/* Left Section - Title */
+/* Light mode header */
+:root .app-header,
+.light .app-header {
+  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(248,250,252,0.9));
+  border-bottom: 1px solid rgba(203, 213, 225, 0.4);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 2px 12px rgba(100, 116, 139, 0.08);
+}
+
+.dark .app-header {
+  background: linear-gradient(180deg, rgba(15,23,42,0.7), rgba(10,15,30,0.6));
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  backdrop-filter: blur(12px);
+}
+
+/* ===== LEFT SECTION - TITLE ===== */
 .app-header h2 {
   margin: 0;
-  color: var(--text-primary);
   font-weight: 700;
   font-size: 1.25rem;
   letter-spacing: -0.01em;
+  color: #ffffff;
+}
+
+:root .app-header h2,
+.light .app-header h2 {
+  color: #0f172a;
+}
+
+.dark .app-header h2 {
+  color: #ffffff;
 }
 
 .app-header p {
   margin: 0.25rem 0 0 0;
-  color: var(--text-secondary);
   font-size: 0.875rem;
   font-weight: 400;
+  color: #9ca3af;
 }
 
-/* Right Section - Controls */
+:root .app-header p,
+.light .app-header p {
+  color: #64748b;
+}
+
+.dark .app-header p {
+  color: #9ca3af;
+}
+
+/* ===== RIGHT SECTION - CONTROLS ===== */
 .app-header .flex.items-center {
   gap: 0.75rem;
 }
 
-/* Respondents Info Badge */
+/* ===== RESPONDENTS INFO BADGE ===== */
 .app-header .flex.items-center.gap-2.px-4 {
   padding: 0.625rem 1rem;
   border-radius: 10px;
@@ -43,23 +78,100 @@
   transition: all 0.2s ease;
 }
 
+:root .app-header .flex.items-center.gap-2.px-4,
+.light .app-header .flex.items-center.gap-2.px-4 {
+  background: rgba(241, 245, 249, 1);
+  border: 1px solid rgba(203, 213, 225, 0.5);
+}
+
+.dark .app-header .flex.items-center.gap-2.px-4 {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
 .app-header .flex.items-center.gap-2.px-4:hover {
   background: rgba(255,255,255,0.06);
   border-color: rgba(255,255,255,0.1);
 }
 
-/* Export Button */
+:root .app-header .flex.items-center.gap-2.px-4:hover,
+.light .app-header .flex.items-center.gap-2.px-4:hover {
+  background: rgba(226, 232, 240, 1);
+  border-color: rgba(148, 163, 184, 0.6);
+}
+
+.dark .app-header .flex.items-center.gap-2.px-4:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.1);
+}
+
+/* Text dalam badge */
+.app-header .flex.items-center.gap-2.px-4 span {
+  color: #9ca3af;
+}
+
+:root .app-header .flex.items-center.gap-2.px-4 span,
+.light .app-header .flex.items-center.gap-2.px-4 span {
+  color: #475569;
+}
+
+.dark .app-header .flex.items-center.gap-2.px-4 span {
+  color: #9ca3af;
+}
+
+/* Number dalam badge */
+.app-header .flex.items-center.gap-2.px-4 .font-bold {
+  color: #60a5fa;
+}
+
+:root .app-header .flex.items-center.gap-2.px-4 .font-bold,
+.light .app-header .flex.items-center.gap-2.px-4 .font-bold {
+  color: #3b82f6;
+}
+
+.dark .app-header .flex.items-center.gap-2.px-4 .font-bold {
+  color: #60a5fa;
+}
+
+/* Icon dalam badge */
+.app-header .flex.items-center.gap-2.px-4 svg {
+  color: #6b7280;
+}
+
+:root .app-header .flex.items-center.gap-2.px-4 svg,
+.light .app-header .flex.items-center.gap-2.px-4 svg {
+  color: #64748b;
+}
+
+.dark .app-header .flex.items-center.gap-2.px-4 svg {
+  color: #6b7280;
+}
+
+/* ===== EXPORT BUTTON ===== */
 .app-header button {
   padding: 0.625rem 1rem;
   border-radius: 10px;
   background: rgba(59, 130, 246, 0.1);
-  color: var(--primary-blue);
   border: 1px solid rgba(59, 130, 246, 0.2);
   font-weight: 500;
   font-size: 0.875rem;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   user-select: none;
+  color: #60a5fa;
+}
+
+:root .app-header button,
+.light .app-header button {
+  background: rgba(59, 130, 246, 0.08);
+  color: #2563eb;
+  border: 1px solid rgba(59, 130, 246, 0.25);
+}
+
+.dark .app-header button {
+  background: rgba(59, 130, 246, 0.1);
+  color: #60a5fa;
+  border: 1px solid rgba(59, 130, 246, 0.2);
 }
 
 .app-header button:hover {
@@ -69,18 +181,31 @@
   box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
 }
 
+:root .app-header button:hover,
+.light .app-header button:hover {
+  background: rgba(59, 130, 246, 0.15);
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+}
+
+.dark .app-header button:hover {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+}
+
 .app-header button:active {
   transform: translateY(0);
 }
 
-/* Icon Styling */
+/* ===== ICON STYLING ===== */
 .app-header button svg {
   width: 1rem;
   height: 1rem;
   stroke-width: 2;
 }
 
-/* Responsive */
+/* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
   .app-header {
     left: 0;

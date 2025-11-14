@@ -1,0 +1,295 @@
+/* src/styles/components/province-ranking-table.css */
+
+/* ===== CONTAINER ===== */
+.province-ranking-table {
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  box-shadow: 
+    0 4px 24px -1px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+:root .province-ranking-table,
+.light .province-ranking-table {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(248, 250, 252, 0.95));
+  border: 1px solid rgba(203, 213, 225, 0.4);
+  box-shadow: 
+    0 4px 24px -1px rgba(100, 116, 139, 0.12),
+    0 0 0 1px rgba(203, 213, 225, 0.2);
+}
+
+.dark .province-ranking-table {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    0 4px 24px -1px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* ===== HEADER ===== */
+.province-ranking-table__header {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.province-ranking-table__header-left {
+  flex: 1;
+}
+
+.province-ranking-table__title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.province-ranking-table__subtitle {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.province-ranking-table__count {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+/* ===== EMPTY STATE ===== */
+.province-ranking-table__empty {
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+/* ===== TABLE CONTAINER ===== */
+.province-ranking-table__container {
+  overflow-x: auto;
+  border-radius: 0.5rem;
+}
+
+/* ===== TABLE ===== */
+.province-ranking-table__table {
+  width: 100%;
+  font-size: 0.875rem;
+  border-collapse: collapse;
+}
+
+/* ===== THEAD ===== */
+.province-ranking-table__thead {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+:root .province-ranking-table__thead,
+.light .province-ranking-table__thead {
+  background: rgba(248, 250, 252, 0.8);
+}
+
+.dark .province-ranking-table__thead {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* ===== ROWS ===== */
+.province-ranking-table__row--header {
+  border-bottom: 1px solid rgba(75, 85, 99, 1);
+}
+
+:root .province-ranking-table__row--header,
+.light .province-ranking-table__row--header {
+  border-bottom: 1px solid rgba(203, 213, 225, 0.5);
+}
+
+.dark .province-ranking-table__row--header {
+  border-bottom: 1px solid rgba(75, 85, 99, 1);
+}
+
+.province-ranking-table__row--data {
+  border-bottom: 1px solid rgba(31, 41, 55, 1);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+:root .province-ranking-table__row--data,
+.light .province-ranking-table__row--data {
+  border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+}
+
+.dark .province-ranking-table__row--data {
+  border-bottom: 1px solid rgba(31, 41, 55, 1);
+}
+
+.province-ranking-table__row--data:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+:root .province-ranking-table__row--data:hover,
+.light .province-ranking-table__row--data:hover {
+  background: rgba(241, 245, 249, 0.8);
+}
+
+.dark .province-ranking-table__row--data:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* ===== CELLS ===== */
+.province-ranking-table__cell {
+  padding: 0.75rem 1rem;
+}
+
+.province-ranking-table__cell--header {
+  text-align: left;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.province-ranking-table__cell--sortable {
+  cursor: pointer;
+  transition: color 0.2s ease;
+  user-select: none;
+}
+
+.province-ranking-table__cell--sortable:hover {
+  color: var(--text-primary);
+}
+
+.province-ranking-table__cell--right {
+  text-align: right;
+}
+
+.province-ranking-table__cell--number {
+  color: var(--text-muted);
+}
+
+.province-ranking-table__cell--province {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.province-ranking-table__cell--literacy {
+  font-weight: 700;
+}
+
+.province-ranking-table__literacy--excellent {
+  color: #34d399;
+}
+
+:root .province-ranking-table__literacy--excellent,
+.light .province-ranking-table__literacy--excellent {
+  color: #10b981;
+}
+
+.province-ranking-table__literacy--good {
+  color: #60a5fa;
+}
+
+:root .province-ranking-table__literacy--good,
+.light .province-ranking-table__literacy--good {
+  color: #3b82f6;
+}
+
+.province-ranking-table__literacy--fair {
+  color: #fbbf24;
+}
+
+:root .province-ranking-table__literacy--fair,
+.light .province-ranking-table__literacy--fair {
+  color: #f59e0b;
+}
+
+.province-ranking-table__literacy--poor {
+  color: #f87171;
+}
+
+:root .province-ranking-table__literacy--poor,
+.light .province-ranking-table__literacy--poor {
+  color: #ef4444;
+}
+
+.province-ranking-table__cell--count {
+  color: var(--text-secondary);
+}
+
+.province-ranking-table__cell--pdrb {
+  color: #60a5fa;
+}
+
+:root .province-ranking-table__cell--pdrb,
+.light .province-ranking-table__cell--pdrb {
+  color: #3b82f6;
+}
+
+.dark .province-ranking-table__cell--pdrb {
+  color: #60a5fa;
+}
+
+.province-ranking-table__cell--loans {
+  color: #fb923c;
+}
+
+:root .province-ranking-table__cell--loans,
+.light .province-ranking-table__cell--loans {
+  color: #f97316;
+}
+
+.dark .province-ranking-table__cell--loans {
+  color: #fb923c;
+}
+
+.province-ranking-table__cell--urbanization {
+  color: #34d399;
+}
+
+:root .province-ranking-table__cell--urbanization,
+.light .province-ranking-table__cell--urbanization {
+  color: #10b981;
+}
+
+.dark .province-ranking-table__cell--urbanization {
+  color: #34d399;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .province-ranking-table {
+    padding: 1rem;
+  }
+
+  .province-ranking-table__title {
+    font-size: 1rem;
+  }
+
+  .province-ranking-table__subtitle {
+    font-size: 0.8125rem;
+  }
+
+  .province-ranking-table__table {
+    font-size: 0.8125rem;
+  }
+
+  .province-ranking-table__cell {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .province-ranking-table__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .province-ranking-table__container {
+    overflow-x: scroll;
+  }
+
+  .province-ranking-table__table {
+    min-width: 800px;
+  }
+}

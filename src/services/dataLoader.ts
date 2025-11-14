@@ -7,34 +7,50 @@ import {
 
 export const loadCSVData = async (fileName: string) => {
   const basePath = import.meta.env.BASE_URL || '/';
-  const response = await fetch(`${basePath}data/${fileName}`);
-  const csvText = await response.text();
+  try {
+    const response = await fetch(`${basePath}data/${fileName}`);
+    if (!response.ok) {
+      console.warn(`CSV not found: ${fileName} (${response.status})`);
+      return [];
+    }
 
-  return new Promise((resolve, reject) => {
-    Papa.parse(csvText, {
-      header: true,
-      dynamicTyping: true,
-      skipEmptyLines: 'greedy',
-      complete: (results) => {
-        let data = results.data.filter((row: any) =>
-          Object.values(row).some(val => val !== null && val !== undefined && val !== '')
-        );
+    const csvText = await response.text();
 
-        if (fileName.includes('Survey')) {
-          data = transformSurveyData(data);
-        } else if (fileName.includes('Profile')) {
-          data = transformProfileData(data);
-        } else if (fileName.includes('Regional')) {
-          data = transformRegionalData(data);
-        }
+    return new Promise((resolve) => {
+      try {
+        Papa.parse(csvText, {
+          header: true,
+          dynamicTyping: true,
+          skipEmptyLines: 'greedy',
+          complete: (results) => {
+            let data = (results.data as any[]).filter((row: any) =>
+              Object.values(row).some(val => val !== null && val !== undefined && val !== '')
+            );
 
-        resolve(data);
-      },
-      error: (error: unknown) => {
-        reject(error);
+            if (fileName.includes('Survey')) {
+              data = transformSurveyData(data);
+            } else if (fileName.includes('Profile')) {
+              data = transformProfileData(data);
+            } else if (fileName.includes('Regional')) {
+              data = transformRegionalData(data);
+            }
+
+            resolve(data);
+          },
+          error: () => {
+            // If parse fails, resolve as empty to avoid breaking the app
+            resolve([]);
+          }
+        });
+      } catch (err) {
+        console.error('CSV parse exception', fileName, err);
+        resolve([]);
       }
     });
-  });
+  } catch (err) {
+    console.error('Failed to fetch CSV', fileName, err);
+    return [];
+  }
 };
 
 export const loadAllData = async () => {

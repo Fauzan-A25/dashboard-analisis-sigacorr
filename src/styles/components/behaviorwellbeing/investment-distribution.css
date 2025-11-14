@@ -1,0 +1,364 @@
+/* src/styles/components/investment-distribution.css */
+
+/* ===== CONTAINER ===== */
+.investment-distribution {
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  box-shadow: 
+    0 4px 24px -1px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+:root .investment-distribution,
+.light .investment-distribution {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(248, 250, 252, 0.95));
+  border: 1px solid rgba(203, 213, 225, 0.4);
+  box-shadow: 
+    0 4px 24px -1px rgba(100, 116, 139, 0.12),
+    0 0 0 1px rgba(203, 213, 225, 0.2);
+}
+
+.dark .investment-distribution {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    0 4px 24px -1px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* ===== HEADER ===== */
+.investment-distribution__header {
+  margin-bottom: 1rem;
+}
+
+.investment-distribution__title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.investment-distribution__subtitle {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* ===== EMPTY STATE ===== */
+.investment-distribution__empty {
+  height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+/* ===== CHART CONTAINER ===== */
+.investment-distribution__chart {
+  margin-bottom: 1rem;
+}
+
+/* ===== TOOLTIP ===== */
+.investment-tooltip {
+  background: rgba(17, 24, 39, 0.95);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(75, 85, 99, 1);
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+:root .investment-tooltip,
+.light .investment-tooltip {
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(203, 213, 225, 0.6);
+  box-shadow: 0 8px 24px rgba(100, 116, 139, 0.2);
+}
+
+.dark .investment-tooltip {
+  background: rgba(17, 24, 39, 0.95);
+  border: 1px solid rgba(75, 85, 99, 1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.investment-tooltip__title {
+  color: white;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  font-size: 0.875rem;
+}
+
+:root .investment-tooltip__title,
+.light .investment-tooltip__title {
+  color: #0f172a;
+}
+
+.dark .investment-tooltip__title {
+  color: white;
+}
+
+.investment-tooltip__count {
+  color: #60a5fa;
+  font-size: 0.875rem;
+  margin: 0.125rem 0;
+}
+
+:root .investment-tooltip__count,
+.light .investment-tooltip__count {
+  color: #3b82f6;
+}
+
+.dark .investment-tooltip__count {
+  color: #60a5fa;
+}
+
+.investment-tooltip__percentage {
+  color: #34d399;
+  font-size: 0.875rem;
+  margin: 0.125rem 0;
+}
+
+:root .investment-tooltip__percentage,
+.light .investment-tooltip__percentage {
+  color: #10b981;
+}
+
+.dark .investment-tooltip__percentage {
+  color: #34d399;
+}
+
+/* ===== STATS GRID ===== */
+.investment-distribution__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 640px) {
+  .investment-distribution__stats {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+}
+
+/* ===== INDIVIDUAL STAT CARDS ===== */
+.investment-stat {
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.investment-stat--active {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+:root .investment-stat--active,
+.light .investment-stat--active {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.dark .investment-stat--active {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.investment-stat--none {
+  background: rgba(107, 114, 128, 0.1);
+  border: 1px solid rgba(107, 114, 128, 0.3);
+}
+
+:root .investment-stat--none,
+.light .investment-stat--none {
+  background: rgba(107, 114, 128, 0.08);
+  border: 1px solid rgba(107, 114, 128, 0.25);
+}
+
+.dark .investment-stat--none {
+  background: rgba(107, 114, 128, 0.1);
+  border: 1px solid rgba(107, 114, 128, 0.3);
+}
+
+.investment-stat--popular {
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+:root .investment-stat--popular,
+.light .investment-stat--popular {
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+}
+
+.dark .investment-stat--popular {
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+/* ===== STAT TEXT ===== */
+.investment-stat__label {
+  font-size: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.investment-stat--active .investment-stat__label {
+  color: #6ee7b7;
+}
+
+:root .investment-stat--active .investment-stat__label,
+.light .investment-stat--active .investment-stat__label {
+  color: #059669;
+}
+
+.investment-stat--none .investment-stat__label {
+  color: #d1d5db;
+}
+
+:root .investment-stat--none .investment-stat__label,
+.light .investment-stat--none .investment-stat__label {
+  color: #64748b;
+}
+
+.investment-stat--popular .investment-stat__label {
+  color: #93c5fd;
+}
+
+:root .investment-stat--popular .investment-stat__label,
+.light .investment-stat--popular .investment-stat__label {
+  color: #2563eb;
+}
+
+.investment-stat__value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0.25rem 0;
+}
+
+.investment-stat--active .investment-stat__value {
+  color: #34d399;
+}
+
+:root .investment-stat--active .investment-stat__value,
+.light .investment-stat--active .investment-stat__value {
+  color: #10b981;
+}
+
+.investment-stat--none .investment-stat__value {
+  color: #9ca3af;
+}
+
+:root .investment-stat--none .investment-stat__value,
+.light .investment-stat--none .investment-stat__value {
+  color: #64748b;
+}
+
+.investment-stat__type {
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin: 0.25rem 0;
+  line-height: 1.2;
+}
+
+.investment-stat--popular .investment-stat__type {
+  color: #60a5fa;
+}
+
+:root .investment-stat--popular .investment-stat__type,
+.light .investment-stat--popular .investment-stat__type {
+  color: #3b82f6;
+}
+
+.investment-stat__meta {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-top: 0.125rem;
+}
+
+/* ===== INSIGHT ===== */
+.investment-distribution__insight {
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+  background: rgba(168, 85, 247, 0.1);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  border-radius: 0.5rem;
+}
+
+:root .investment-distribution__insight,
+.light .investment-distribution__insight {
+  background: rgba(168, 85, 247, 0.08);
+  border: 1px solid rgba(168, 85, 247, 0.25);
+}
+
+.dark .investment-distribution__insight {
+  background: rgba(168, 85, 247, 0.1);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+.investment-distribution__insight-text {
+  font-size: 0.875rem;
+  color: #c4b5fd;
+  margin: 0;
+  line-height: 1.5;
+}
+
+:root .investment-distribution__insight-text,
+.light .investment-distribution__insight-text {
+  color: #7c3aed;
+}
+
+.dark .investment-distribution__insight-text {
+  color: #c4b5fd;
+}
+
+.investment-distribution__insight-text strong {
+  font-weight: 600;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .investment-distribution {
+    padding: 1rem;
+  }
+
+  .investment-distribution__title {
+    font-size: 1rem;
+  }
+
+  .investment-distribution__subtitle {
+    font-size: 0.8125rem;
+  }
+
+  .investment-stat {
+    padding: 0.625rem;
+  }
+
+  .investment-stat__value {
+    font-size: 1.25rem;
+  }
+
+  .investment-distribution__insight {
+    padding: 0.625rem;
+  }
+
+  .investment-distribution__insight-text {
+    font-size: 0.8125rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .investment-tooltip {
+    padding: 0.625rem;
+  }
+
+  .investment-tooltip__title,
+  .investment-tooltip__count,
+  .investment-tooltip__percentage {
+    font-size: 0.8125rem;
+  }
+}

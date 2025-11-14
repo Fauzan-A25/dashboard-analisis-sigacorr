@@ -1,0 +1,232 @@
+/* src/styles/components/dimension-comparison.css */
+
+/* ===== CONTAINER ===== */
+.dimension-comparison {
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  box-shadow: 
+    0 4px 24px -1px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+:root .dimension-comparison,
+.light .dimension-comparison {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(248, 250, 252, 0.95));
+  border: 1px solid rgba(203, 213, 225, 0.4);
+  box-shadow: 
+    0 4px 24px -1px rgba(100, 116, 139, 0.12),
+    0 0 0 1px rgba(203, 213, 225, 0.2);
+}
+
+.dark .dimension-comparison {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    0 4px 24px -1px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* ===== HEADER ===== */
+.dimension-comparison__header {
+  margin-bottom: 1rem;
+}
+
+.dimension-comparison__title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.dimension-comparison__subtitle {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* ===== EMPTY STATE ===== */
+.dimension-comparison__empty {
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+/* ===== CHART CONTAINER ===== */
+.dimension-comparison__chart {
+  margin-bottom: 1rem;
+}
+
+/* Override Recharts legend text color for light/dark mode */
+.dimension-comparison .recharts-legend-item-text {
+  color: var(--text-secondary) !important;
+}
+
+/* Override Recharts polar angle axis for light/dark mode */
+.dimension-comparison .recharts-polar-angle-axis-tick-value {
+  fill: var(--text-secondary) !important;
+}
+
+.dimension-comparison .recharts-polar-radius-axis-tick-value {
+  fill: var(--text-muted) !important;
+}
+
+/* Override Recharts polar grid for light/dark mode */
+:root .dimension-comparison .recharts-polar-grid-angle line,
+.light .dimension-comparison .recharts-polar-grid-angle line {
+  stroke: rgba(203, 213, 225, 0.3);
+}
+
+.dark .dimension-comparison .recharts-polar-grid-angle line {
+  stroke: #374151;
+}
+
+:root .dimension-comparison .recharts-polar-grid-concentric-circle,
+.light .dimension-comparison .recharts-polar-grid-concentric-circle {
+  stroke: rgba(203, 213, 225, 0.3);
+}
+
+.dark .dimension-comparison .recharts-polar-grid-concentric-circle {
+  stroke: #374151;
+}
+
+/* ===== TOOLTIP ===== */
+.dimension-tooltip {
+  background: rgba(17, 24, 39, 0.95);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(75, 85, 99, 1);
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+:root .dimension-tooltip,
+.light .dimension-tooltip {
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(203, 213, 225, 0.6);
+  box-shadow: 0 8px 24px rgba(100, 116, 139, 0.2);
+}
+
+.dark .dimension-tooltip {
+  background: rgba(17, 24, 39, 0.95);
+  border: 1px solid rgba(75, 85, 99, 1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.dimension-tooltip__title {
+  color: white;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+}
+
+:root .dimension-tooltip__title,
+.light .dimension-tooltip__title {
+  color: #0f172a;
+}
+
+.dark .dimension-tooltip__title {
+  color: white;
+}
+
+.dimension-tooltip__item {
+  font-size: 0.875rem;
+  margin: 0.125rem 0;
+  font-weight: 500;
+}
+
+/* ===== INSIGHT ===== */
+.dimension-comparison__insight {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: rgba(168, 85, 247, 0.1);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  border-radius: 0.5rem;
+}
+
+:root .dimension-comparison__insight,
+.light .dimension-comparison__insight {
+  background: rgba(168, 85, 247, 0.08);
+  border: 1px solid rgba(168, 85, 247, 0.25);
+}
+
+.dark .dimension-comparison__insight {
+  background: rgba(168, 85, 247, 0.1);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+.dimension-comparison__insight-text {
+  font-size: 0.875rem;
+  color: #c4b5fd;
+  margin: 0;
+  line-height: 1.5;
+}
+
+:root .dimension-comparison__insight-text,
+.light .dimension-comparison__insight-text {
+  color: #7c3aed;
+}
+
+.dark .dimension-comparison__insight-text {
+  color: #c4b5fd;
+}
+
+.dimension-comparison__insight-text strong {
+  font-weight: 600;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .dimension-comparison {
+    padding: 1rem;
+  }
+
+  .dimension-comparison__title {
+    font-size: 1rem;
+  }
+
+  .dimension-comparison__subtitle {
+    font-size: 0.8125rem;
+  }
+
+  .dimension-comparison__chart {
+    margin-bottom: 0.75rem;
+  }
+
+  .dimension-comparison__insight {
+    padding: 0.625rem;
+  }
+
+  .dimension-comparison__insight-text {
+    font-size: 0.8125rem;
+  }
+
+  /* Smaller radar chart on mobile */
+  .dimension-comparison .recharts-surface {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 640px) {
+  .dimension-comparison__empty {
+    height: 300px;
+  }
+
+  .dimension-tooltip {
+    padding: 0.625rem;
+    font-size: 0.8125rem;
+  }
+
+  .dimension-tooltip__title {
+    font-size: 0.8125rem;
+  }
+
+  .dimension-tooltip__item {
+    font-size: 0.8125rem;
+  }
+}

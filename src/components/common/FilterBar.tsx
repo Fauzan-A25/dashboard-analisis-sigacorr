@@ -24,20 +24,20 @@ interface FilterBarProps {
 const uniq = (arr: string[]) => Array.from(new Set(arr.filter(Boolean)));
 
 const INCOME_BUCKETS = [
-  { value: '<2M', label: '< Rp2M', pattern: /< Rp2\.000\.000/ },
-  { value: '2M-4M', label: 'Rp2M - Rp4M', pattern: /Rp2\.000\.001.*Rp4\.000\.000/ },
-  { value: '4M-6M', label: 'Rp4M - Rp6M', pattern: /Rp4\.000\.001.*Rp6\.000\.000/ },
-  { value: '6M-10M', label: 'Rp6M - Rp10M', pattern: /Rp6\.000\.001.*Rp10\.000\.000/ },
-  { value: '10M-15M', label: 'Rp10M - Rp15M', pattern: /Rp10\.000\.001.*Rp15\.000\.000/ },
-  { value: '>15M', label: '> Rp15M', pattern: /> Rp15\.000\.000/ },
+  { value: '<2M', label: '< Rp2Jt', pattern: /< Rp2\.000\.000/ },
+  { value: '2M-4M', label: 'Rp2Jt - Rp4Jt', pattern: /Rp2\.000\.001.*Rp4\.000\.000/ },
+  { value: '4M-6M', label: 'Rp4Jt - Rp6Jt', pattern: /Rp4\.000\.001.*Rp6\.000\.000/ },
+  { value: '6M-10M', label: 'Rp6Jt - Rp10Jt', pattern: /Rp6\.000\.001.*Rp10\.000\.000/ },
+  { value: '10M-15M', label: 'Rp10Jt - Rp15Jt', pattern: /Rp10\.000\.001.*Rp15\.000\.000/ },
+  { value: '>15M', label: '> Rp15Jt', pattern: /> Rp15\.000\.000/ },
 ] as const;
 
 const AGE_GROUP_LABELS: Record<string, string> = {
-  '13-17': '13-17 years',
-  '18-20': '18-20 years',
-  '21-23': '21-23 years',
-  '24-25': '24-25 years',
-  '>25': 'Above 25 years',
+  '13-17': '13-17 tahun',
+  '18-20': '18-20 tahun',
+  '21-23': '21-23 tahun',
+  '24-25': '24-25 tahun',
+  '>25': 'Di atas 25 tahun',
 };
 
 const FilterBar: FC<FilterBarProps> = ({ 
@@ -47,24 +47,21 @@ const FilterBar: FC<FilterBarProps> = ({
   surveyData = []
 }) => {
   
-  // OPTIMIZE: Use useMemo to prevent recalculation on every render
   const filterOptions = useMemo(() => {
-    console.log('🔄 Recalculating filter options...');
+    console.log('🔄 Menghitung ulang opsi filter...');
     
-    // COMBINE provinces from BOTH datasets
     const surveyProvinces = surveyData
-      .slice(0, 500) // Limit to prevent performance issues
+      .slice(0, 500)
       .map((s: any) => s['Province of Origin'] || s.province)
       .filter((val): val is string => Boolean(val));
     
     const profileProvinces = profileData
-      .slice(0, 500) // Limit to prevent performance issues
+      .slice(0, 500)
       .map(p => p.province)
       .filter((val): val is string => Boolean(val));
     
     const provinces = uniq([...surveyProvinces, ...profileProvinces]).sort();
 
-    // COMBINE education levels
     const surveyEducation = surveyData
       .slice(0, 500)
       .map((s: any) => s['Last Education'] || s.education_level)
@@ -77,7 +74,6 @@ const FilterBar: FC<FilterBarProps> = ({
     
     const educationLevels = uniq([...surveyEducation, ...profileEducation]).sort();
 
-    // Age groups
     const surveyAgeGroups = surveyData
       .slice(0, 500)
       .filter((s: any) => typeof s['Year of Birth'] === 'number' || typeof s.birth_year === 'number')
@@ -97,7 +93,6 @@ const FilterBar: FC<FilterBarProps> = ({
         return order.indexOf(a) - order.indexOf(b);
       });
 
-    // Income buckets
     const availableIncomeBuckets = INCOME_BUCKETS.filter(bucket => {
       return profileData.slice(0, 500).some(p => {
         const incomeStr = String(p.avg_monthly_income_raw || p.avg_monthly_income || '');
@@ -111,42 +106,42 @@ const FilterBar: FC<FilterBarProps> = ({
       ageGroups,
       availableIncomeBuckets
     };
-  }, [profileData.length, surveyData.length]); // Only recalc when data length changes
+  }, [profileData.length, surveyData.length]);
 
   const filterFields = [
     {
       key: 'province' as const,
-      label: 'Province',
-      placeholder: 'All Provinces',
+      label: 'Provinsi',
+      placeholder: 'Semua Provinsi',
       options: [
-        { value: '', label: 'All Provinces' },
+        { value: '', label: 'Semua Provinsi' },
         ...filterOptions.provinces.map(p => ({ value: p, label: p }))
       ],
     },
     {
       key: 'education' as const,
-      label: 'Education',
-      placeholder: 'All Levels',
+      label: 'Pendidikan',
+      placeholder: 'Semua Tingkatan',
       options: [
-        { value: '', label: 'All Levels' },
+        { value: '', label: 'Semua Tingkatan' },
         ...filterOptions.educationLevels.map(e => ({ value: e, label: e }))
       ],
     },
     {
       key: 'income' as const,
-      label: 'Income',
-      placeholder: 'All Income Levels',
+      label: 'Pendapatan',
+      placeholder: 'Semua Tingkat Pendapatan',
       options: [
-        { value: '', label: 'All Income Levels' },
+        { value: '', label: 'Semua Tingkat Pendapatan' },
         ...filterOptions.availableIncomeBuckets.map(b => ({ value: b.value, label: b.label }))
       ],
     },
     {
       key: 'ageGroup' as const,
-      label: 'Age Group',
-      placeholder: 'All Ages',
+      label: 'Kelompok Umur',
+      placeholder: 'Semua Umur',
       options: [
-        { value: '', label: 'All Ages' },
+        { value: '', label: 'Semua Umur' },
         ...filterOptions.ageGroups.map(a => ({ value: a, label: AGE_GROUP_LABELS[a] || a }))
       ],
     },

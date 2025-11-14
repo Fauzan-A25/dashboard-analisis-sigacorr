@@ -1,3 +1,5 @@
+/* sidebar.css */
+
 /* Sidebar Container */
 .sidebar {
   width: 280px;
@@ -10,11 +12,25 @@
   overflow-y: auto;
   overflow-x: hidden;
   backdrop-filter: blur(8px);
-  z-index: 40; /* Below header */
-  position: fixed; /* Ensure it's positioned */
+  z-index: 40;
+  position: fixed;
 }
 
-/* Scrollbar Styling */
+/* Light mode sidebar */
+:root .sidebar,
+.light .sidebar {
+  background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(248,250,252,0.95));
+  border-right: 1px solid rgba(203, 213, 225, 0.5);
+  box-shadow: 2px 0 12px rgba(100, 116, 139, 0.08);
+}
+
+.dark .sidebar {
+  background: linear-gradient(180deg, rgba(10,15,30,0.6), rgba(20,26,44,0.7));
+  border-right: 1px solid rgba(255,255,255,0.06);
+  backdrop-filter: blur(8px);
+}
+
+/* ===== SCROLLBAR STYLING ===== */
 .sidebar::-webkit-scrollbar {
   width: 6px;
 }
@@ -28,36 +44,85 @@
   border-radius: 3px;
 }
 
+:root .sidebar::-webkit-scrollbar-thumb,
+.light .sidebar::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+}
+
+.dark .sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+}
+
 .sidebar::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.15);
 }
 
-/* Logo Section */
+:root .sidebar::-webkit-scrollbar-thumb:hover,
+.light .sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.5);
+}
+
+.dark .sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* ===== LOGO SECTION ===== */
 .sidebar > div:first-child {
   padding: 0 1.5rem;
   background: rgba(0, 0, 0, 0.2);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+:root .sidebar > div:first-child,
+.light .sidebar > div:first-child {
+  background: rgba(241, 245, 249, 0.8);
+  border-bottom: 1px solid rgba(203, 213, 225, 0.4);
+}
+
+.dark .sidebar > div:first-child {
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Logo Title */
 .sidebar h1 {
   font-size: 1.25rem;
   line-height: 1.2;
-  color: var(--text-primary);
   font-weight: 700;
   letter-spacing: -0.02em;
   margin: 0;
+  color: #ffffff;
 }
 
+:root .sidebar h1,
+.light .sidebar h1 {
+  color: #0f172a;
+}
+
+.dark .sidebar h1 {
+  color: #ffffff;
+}
+
+/* Logo Subtitle */
 .sidebar h1 span {
   display: block;
   font-size: 0.875rem;
   font-weight: 400;
-  color: var(--primary-blue);
   margin-top: 0.25rem;
   letter-spacing: 0;
+  color: #3b82f6;
 }
 
-/* Navigation Section */
+:root .sidebar h1 span,
+.light .sidebar h1 span {
+  color: #3b82f6;
+}
+
+.dark .sidebar h1 span {
+  color: #60a5fa;
+}
+
+/* ===== NAVIGATION SECTION ===== */
 .sidebar nav {
   padding: 0 1rem;
   flex: 1;
@@ -71,11 +136,20 @@
 
 .sidebar nav h2 {
   margin: 0;
-  color: var(--text-secondary);
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  color: #9ca3af;
+}
+
+:root .sidebar nav h2,
+.light .sidebar nav h2 {
+  color: #64748b;
+}
+
+.dark .sidebar nav h2 {
+  color: #9ca3af;
 }
 
 /* Nav Links Container */
@@ -85,42 +159,80 @@
   gap: 0.25rem;
 }
 
-/* Nav Links */
+/* ===== NAV LINKS ===== */
 .sidebar nav a {
   display: flex;
   align-items: center;
   padding: 0.75rem 1rem;
   border-radius: 10px;
-  color: var(--text-secondary);
   text-decoration: none;
   font-size: 0.9375rem;
   font-weight: 500;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   user-select: none;
+  color: #9ca3af;
+}
+
+:root .sidebar nav a,
+.light .sidebar nav a {
+  color: #64748b;
+}
+
+.dark .sidebar nav a {
+  color: #9ca3af;
 }
 
 /* Nav Link Hover */
 .sidebar nav a:hover {
   background: rgba(255, 255, 255, 0.04);
-  color: var(--text-primary);
+  transform: translateX(4px);
+  color: #ffffff;
+}
+
+:root .sidebar nav a:hover,
+.light .sidebar nav a:hover {
+  background: rgba(226, 232, 240, 0.8);
+  color: #0f172a;
   transform: translateX(4px);
 }
 
-/* Nav Link Active State */
+.dark .sidebar nav a:hover {
+  background: rgba(255, 255, 255, 0.04);
+  color: #ffffff;
+}
+
+/* ===== NAV LINK ACTIVE STATE ===== */
 .sidebar nav a.text-\[var\(--text-primary\)\] {
   background: linear-gradient(90deg, rgba(59, 130, 246, 0.12), rgba(59, 130, 246, 0.08));
-  color: var(--text-primary) !important;
   font-weight: 600;
   transform: translateX(4px);
   box-shadow: 
     0 4px 12px rgba(59, 130, 246, 0.15),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  border-left: 3px solid var(--primary-blue);
+  border-left: 3px solid #3b82f6;
   padding-left: calc(1rem - 3px);
+  color: #ffffff !important;
 }
 
-/* Icon Styling */
+:root .sidebar nav a.text-\[var\(--text-primary\)\],
+.light .sidebar nav a.text-\[var\(--text-primary\)\] {
+  background: linear-gradient(90deg, rgba(59, 130, 246, 0.15), rgba(59, 130, 246, 0.1));
+  box-shadow: 
+    0 2px 8px rgba(59, 130, 246, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  color: #0f172a !important;
+}
+
+.dark .sidebar nav a.text-\[var\(--text-primary\)\] {
+  background: linear-gradient(90deg, rgba(59, 130, 246, 0.12), rgba(59, 130, 246, 0.08));
+  box-shadow: 
+    0 4px 12px rgba(59, 130, 246, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  color: #ffffff !important;
+}
+
+/* ===== ICON STYLING ===== */
 .sidebar nav a span:first-of-type {
   display: flex;
   align-items: center;
@@ -136,26 +248,55 @@
 
 /* Active Icon Color */
 .sidebar nav a .text-\[var\(--primary-blue\)\] {
-  color: var(--primary-blue);
+  color: #3b82f6;
 }
 
-/* Footer Section */
+:root .sidebar nav a .text-\[var\(--primary-blue\)\],
+.light .sidebar nav a .text-\[var\(--primary-blue\)\] {
+  color: #3b82f6;
+}
+
+.dark .sidebar nav a .text-\[var\(--primary-blue\)\] {
+  color: #60a5fa;
+}
+
+/* ===== FOOTER SECTION ===== */
 .sidebar > div:last-child {
   padding: 1rem;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   background: rgba(0, 0, 0, 0.2);
 }
 
+:root .sidebar > div:last-child,
+.light .sidebar > div:last-child {
+  background: rgba(241, 245, 249, 0.8);
+  border-top: 1px solid rgba(203, 213, 225, 0.4);
+}
+
+.dark .sidebar > div:last-child {
+  background: rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
 .sidebar > div:last-child p {
   margin: 0;
   text-align: center;
   font-size: 0.75rem;
-  color: var(--text-secondary);
   opacity: 0.7;
   font-weight: 400;
+  color: #9ca3af;
 }
 
-/* Responsive - Tablet */
+:root .sidebar > div:last-child p,
+.light .sidebar > div:last-child p {
+  color: #64748b;
+}
+
+.dark .sidebar > div:last-child p {
+  color: #9ca3af;
+}
+
+/* ===== RESPONSIVE - TABLET ===== */
 @media (max-width: 1024px) {
   .sidebar {
     position: fixed;
@@ -165,9 +306,18 @@
     transform: translateX(0);
     box-shadow: 4px 0 24px rgba(0, 0, 0, 0.3);
   }
+  
+  :root .sidebar,
+  .light .sidebar {
+    box-shadow: 4px 0 24px rgba(100, 116, 139, 0.15);
+  }
+  
+  .dark .sidebar {
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.3);
+  }
 }
 
-/* Responsive - Mobile */
+/* ===== RESPONSIVE - MOBILE ===== */
 @media (max-width: 768px) {
   .sidebar {
     width: 240px;
@@ -198,9 +348,8 @@
   }
 }
 
-/* Mobile Menu Toggle (jika nanti ditambahkan) */
+/* ===== MOBILE MENU TOGGLE ===== */
 @media (max-width: 768px) {
-  /* Add backdrop overlay when sidebar is open */
   .sidebar-backdrop {
     position: fixed;
     inset: 0;
@@ -211,6 +360,17 @@
     pointer-events: none;
     transition: opacity 0.3s ease;
   }
+  
+  :root .sidebar-backdrop,
+  .light .sidebar-backdrop {
+    background: rgba(100, 116, 139, 0.3);
+    backdrop-filter: blur(8px);
+  }
+  
+  .dark .sidebar-backdrop {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+  }
 
   .sidebar-backdrop.active {
     opacity: 1;
@@ -218,7 +378,7 @@
   }
 }
 
-/* Animation for links */
+/* ===== ANIMATION FOR LINKS ===== */
 @keyframes slideIn {
   from {
     opacity: 0;

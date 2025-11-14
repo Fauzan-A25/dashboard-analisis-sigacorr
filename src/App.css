@@ -1,3 +1,6 @@
+/* App.css */
+
+/* ===== ROOT CONTAINER ===== */
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -5,19 +8,42 @@
   text-align: center;
 }
 
+/* ===== LOGO STYLES ===== */
 .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+/* Light mode logo hover effects */
+:root .logo:hover,
+.light .logo:hover {
+  filter: drop-shadow(0 0 1.5em #646cffcc);
+}
+
+:root .logo.react:hover,
+.light .logo.react:hover {
+  filter: drop-shadow(0 0 1.5em #61dafbcc);
+}
+
+.dark .logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.dark .logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+/* ===== LOGO SPIN ANIMATION ===== */
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
@@ -33,10 +59,204 @@
   }
 }
 
+/* ===== CARD STYLES ===== */
 .card {
   padding: 2em;
 }
 
+/* ===== READ THE DOCS TEXT ===== */
 .read-the-docs {
   color: #888;
+}
+
+:root .read-the-docs,
+.light .read-the-docs {
+  color: #64748b;
+}
+
+.dark .read-the-docs {
+  color: #888;
+}
+
+/* ===== ADDITIONAL APP-LEVEL STYLES ===== */
+
+/* App container */
+.App {
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Links */
+a {
+  color: var(--primary-blue);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--primary-blue-light);
+}
+
+:root a,
+.light a {
+  color: var(--primary-blue-dark);
+}
+
+:root a:hover,
+.light a:hover {
+  color: var(--primary-blue);
+}
+
+.dark a {
+  color: var(--primary-blue);
+}
+
+.dark a:hover {
+  color: var(--primary-blue-light);
+}
+
+/* Buttons */
+button {
+  background-color: var(--primary-blue);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  background-color: var(--primary-blue-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+:root button,
+.light button {
+  box-shadow: var(--shadow-sm);
+}
+
+:root button:hover,
+.light button:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.dark button:hover {
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+/* Code blocks */
+code {
+  background-color: var(--bg-tertiary);
+  padding: 0.2em 0.4em;
+  border-radius: var(--radius-sm);
+  font-family: 'Monaco', 'Courier New', monospace;
+  font-size: 0.9em;
+  color: var(--text-primary);
+}
+
+:root code,
+.light code {
+  background-color: rgba(226, 232, 240, 0.6);
+  color: #0f172a;
+}
+
+.dark code {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+/* Pre blocks */
+pre {
+  background-color: var(--bg-secondary);
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+  border: 1px solid var(--border);
+}
+
+:root pre,
+.light pre {
+  background-color: rgba(248, 250, 252, 1);
+  border: 1px solid rgba(203, 213, 225, 0.5);
+}
+
+.dark pre {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border);
+}
+
+/* Selection */
+::selection {
+  background-color: var(--primary-blue);
+  color: white;
+}
+
+:root ::selection,
+.light ::selection {
+  background-color: rgba(59, 130, 246, 0.3);
+  color: var(--text-primary);
+}
+
+.dark ::selection {
+  background-color: var(--primary-blue);
+  color: white;
+}
+
+/* Focus visible */
+*:focus-visible {
+  outline: 2px solid var(--primary-blue);
+  outline-offset: 2px;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+/* Paragraphs */
+p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Horizontal rule */
+hr {
+  border: none;
+  border-top: 1px solid var(--divider);
+  margin: 2rem 0;
+}
+
+:root hr,
+.light hr {
+  border-top: 1px solid rgba(203, 213, 225, 0.4);
+}
+
+.dark hr {
+  border-top: 1px solid var(--divider);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #root {
+    padding: 1rem;
+  }
+
+  .logo {
+    height: 4em;
+    padding: 1em;
+  }
+
+  .card {
+    padding: 1.5em;
+  }
 }

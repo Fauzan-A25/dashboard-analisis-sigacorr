@@ -1,6 +1,7 @@
 import { literacyScoreRanges, anxietyLevels } from './constants';
 import { type FinancialProfileData } from '../services/dataTypes';
 
+
 // Get color based on literacy score
 export const getLiteracyScoreColor = (score: number): string => {
   if (score >= literacyScoreRanges.excellent.min) return literacyScoreRanges.excellent.color;
@@ -8,6 +9,7 @@ export const getLiteracyScoreColor = (score: number): string => {
   if (score >= literacyScoreRanges.fair.min) return literacyScoreRanges.fair.color;
   return literacyScoreRanges.poor.color;
 };
+
 
 // Get label based on literacy score
 export const getLiteracyScoreLabel = (score: number): string => {
@@ -17,12 +19,14 @@ export const getLiteracyScoreLabel = (score: number): string => {
   return literacyScoreRanges.poor.label;
 };
 
+
 // Get color based on anxiety score
 export const getAnxietyLevelColor = (score: number): string => {
   if (score <= anxietyLevels.low.max) return anxietyLevels.low.color;
   if (score <= anxietyLevels.medium.max) return anxietyLevels.medium.color;
   return anxietyLevels.high.color;
 };
+
 
 // Get label based on anxiety score
 export const getAnxietyLevelLabel = (score: number): string => {
@@ -31,19 +35,23 @@ export const getAnxietyLevelLabel = (score: number): string => {
   return anxietyLevels.high.label;
 };
 
-// Calculate age from birth year
+
+// Calculate age from birth year (fixed to use 2025 as reference year)
 export const calculateAge = (birthYear: number): number => {
-  return new Date().getFullYear() - birthYear;
+  return 2025 - birthYear;
 };
 
-// Get age group from birth year
+
+// ✅ FIXED: Get age group from birth year (consistent with Dashboard.tsx)
 export const getAgeGroup = (birthYear: number): string => {
   const age = calculateAge(birthYear);
+  if (age <= 17) return '13-17';
   if (age <= 20) return '18-20';
   if (age <= 23) return '21-23';
-  if (age <= 26) return '24-26';
-  return '27-29';
+  if (age <= 25) return '24-25';
+  return '>25';
 };
+
 
 // Filter data by date range
 export const filterByDateRange = <T extends { created_at?: string }>(
@@ -56,6 +64,7 @@ export const filterByDateRange = <T extends { created_at?: string }>(
     return date >= dateRange[0] && date <= dateRange[1];
   });
 };
+
 
 // Filter profile data by multiple criteria
 export const filterProfileData = (

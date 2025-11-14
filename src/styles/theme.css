@@ -1,3 +1,6 @@
+/* theme.css */
+
+/* ===== DEFAULT / DARK MODE COLORS ===== */
 :root {
   /* Modern Dark Theme Colors */
   --bg-primary: #0A0F1E;
@@ -67,4 +70,142 @@
   --space-6: 24px;
   --space-8: 32px;
   --space-10: 40px;
+}
+
+/* ===== LIGHT MODE COLORS ===== */
+:root,
+.light {
+  /* Light Theme Background Colors */
+  --bg-primary: #F8FAFC;
+  --bg-secondary: rgba(255, 255, 255, 0.95);
+  --bg-tertiary: rgba(248, 250, 252, 0.9);
+  --bg-hover: rgba(226, 232, 240, 0.8);
+
+  /* Accent Colors (same for consistency) */
+  --primary-blue: #3B82F6;
+  --primary-blue-rgb: 59, 130, 246;
+  --primary-blue-dark: #2563EB;
+  --primary-blue-light: #60A5FA;
+  --primary-purple: #8B5CF6;
+  --primary-teal: #06B6D4;
+
+  /* Status Colors (slightly adjusted for light bg) */
+  --success: #059669;
+  --warning: #D97706;
+  --danger: #DC2626;
+  --info: #2563EB;
+
+  /* Light Mode Text Colors */
+  --text-primary: #0F172A;
+  --text-secondary: #64748B;
+  --text-muted: #94A3B8;
+
+  /* Light Mode Borders */
+  --border: rgba(203, 213, 225, 0.5);
+  --divider: rgba(203, 213, 225, 0.3);
+
+  /* Chart Colors (same) */
+  --chart-blue: #3B82F6;
+  --chart-purple: #8B5CF6;
+  --chart-teal: #06B6D4;
+  --chart-orange: #F59E0B;
+  --chart-green: #10B981;
+  --chart-red: #EF4444;
+
+  /* Light Mode Shadows */
+  --shadow-sm: 0 1px 2px rgba(100, 116, 139, 0.08);
+  --shadow-md: 0 4px 6px rgba(100, 116, 139, 0.12);
+  --shadow-lg: 0 10px 15px rgba(100, 116, 139, 0.15);
+  --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.2);
+}
+
+/* ===== DARK MODE EXPLICIT ===== */
+.dark {
+  /* Modern Dark Theme Colors */
+  --bg-primary: #0A0F1E;
+  --bg-secondary: rgba(15, 23, 42, 0.6);
+  --bg-tertiary: rgba(30, 41, 59, 0.6);
+  --bg-hover: rgba(51, 65, 85, 0.4);
+
+  /* Modern Accent Colors */
+  --primary-blue: #3B82F6;
+  --primary-blue-rgb: 59, 130, 246;
+  --primary-blue-dark: #2563EB;
+  --primary-blue-light: #60A5FA;
+  --primary-purple: #8B5CF6;
+  --primary-teal: #06B6D4;
+
+  /* Enhanced Status Colors */
+  --success: #10B981;
+  --warning: #F59E0B;
+  --danger: #EF4444;
+  --info: #3B82F6;
+
+  /* Refined Text Colors */
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+
+  /* Glass Effect Borders */
+  --border: rgba(148, 163, 184, 0.1);
+  --divider: rgba(148, 163, 184, 0.05);
+
+  /* Vibrant Chart Colors */
+  --chart-blue: #3B82F6;
+  --chart-purple: #8B5CF6;
+  --chart-teal: #06B6D4;
+  --chart-orange: #F59E0B;
+  --chart-green: #10B981;
+  --chart-red: #EF4444;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+/* ===== SMOOTH TRANSITIONS FOR THEME SWITCHING ===== */
+* {
+  transition-property: background-color, border-color, color, fill, stroke, box-shadow;
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Prevent transitions on animations and transforms */
+*:where(:not(:has(> *))) {
+  transition-property: background-color, border-color, color, fill, stroke, box-shadow;
+}
+
+/* ===== UTILITY CLASSES ===== */
+.bg-primary {
+  background-color: var(--bg-primary);
+}
+
+.bg-secondary {
+  background-color: var(--bg-secondary);
+}
+
+.bg-tertiary {
+  background-color: var(--bg-tertiary);
+}
+
+.text-primary {
+  color: var(--text-primary);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+.border-default {
+  border-color: var(--border);
+}
+
+.shadow-default {
+  box-shadow: var(--shadow-md);
 }

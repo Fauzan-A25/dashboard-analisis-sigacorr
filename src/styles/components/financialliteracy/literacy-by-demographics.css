@@ -1,0 +1,318 @@
+/* src/styles/components/literacy-by-demographics.css */
+
+/* ===== CONTAINER ===== */
+.literacy-by-demographics {
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  box-shadow: 
+    0 4px 24px -1px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+:root .literacy-by-demographics,
+.light .literacy-by-demographics {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(248, 250, 252, 0.95));
+  border: 1px solid rgba(203, 213, 225, 0.4);
+  box-shadow: 
+    0 4px 24px -1px rgba(100, 116, 139, 0.12),
+    0 0 0 1px rgba(203, 213, 225, 0.2);
+}
+
+.dark .literacy-by-demographics {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    0 4px 24px -1px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* ===== HEADER ===== */
+.literacy-by-demographics__header {
+  margin-bottom: 1rem;
+}
+
+.literacy-by-demographics__title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.literacy-by-demographics__subtitle {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* ===== EMPTY STATE ===== */
+.literacy-by-demographics__empty {
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+/* ===== CHARTS GRID ===== */
+.literacy-by-demographics__charts {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .literacy-by-demographics__charts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ===== CHART SECTION ===== */
+.literacy-chart-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.literacy-chart-section__title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.literacy-chart-section__title--age {
+  color: #60a5fa;
+}
+
+:root .literacy-chart-section__title--age,
+.light .literacy-chart-section__title--age {
+  color: #3b82f6;
+}
+
+.dark .literacy-chart-section__title--age {
+  color: #60a5fa;
+}
+
+.literacy-chart-section__title--education {
+  color: #34d399;
+}
+
+:root .literacy-chart-section__title--education,
+.light .literacy-chart-section__title--education {
+  color: #10b981;
+}
+
+.dark .literacy-chart-section__title--education {
+  color: #34d399;
+}
+
+.literacy-chart-section__chart {
+  flex: 1;
+}
+
+/* ===== TOOLTIP ===== */
+.literacy-demo-tooltip {
+  background: rgba(17, 24, 39, 0.95);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(75, 85, 99, 1);
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+:root .literacy-demo-tooltip,
+.light .literacy-demo-tooltip {
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(203, 213, 225, 0.6);
+  box-shadow: 0 8px 24px rgba(100, 116, 139, 0.2);
+}
+
+.dark .literacy-demo-tooltip {
+  background: rgba(17, 24, 39, 0.95);
+  border: 1px solid rgba(75, 85, 99, 1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.literacy-demo-tooltip__title {
+  color: white;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  font-size: 0.875rem;
+}
+
+:root .literacy-demo-tooltip__title,
+.light .literacy-demo-tooltip__title {
+  color: #0f172a;
+}
+
+.dark .literacy-demo-tooltip__title {
+  color: white;
+}
+
+.literacy-demo-tooltip__score {
+  color: #60a5fa;
+  font-size: 0.875rem;
+  margin: 0.125rem 0;
+}
+
+:root .literacy-demo-tooltip__score,
+.light .literacy-demo-tooltip__score {
+  color: #3b82f6;
+}
+
+.dark .literacy-demo-tooltip__score {
+  color: #60a5fa;
+}
+
+.literacy-demo-tooltip__count {
+  color: #9ca3af;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+:root .literacy-demo-tooltip__count,
+.light .literacy-demo-tooltip__count {
+  color: #64748b;
+}
+
+.dark .literacy-demo-tooltip__count {
+  color: #9ca3af;
+}
+
+/* ===== INSIGHTS GRID ===== */
+.literacy-by-demographics__insights {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .literacy-by-demographics__insights {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ===== INSIGHT CARDS ===== */
+.literacy-insight {
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+}
+
+.literacy-insight--age {
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+:root .literacy-insight--age,
+.light .literacy-insight--age {
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+}
+
+.dark .literacy-insight--age {
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.literacy-insight--education {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+:root .literacy-insight--education,
+.light .literacy-insight--education {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.dark .literacy-insight--education {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.literacy-insight__text {
+  font-size: 0.875rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.literacy-insight--age .literacy-insight__text {
+  color: #93c5fd;
+}
+
+:root .literacy-insight--age .literacy-insight__text,
+.light .literacy-insight--age .literacy-insight__text {
+  color: #2563eb;
+}
+
+.dark .literacy-insight--age .literacy-insight__text {
+  color: #93c5fd;
+}
+
+.literacy-insight--education .literacy-insight__text {
+  color: #6ee7b7;
+}
+
+:root .literacy-insight--education .literacy-insight__text,
+.light .literacy-insight--education .literacy-insight__text {
+  color: #059669;
+}
+
+.dark .literacy-insight--education .literacy-insight__text {
+  color: #6ee7b7;
+}
+
+.literacy-insight__text strong {
+  font-weight: 600;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .literacy-by-demographics__charts {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .literacy-by-demographics {
+    padding: 1rem;
+  }
+
+  .literacy-by-demographics__title {
+    font-size: 1rem;
+  }
+
+  .literacy-by-demographics__subtitle {
+    font-size: 0.8125rem;
+  }
+
+  .literacy-chart-section__title {
+    font-size: 0.8125rem;
+  }
+
+  .literacy-insight {
+    padding: 0.625rem;
+  }
+
+  .literacy-insight__text {
+    font-size: 0.8125rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .literacy-demo-tooltip {
+    padding: 0.625rem;
+  }
+
+  .literacy-demo-tooltip__title,
+  .literacy-demo-tooltip__score {
+    font-size: 0.8125rem;
+  }
+
+  .literacy-demo-tooltip__count {
+    font-size: 0.6875rem;
+  }
+}

@@ -20,7 +20,7 @@ const CustomSelect: FC<CustomSelectProps> = ({
   value,
   onChange,
   options,
-  placeholder = 'Select...',
+  placeholder = 'Pilih...',
   label,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,7 +32,6 @@ const CustomSelect: FC<CustomSelectProps> = ({
     opt.label.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // NEW: Dispatch custom events when dropdown opens/closes
   useEffect(() => {
     if (isOpen) {
       document.dispatchEvent(new CustomEvent('dropdown-opened'));
@@ -60,8 +59,8 @@ const CustomSelect: FC<CustomSelectProps> = ({
   };
 
   return (
-    <div 
-      className={`custom-select-wrapper ${isOpen ? 'open' : ''}`} 
+    <div
+      className={`custom-select-wrapper ${isOpen ? 'open' : ''}`}
       ref={dropdownRef}
     >
       {label && (
@@ -69,7 +68,7 @@ const CustomSelect: FC<CustomSelectProps> = ({
           {label}
         </label>
       )}
-      
+
       <div
         id={id}
         className={`custom-select ${isOpen ? 'open' : ''}`}
@@ -105,7 +104,7 @@ const CustomSelect: FC<CustomSelectProps> = ({
                 <input
                   type="text"
                   className="search-input"
-                  placeholder="Search..."
+                  placeholder="Cari..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   onClick={(e) => e.stopPropagation()}
@@ -113,10 +112,10 @@ const CustomSelect: FC<CustomSelectProps> = ({
                 />
               </div>
             )}
-            
+
             <div className="options-list">
               {filteredOptions.length === 0 ? (
-                <div className="no-results">No results found</div>
+                <div className="no-results">Tidak ada hasil ditemukan</div>
               ) : (
                 filteredOptions.map((option) => (
                   <div

@@ -3,9 +3,9 @@ import '../../styles/components/kpi-card.css';
 import { ArrowUpRight, ArrowDownRight } from 'lucide-react';
 
 interface KPICardProps {
-  title: string;
-  value: string | number;
-  subtitle: string;
+  title: string;      // Contoh: "Pendapatan Bulanan"
+  value: string | number; // Contoh: 5000000
+  subtitle: string;   // Contoh: "Perubahan dari bulan lalu"
   icon: React.ReactNode;
   change?: {
     value: number;
@@ -34,6 +34,7 @@ const KPICard: FC<KPICardProps> = ({
           </div>
         </div>
         <div className="flex-1">
+          {/* Pastikan nilai title sudah dalam bahasa Indonesia */}
           <h3 className="text-sm font-medium text-[var(--text-secondary)]">{title}</h3>
           <div className="mt-1 flex items-baseline gap-2">
             <div className="value">{value}</div>
@@ -44,6 +45,7 @@ const KPICard: FC<KPICardProps> = ({
               </div>
             )}
           </div>
+          {/* Pastikan subtitle juga dalam bahasa Indonesia */}
           <p className="mt-1 text-xs text-[var(--text-secondary)]">{subtitle}</p>
         </div>
       </div>

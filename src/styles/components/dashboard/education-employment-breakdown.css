@@ -1,0 +1,410 @@
+/* src/styles/components/education-employment-breakdown.css */
+
+/* ===== CONTAINER ===== */
+.edu-employment-breakdown {
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  box-shadow: 
+    0 4px 24px -1px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+:root .edu-employment-breakdown,
+.light .edu-employment-breakdown {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(248, 250, 252, 0.95));
+  border: 1px solid rgba(203, 213, 225, 0.4);
+  box-shadow: 
+    0 4px 24px -1px rgba(100, 116, 139, 0.12),
+    0 0 0 1px rgba(203, 213, 225, 0.2);
+}
+
+.dark .edu-employment-breakdown {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    0 4px 24px -1px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* ===== HEADER ===== */
+.edu-employment-breakdown__header {
+  margin-bottom: 1rem;
+}
+
+.edu-employment-breakdown__title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.edu-employment-breakdown__subtitle {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* ===== EMPTY STATE ===== */
+.edu-employment-breakdown__empty {
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+/* ===== CHART CONTAINER ===== */
+.edu-employment-breakdown__chart {
+  margin-bottom: 1.5rem;
+}
+
+/* Override Recharts legend for theme */
+.edu-employment-breakdown .recharts-legend-item-text {
+  color: var(--text-secondary) !important;
+}
+
+/* ===== TOOLTIP ===== */
+.edu-employment-tooltip {
+  background: rgba(17, 24, 39, 0.95);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(75, 85, 99, 1);
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  max-width: 20rem;
+}
+
+:root .edu-employment-tooltip,
+.light .edu-employment-tooltip {
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(203, 213, 225, 0.6);
+  box-shadow: 0 8px 24px rgba(100, 116, 139, 0.2);
+}
+
+.dark .edu-employment-tooltip {
+  background: rgba(17, 24, 39, 0.95);
+  border: 1px solid rgba(75, 85, 99, 1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.edu-employment-tooltip__title {
+  color: white;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+}
+
+:root .edu-employment-tooltip__title,
+.light .edu-employment-tooltip__title {
+  color: #0f172a;
+}
+
+.dark .edu-employment-tooltip__title {
+  color: white;
+}
+
+.edu-employment-tooltip__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.25rem 0;
+}
+
+.edu-employment-tooltip__label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.edu-employment-tooltip__dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+}
+
+.edu-employment-tooltip__name {
+  font-size: 0.75rem;
+  color: #d1d5db;
+}
+
+:root .edu-employment-tooltip__name,
+.light .edu-employment-tooltip__name {
+  color: #64748b;
+}
+
+.dark .edu-employment-tooltip__name {
+  color: #d1d5db;
+}
+
+.edu-employment-tooltip__value {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.edu-employment-tooltip__footer {
+  border-top: 1px solid rgba(75, 85, 99, 1);
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+}
+
+:root .edu-employment-tooltip__footer,
+.light .edu-employment-tooltip__footer {
+  border-top: 1px solid rgba(203, 213, 225, 0.4);
+}
+
+.dark .edu-employment-tooltip__footer {
+  border-top: 1px solid rgba(75, 85, 99, 1);
+}
+
+.edu-employment-tooltip__total {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  margin: 0;
+}
+
+:root .edu-employment-tooltip__total,
+.light .edu-employment-tooltip__total {
+  color: #64748b;
+}
+
+.dark .edu-employment-tooltip__total {
+  color: #9ca3af;
+}
+
+/* ===== STATS GRID ===== */
+.edu-employment-breakdown__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .edu-employment-breakdown__stats {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+}
+
+/* ===== INDIVIDUAL STAT CARDS ===== */
+.edu-stat {
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.edu-stat--students {
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+:root .edu-stat--students,
+.light .edu-stat--students {
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+}
+
+.edu-stat--common {
+  background: rgba(168, 85, 247, 0.1);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+:root .edu-stat--common,
+.light .edu-stat--common {
+  background: rgba(168, 85, 247, 0.08);
+  border: 1px solid rgba(168, 85, 247, 0.25);
+}
+
+.edu-stat--working {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+:root .edu-stat--working,
+.light .edu-stat--working {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+/* ===== STAT TEXT ===== */
+.edu-stat__label {
+  font-size: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.edu-stat--students .edu-stat__label {
+  color: #93c5fd;
+}
+
+:root .edu-stat--students .edu-stat__label,
+.light .edu-stat--students .edu-stat__label {
+  color: #2563eb;
+}
+
+.edu-stat--common .edu-stat__label {
+  color: #c4b5fd;
+}
+
+:root .edu-stat--common .edu-stat__label,
+.light .edu-stat--common .edu-stat__label {
+  color: #7c3aed;
+}
+
+.edu-stat--working .edu-stat__label {
+  color: #6ee7b7;
+}
+
+:root .edu-stat--working .edu-stat__label,
+.light .edu-stat--working .edu-stat__label {
+  color: #059669;
+}
+
+.edu-stat__value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0.25rem 0;
+  line-height: 1.2;
+}
+
+.edu-stat__value--small {
+  font-size: 0.875rem;
+}
+
+.edu-stat--students .edu-stat__value {
+  color: #60a5fa;
+}
+
+:root .edu-stat--students .edu-stat__value,
+.light .edu-stat--students .edu-stat__value {
+  color: #3b82f6;
+}
+
+.edu-stat--common .edu-stat__value {
+  color: #a78bfa;
+}
+
+:root .edu-stat--common .edu-stat__value,
+.light .edu-stat--common .edu-stat__value {
+  color: #8b5cf6;
+}
+
+.edu-stat--working .edu-stat__value {
+  color: #34d399;
+}
+
+:root .edu-stat--working .edu-stat__value,
+.light .edu-stat--working .edu-stat__value {
+  color: #10b981;
+}
+
+.edu-stat__meta {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-top: 0.25rem;
+}
+
+/* ===== INSIGHTS GRID ===== */
+.edu-employment-breakdown__insights {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+@media (min-width: 768px) {
+  .edu-employment-breakdown__insights {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ===== INSIGHT CARDS ===== */
+.edu-insight {
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+}
+
+.edu-insight--education {
+  background: rgba(234, 179, 8, 0.1);
+  border: 1px solid rgba(234, 179, 8, 0.3);
+}
+
+:root .edu-insight--education,
+.light .edu-insight--education {
+  background: rgba(234, 179, 8, 0.08);
+  border: 1px solid rgba(234, 179, 8, 0.25);
+}
+
+.edu-insight--career {
+  background: rgba(236, 72, 153, 0.1);
+  border: 1px solid rgba(236, 72, 153, 0.3);
+}
+
+:root .edu-insight--career,
+.light .edu-insight--career {
+  background: rgba(236, 72, 153, 0.08);
+  border: 1px solid rgba(236, 72, 153, 0.25);
+}
+
+.edu-insight__text {
+  font-size: 0.875rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.edu-insight--education .edu-insight__text {
+  color: #fde047;
+}
+
+:root .edu-insight--education .edu-insight__text,
+.light .edu-insight--education .edu-insight__text {
+  color: #a16207;
+}
+
+.edu-insight--career .edu-insight__text {
+  color: #f9a8d4;
+}
+
+:root .edu-insight--career .edu-insight__text,
+.light .edu-insight--career .edu-insight__text {
+  color: #be185d;
+}
+
+.edu-insight__text strong {
+  font-weight: 600;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .edu-employment-breakdown {
+    padding: 1rem;
+  }
+
+  .edu-employment-breakdown__title {
+    font-size: 1rem;
+  }
+
+  .edu-employment-breakdown__subtitle {
+    font-size: 0.8125rem;
+  }
+
+  .edu-stat {
+    padding: 0.625rem;
+  }
+
+  .edu-stat__value {
+    font-size: 1.25rem;
+  }
+
+  .edu-insight {
+    padding: 0.625rem;
+  }
+
+  .edu-insight__text {
+    font-size: 0.8125rem;
+  }
+}

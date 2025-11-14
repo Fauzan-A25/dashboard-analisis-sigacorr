@@ -1,0 +1,319 @@
+/* src/styles/components/anxiety-heatmap.css */
+
+/* ===== CONTAINER ===== */
+.anxiety-heatmap {
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  box-shadow: 
+    0 4px 24px -1px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+:root .anxiety-heatmap,
+.light .anxiety-heatmap {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(248, 250, 252, 0.95));
+  border: 1px solid rgba(203, 213, 225, 0.4);
+  box-shadow: 
+    0 4px 24px -1px rgba(100, 116, 139, 0.12),
+    0 0 0 1px rgba(203, 213, 225, 0.2);
+}
+
+.dark .anxiety-heatmap {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    0 4px 24px -1px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* ===== HEADER ===== */
+.anxiety-heatmap__header {
+  margin-bottom: 1rem;
+}
+
+.anxiety-heatmap__title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.anxiety-heatmap__subtitle {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+/* ===== EMPTY STATE ===== */
+.anxiety-heatmap__empty {
+  height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+/* ===== CHART CONTAINER ===== */
+.anxiety-heatmap__chart {
+  margin-bottom: 1rem;
+}
+
+/* ===== TOOLTIP ===== */
+.anxiety-tooltip {
+  background: rgba(17, 24, 39, 0.95);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(75, 85, 99, 1);
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+:root .anxiety-tooltip,
+.light .anxiety-tooltip {
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(203, 213, 225, 0.6);
+  box-shadow: 0 8px 24px rgba(100, 116, 139, 0.2);
+}
+
+.dark .anxiety-tooltip {
+  background: rgba(17, 24, 39, 0.95);
+  border: 1px solid rgba(75, 85, 99, 1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.anxiety-tooltip__title {
+  color: white;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  font-size: 0.875rem;
+}
+
+:root .anxiety-tooltip__title,
+.light .anxiety-tooltip__title {
+  color: #0f172a;
+}
+
+.dark .anxiety-tooltip__title {
+  color: white;
+}
+
+.anxiety-tooltip__score {
+  color: #fb923c;
+  font-size: 0.875rem;
+  margin: 0.125rem 0;
+}
+
+.anxiety-tooltip__level {
+  color: #9ca3af;
+  font-size: 0.75rem;
+  margin: 0.125rem 0;
+}
+
+:root .anxiety-tooltip__level,
+.light .anxiety-tooltip__level {
+  color: #64748b;
+}
+
+.dark .anxiety-tooltip__level {
+  color: #9ca3af;
+}
+
+.anxiety-tooltip__count {
+  color: #6b7280;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+:root .anxiety-tooltip__count,
+.light .anxiety-tooltip__count {
+  color: #94a3b8;
+}
+
+.dark .anxiety-tooltip__count {
+  color: #6b7280;
+}
+
+/* ===== STATS ===== */
+.anxiety-heatmap__stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.anxiety-stat {
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.anxiety-stat--high {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+:root .anxiety-stat--high,
+.light .anxiety-stat--high {
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+.dark .anxiety-stat--high {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.anxiety-stat--low {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+:root .anxiety-stat--low,
+.light .anxiety-stat--low {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.dark .anxiety-stat--low {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.anxiety-stat__label {
+  font-size: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.anxiety-stat--high .anxiety-stat__label {
+  color: #fca5a5;
+}
+
+:root .anxiety-stat--high .anxiety-stat__label,
+.light .anxiety-stat--high .anxiety-stat__label {
+  color: #dc2626;
+}
+
+.anxiety-stat--low .anxiety-stat__label {
+  color: #6ee7b7;
+}
+
+:root .anxiety-stat--low .anxiety-stat__label,
+.light .anxiety-stat--low .anxiety-stat__label {
+  color: #059669;
+}
+
+.anxiety-stat__group {
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin: 0.25rem 0;
+}
+
+.anxiety-stat--high .anxiety-stat__group {
+  color: #f87171;
+}
+
+:root .anxiety-stat--high .anxiety-stat__group,
+.light .anxiety-stat--high .anxiety-stat__group {
+  color: #dc2626;
+}
+
+.anxiety-stat--low .anxiety-stat__group {
+  color: #34d399;
+}
+
+:root .anxiety-stat--low .anxiety-stat__group,
+.light .anxiety-stat--low .anxiety-stat__group {
+  color: #059669;
+}
+
+.anxiety-stat__value {
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.anxiety-stat--high .anxiety-stat__value {
+  color: #fca5a5;
+}
+
+:root .anxiety-stat--high .anxiety-stat__value,
+.light .anxiety-stat--high .anxiety-stat__value {
+  color: #ef4444;
+}
+
+.anxiety-stat--low .anxiety-stat__value {
+  color: #6ee7b7;
+}
+
+:root .anxiety-stat--low .anxiety-stat__value,
+.light .anxiety-stat--low .anxiety-stat__value {
+  color: #10b981;
+}
+
+/* ===== INSIGHT ===== */
+.anxiety-heatmap__insight {
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: 0.5rem;
+}
+
+:root .anxiety-heatmap__insight,
+.light .anxiety-heatmap__insight {
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.dark .anxiety-heatmap__insight {
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.anxiety-heatmap__insight-text {
+  font-size: 0.875rem;
+  color: #fbbf24;
+  margin: 0;
+}
+
+:root .anxiety-heatmap__insight-text,
+.light .anxiety-heatmap__insight-text {
+  color: #d97706;
+}
+
+.dark .anxiety-heatmap__insight-text {
+  color: #fbbf24;
+}
+
+.anxiety-heatmap__insight-text strong {
+  font-weight: 600;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .anxiety-heatmap {
+    padding: 1rem;
+  }
+
+  .anxiety-heatmap__title {
+    font-size: 1rem;
+  }
+
+  .anxiety-heatmap__subtitle {
+    font-size: 0.8125rem;
+  }
+
+  .anxiety-heatmap__stats {
+    gap: 0.5rem;
+  }
+
+  .anxiety-stat {
+    padding: 0.625rem;
+  }
+
+  .anxiety-heatmap__insight-text {
+    font-size: 0.8125rem;
+  }
+}

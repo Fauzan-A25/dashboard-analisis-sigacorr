@@ -1,3 +1,5 @@
+/* filter-bar.css */
+
 .filter-bar {
   position: relative;
   display: grid;
@@ -12,7 +14,33 @@
   z-index: 1; /* Low z-index by default */
 }
 
+/* Light mode filter bar */
+:root .filter-bar,
+.light .filter-bar {
+  background: linear-gradient(135deg, rgba(248, 250, 252, 1), rgba(241, 245, 249, 1));
+  border: 1px solid rgba(203, 213, 225, 0.4);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 12px rgba(100, 116, 139, 0.08);
+}
+
+.dark .filter-bar {
+  background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.06);
+  backdrop-filter: blur(10px);
+}
+
 .filter-bar:hover {
+  border-color: rgba(255,255,255,0.1);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+
+:root .filter-bar:hover,
+.light .filter-bar:hover {
+  border-color: rgba(148, 163, 184, 0.5);
+  box-shadow: 0 8px 32px rgba(100, 116, 139, 0.12);
+}
+
+.dark .filter-bar:hover {
   border-color: rgba(255,255,255,0.1);
   box-shadow: 0 8px 32px rgba(0,0,0,0.1);
 }
@@ -40,6 +68,7 @@
   }
 }
 
+/* ===== RESPONSIVE STYLES ===== */
 @media (max-width: 1024px) {
   .filter-bar {
     grid-template-columns: repeat(2, 1fr);
