@@ -31,8 +31,7 @@ export default defineConfig({
     rollupOptions: {
       // 🔥 Fix utama agar GitHub Pages bisa handle refresh route
       input: {
-        main: resolve(__dirname, 'index.html'),
-        404: resolve(__dirname, 'index.html'), // Generate 404.html dari index.html
+        main: resolve(__dirname, 'index.html')
       },
 
       output: {

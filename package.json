@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://Fauzann-A25.github.io/dashboard-analisis-sigacorr",
+  "homepage": "https://fauzan-a25.github.io/dashboard-analisis-sigacorr/",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
