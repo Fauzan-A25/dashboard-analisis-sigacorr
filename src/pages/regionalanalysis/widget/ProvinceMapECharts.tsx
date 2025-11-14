@@ -4,6 +4,7 @@ import ReactECharts from 'echarts-for-react';
 import * as echarts from 'echarts';
 import { calculateFinancialLiteracyScore } from '../../dashboard/metrics';
 import '../../../styles/components/regionalanalysis/province-map-echarts.css';
+const basePath = import.meta.env.BASE_URL || '/';
 
 interface ProvinceMapEChartsProps {
   surveyData: any[];
@@ -125,7 +126,7 @@ const ProvinceMapECharts: FC<ProvinceMapEChartsProps> = ({
   }, [surveyData, regionalData]);
 
   useEffect(() => {
-    fetch('/data/indonesia-provinces.json')
+    fetch(`${basePath}data/indonesia-provinces.json`)
       .then(response => response.json())
       .then(geoJson => {
         const firstFeature = geoJson.features[0];
