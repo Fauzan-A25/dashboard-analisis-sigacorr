@@ -20,7 +20,6 @@ const EWalletSpending: FC<EWalletSpendingProps> = ({ profileData }) => {
     if (label.includes('500.001') && label.includes('1.000.000')) return '500 rb - 1 Jt';
     if (label.includes('1.000.001') && label.includes('3.000.000')) return '1 Jt - 3 Jt';
     if (label.includes('> Rp3.000.000')) return '> 3 Jt';
-
     return label;
   };
 
@@ -40,17 +39,34 @@ const EWalletSpending: FC<EWalletSpendingProps> = ({ profileData }) => {
       'Tidak diketahui'
     ];
 
+    // Sort by value descending for proper reporting
     return order
       .filter(cat => categories[cat])
       .map(category => ({
         name: formatLabel(category),
+        raw: category,
         fullName: category,
         value: categories[category],
         percentage: (categories[category] / profileData.length) * 100
-      }));
+      }))
+      .sort((a, b) => b.value - a.value);
   }, [profileData]);
 
   const colors = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#6b7280'];
+
+  // Dapatkan data untuk pengguna tinggi (> 1 Jt)
+  const highSpenders = useMemo(() => {
+    return spendingDistribution.filter(
+      d => d.raw === 'Rp1.000.001 - Rp3.000.000' || d.raw === '> Rp3.000.000'
+    );
+  }, [spendingDistribution]);
+
+  // Fallback: paling rendah selain "Tidak diketahui"
+  const smallestGroup = useMemo(() => {
+    return spendingDistribution
+      .filter(d => d.raw !== 'Tidak diketahui')
+      .reduce((min, d) => d.value < min.value ? d : min, spendingDistribution[0]);
+  }, [spendingDistribution]);
 
   const CustomTooltip = ({ active, payload }: any) => {
     if (active && payload && payload.length) {
@@ -114,6 +130,7 @@ const EWalletSpending: FC<EWalletSpendingProps> = ({ profileData }) => {
 
           {/* Ringkasan Statistik */}
           <div className="ewallet-spending__stats">
+            {/* Statistik: Paling Umum */}
             <div className="ewallet-stat ewallet-stat--common">
               <p className="ewallet-stat__label">Paling Umum</p>
               <p className="ewallet-stat__category">{spendingDistribution[0]?.name}</p>
@@ -121,16 +138,23 @@ const EWalletSpending: FC<EWalletSpendingProps> = ({ profileData }) => {
                 {spendingDistribution[0]?.percentage.toFixed(1)}%
               </p>
             </div>
+            {/* Statistik: Pengguna Tinggi atau fallback terkecil */}
             <div className="ewallet-stat ewallet-stat--high">
-              <p className="ewallet-stat__label">Pengguna Tinggi (&gt;1 Jt)</p>
+              <p className="ewallet-stat__label">
+                {highSpenders.length > 0
+                  ? 'Pengguna Tinggi (>1 Jt)'
+                  : 'Paling Rendah'}
+              </p>
               <p className="ewallet-stat__category">
-                {spendingDistribution.filter(d => d.name.includes('3Jt') || d.name.includes('1Jt - 3Jt')).length} kelompok
+                {highSpenders.length > 0
+                  ? highSpenders.map(d => d.name).join(', ')
+                  : smallestGroup?.name || '-'}
               </p>
               <p className="ewallet-stat__value">
-                {(spendingDistribution
-                  .filter(d => d.name.includes('3Jt') || d.name.includes('1Jt - 3Jt'))
-                  .reduce((sum, d) => sum + d.percentage, 0)
-                ).toFixed(1)}%
+                {highSpenders.length > 0
+                  ? highSpenders.reduce((sum, d) => sum + d.percentage, 0).toFixed(1)
+                  : smallestGroup?.percentage?.toFixed(1) || '0.0'
+                }%
               </p>
             </div>
           </div>

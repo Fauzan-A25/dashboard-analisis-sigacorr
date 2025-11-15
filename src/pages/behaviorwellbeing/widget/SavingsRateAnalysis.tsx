@@ -134,7 +134,7 @@ const SavingsRateAnalysis: FC<SavingsRateAnalysisProps> = ({ profileData }) => {
           <div className="savings-rate-analysis__insight">
             <p className="savings-rate-analysis__insight-text">
               💰 Data menunjukkan bahwa <strong>{((atRisk / profileData.length) * 100).toFixed(0)}%</strong> responden memiliki pengeluaran yang lebih besar dari pendapatan (kategori defisit).
-              Sementara itu, <strong>{((healthySavers / profileData.length) * 100).toFixed(0)}%</strong> responden menabung lebih dari 10% dari pendapatannya.
+              Sementara itu, <strong>{((healthySavers / profileData.length) * 100).toFixed(0)}%</strong> responden menabung lebih dari 30% dari pendapatannya.
             </p>
           </div>
         </>

@@ -31,7 +31,7 @@ const normalizeProvinceName = (name: string): string => {
 
 const createProvinceMapping = () => {
   const baseMapping: Record<string, string[]> = {
-    "ACEH": ["Aceh", "Nangroe Aceh Darusalam", "Nangrou Aceh Darusalam", "NAD", "DI Aceh"],
+    "DI. ACEH": ["Aceh", "Nangroe Aceh Darusalam", "Nangrou Aceh Darusalam", "NAD"],
     "SUMATERA UTARA": ["Sumatera Utara", "Sumut"],
     "SUMATERA BARAT": ["Sumatera Barat", "Sumbar"],
     "RIAU": ["Riau"],
@@ -39,7 +39,7 @@ const createProvinceMapping = () => {
     "SUMATERA SELATAN": ["Sumatera Selatan", "Sumsel"],
     "BENGKULU": ["Bengkulu"],
     "LAMPUNG": ["Lampung"],
-    "KEPULAUAN BANGKA BELITUNG": ["Kepulauan Bangka Belitung", "Kepualauan Bangka Belitung", "Bangka Belitung", "Babel"],
+    "BANGKA BELITUNG": ["Kepulauan Bangka Belitung", "Kepualauan Bangka Belitung", "Bangka Belitung", "Babel"],
     "KEPULAUAN RIAU": ["Kepulauan Riau", "Kepri"],
     "DKI JAKARTA": ["DKI Jakarta", "Jakarta", "DKI"],
     "JAWA BARAT": ["Jawa Barat", "Jabar"],
@@ -48,7 +48,7 @@ const createProvinceMapping = () => {
     "JAWA TIMUR": ["Jawa Timur", "Jatim"],
     "BANTEN": ["Banten"],
     "BALI": ["Bali"],
-    "NUSA TENGGARA BARAT": ["Nusa Tenggara Barat", "NTB"],
+    "NUSATENGGARA BARAT": ["Nusa Tenggara Barat", "NTB"],
     "NUSA TENGGARA TIMUR": ["Nusa Tenggara Timur", "NTT"],
     "KALIMANTAN BARAT": ["Kalimantan Barat", "Kalbar"],
     "KALIMANTAN TENGAH": ["Kalimantan Tengah", "Kalteng"],
@@ -162,9 +162,8 @@ const ProvinceMapECharts: FC<ProvinceMapEChartsProps> = ({
     const provinceSurveys: Record<string, any[]> = {};
     
     surveyData.forEach(row => {
-      const province = row['Province of Origin'] || row.province;
-      if (!province) return;
-      
+      const provinceRaw = row['Province of Origin'] || row.province;
+      const province = normalizeProvinceName(provinceRaw);
       if (!provinceSurveys[province]) provinceSurveys[province] = [];
       provinceSurveys[province].push(row);
       
@@ -197,8 +196,8 @@ const ProvinceMapECharts: FC<ProvinceMapEChartsProps> = ({
         ) || normalizedDataName;
       }
       
-      const scores = provinceScores[dataName] || [];
-      const surveys = provinceSurveys[dataName] || [];
+      const scores = provinceScores[normalizedDataName] || [];
+      const surveys = provinceSurveys[normalizedDataName] || [];
       const hasSurveyData = scores.length > 0;
       
       const avgScore = scores.length > 0 

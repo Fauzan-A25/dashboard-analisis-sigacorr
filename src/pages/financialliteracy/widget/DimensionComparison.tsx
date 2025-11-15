@@ -144,7 +144,7 @@ const DimensionComparison: FC<DimensionComparisonProps> = ({ surveyData }) => {
 
           <div className="dimension-comparison__insight">
             <p className="dimension-comparison__insight-text">
-              🎯 Berdasarkan data, skor setiap dimensi literasi keuangan pada responden sarjana cenderung lebih tinggi dibandingkan lulusan SMA di seluruh dimensi yang diukur. Selisih paling besar terlihat pada Pengetahuan Finansial dan Pengambilan Keputusan.
+              🎯 Berdasarkan data, skor setiap dimensi literasi keuangan pada responden sarjana cenderung lebih tinggi dibandingkan lulusan SMA di seluruh dimensi yang diukur. Selisih paling besar terlihat pada Pengetahuan Finansial.
             </p>
           </div>
         </>

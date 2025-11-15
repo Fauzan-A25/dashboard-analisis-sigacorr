@@ -6,9 +6,9 @@ import FilterBar from '../../components/common/FilterBar';
 import { exportMultipleCSV } from '../../utils/ExportToCSV';
 
 import LiteracyDimensions from './widget/LiteracyDimensions';
-import LiteracyByDemographics from './widget/LiteracyByDemographics';
 import DimensionComparison from './widget/DimensionComparison';
 import TopBottomPerformers from './widget/TopBottomPerformers';
+import LiteracyVsFintechCorrelation from './widget/LiteracyVsFintechCorrelation';
 
 const getAgeGroup = (birthYear: number): string => {
   const age = 2025 - birthYear;
@@ -178,9 +178,9 @@ const FinancialLiteracy: FC = () => {
             <TopBottomPerformers surveyData={filteredSurveyData} />
           </div>
 
-          {/* Row 3: Literacy by Demographics */}
+          {/* Row 2: Literacy Vs Fintech */}
           <div className="mb-6">
-            <LiteracyByDemographics surveyData={filteredSurveyData} />
+            <LiteracyVsFintechCorrelation surveyData={filteredSurveyData} />
           </div>
 
           {/* Row 4: Dimension Comparison (Compare different groups) */}

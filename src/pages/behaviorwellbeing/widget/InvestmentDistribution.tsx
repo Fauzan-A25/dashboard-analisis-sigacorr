@@ -58,8 +58,9 @@ const InvestmentDistribution: FC<InvestmentDistributionProps> = ({ profileData }
     return null;
   };
 
-  const investors = investmentData.filter(d => d.type !== 'Tidak Berinvestasi').reduce((sum, d) => sum + d.count, 0);
-  const nonInvestors = investmentData.find(d => d.type === 'Tidak Berinvestasi')?.count || 0;
+  const investors = investmentData.filter(d => d.type !== 'Tidak Ada').reduce((sum, d) => sum + d.count, 0);
+  const nonInvestors = investmentData.find(d => d.type === 'Tidak Ada')?.count || 0;
+
 
   return (
     <div className="investment-distribution">
