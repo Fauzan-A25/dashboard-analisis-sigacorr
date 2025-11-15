@@ -588,6 +588,22 @@ const ProvinceMapECharts: FC<ProvinceMapEChartsProps> = ({
         notMerge={true}
         lazyUpdate={true}
       />
+
+      {/* Controls Guide */}
+      <div className="province-map__guide">
+        <div className="province-map__guide-item">
+          <span className="province-map__guide-icon">🖱️</span>
+          <span className="province-map__guide-text"><strong>Drag:</strong> Geser peta</span>
+        </div>
+        <div className="province-map__guide-item">
+          <span className="province-map__guide-icon">🔍</span>
+          <span className="province-map__guide-text"><strong>Scroll:</strong> Zoom in/out</span>
+        </div>
+        <div className="province-map__guide-item">
+          <span className="province-map__guide-icon">👆</span>
+          <span className="province-map__guide-text"><strong>Click:</strong> Lihat detail provinsi</span>
+        </div>
+      </div>
       
       {/* Insights Panel */}
       {insights.hasData && (
@@ -667,22 +683,7 @@ const ProvinceMapECharts: FC<ProvinceMapEChartsProps> = ({
           </div>
         </div>
       )}
-      
-      {/* Controls Guide */}
-      <div className="province-map__guide">
-        <div className="province-map__guide-item">
-          <span className="province-map__guide-icon">🖱️</span>
-          <span className="province-map__guide-text"><strong>Drag:</strong> Geser peta</span>
-        </div>
-        <div className="province-map__guide-item">
-          <span className="province-map__guide-icon">🔍</span>
-          <span className="province-map__guide-text"><strong>Scroll:</strong> Zoom in/out</span>
-        </div>
-        <div className="province-map__guide-item">
-          <span className="province-map__guide-icon">👆</span>
-          <span className="province-map__guide-text"><strong>Click:</strong> Lihat detail provinsi</span>
-        </div>
-      </div>
+
     </div>
   );
 };
