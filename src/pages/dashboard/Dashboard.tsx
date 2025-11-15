@@ -141,7 +141,7 @@ const Dashboard: FC = () => {
     <div className={`min-h-screen ${backgroundClasses} transition-colors duration-300`}>
       <Sidebar />
       <Header
-        title="Ikhtisar Dashboard"
+        title="Overview Dashboard"
         subtitle="Analisis dan wawasan dari kelompok responden independen"
         totalRespondents={filteredSurveyData.length + filteredProfileData.length}
         onExport={handleCustomExport}

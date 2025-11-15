@@ -52,9 +52,9 @@ const Sidebar: FC = () => {
       {/* Logo Section */}
       <div className="h-20 flex items-center px-6 border-b border-white border-opacity-5">
         <h1 className="text-xl font-bold text-[var(--text-primary)] tracking-tight">
-          GenZ Financial
+          Financial Pulse:
           <span className="block text-sm font-normal text-[var(--primary-blue)]">
-            Analytics Dashboard
+            An Economic Overview of Indonesia's Gen Z
           </span>
         </h1>
       </div>
@@ -94,13 +94,6 @@ const Sidebar: FC = () => {
           ))}
         </div>
       </nav>
-
-      {/* Footer Info */}
-      <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-white border-opacity-5">
-        <p className="text-xs text-[var(--text-secondary)] text-center">
-          v1.0.0 • 2025
-        </p>
-      </div>
     </aside>
   );
 };
