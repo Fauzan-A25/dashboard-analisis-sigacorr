@@ -61,13 +61,12 @@ const PDRBvsLoans: FC<PDRBvsLoansProps> = ({ regionalData, selectedProvince }) =
         const pdrbRaw = row['PDRB (Ribu Rp)'] || row.pdrb_ribu || 0;
         const loansRaw = row['Outstanding Pinjaman (Rp miliar)'] || row.outstanding_loan_billion || 0;
 
-        // Ambil populasi ribuan agar bisa konversi PDRB per kapita ke total PDRB miliaran
         const populationK = (regionalData.find(r =>
           r.province?.toLowerCase() === provinceName.trim().toLowerCase()
         )?.population_thousands) || 0;
 
         const pdrbPerCapita = pdrbRaw / 1000; // Juta Rupiah per kapita
-        const totalPDRB = (pdrbPerCapita * populationK) / 1000; // Konversi ke Miliar Rupiah total
+        const totalPDRB = (pdrbPerCapita * populationK) / 1000; // Miliar Rupiah total
 
         return {
           province: provinceName,
@@ -102,16 +101,12 @@ const PDRBvsLoans: FC<PDRBvsLoansProps> = ({ regionalData, selectedProvince }) =
       const data = payload[0].payload;
       return (
         <div className="pdrb-loans-tooltip">
-          <div className="pdrb-loans-tooltip__title">
-            {data.province}
-          </div>
-
+          <div className="pdrb-loans-tooltip__title">{data.province}</div>
           <div className="pdrb-loans-tooltip__content">
             <div className="pdrb-loans-tooltip__row">
               <span className="pdrb-loans-tooltip__label">💰 PDRB Total:</span>
               <strong className="pdrb-loans-tooltip__pdrb">Rp {data.pdrb.toFixed(2)} Miliar</strong>
             </div>
-
             <div className="pdrb-loans-tooltip__row">
               <span className="pdrb-loans-tooltip__label">🏦 Outstanding Pinjaman:</span>
               <strong className="pdrb-loans-tooltip__loans">Rp {data.loans.toFixed(1)} Miliar</strong>
@@ -165,7 +160,6 @@ const PDRBvsLoans: FC<PDRBvsLoansProps> = ({ regionalData, selectedProvince }) =
 
   return (
     <div className="pdrb-vs-loans">
-      {/* Header */}
       <div className="pdrb-vs-loans__header">
         <div className="pdrb-vs-loans__header-row">
           <span className="pdrb-vs-loans__icon">📊</span>
@@ -178,7 +172,6 @@ const PDRBvsLoans: FC<PDRBvsLoansProps> = ({ regionalData, selectedProvince }) =
         </p>
       </div>
 
-      {/* Statistics Cards */}
       {chartData.length > 0 && (
         <div className="pdrb-vs-loans__stats">
           <div className="pdrb-vs-loans-stat pdrb-vs-loans-stat--pdrb">
@@ -210,7 +203,6 @@ const PDRBvsLoans: FC<PDRBvsLoansProps> = ({ regionalData, selectedProvince }) =
         </div>
       )}
 
-      {/* Chart */}
       {chartData.length === 0 ? (
         <div className="pdrb-vs-loans__empty">
           <div className="pdrb-vs-loans__empty-icon">📊</div>
@@ -274,7 +266,9 @@ const PDRBvsLoans: FC<PDRBvsLoansProps> = ({ regionalData, selectedProvince }) =
                 content={<CustomTooltip />}
                 cursor={{
                   strokeDasharray: '5 5',
-                  stroke: isDarkMode ? 'rgba(96, 165, 250, 0.5)' : 'rgba(59, 130, 246, 0.5)'
+                  stroke: isDarkMode
+                    ? 'rgba(96, 165, 250, 0.5)'
+                    : 'rgba(59, 130, 246, 0.5)'
                 }}
               />
 
@@ -298,7 +292,6 @@ const PDRBvsLoans: FC<PDRBvsLoansProps> = ({ regionalData, selectedProvince }) =
         </div>
       )}
 
-      {/* Legend */}
       <div className="pdrb-vs-loans__legend">
         <div className="pdrb-vs-loans-legend__item">
           <div className="pdrb-vs-loans-legend__dot pdrb-vs-loans-legend__dot--normal" />
@@ -308,12 +301,13 @@ const PDRBvsLoans: FC<PDRBvsLoansProps> = ({ regionalData, selectedProvince }) =
         {selectedProvince && (
           <div className="pdrb-vs-loans-legend__item">
             <div className="pdrb-vs-loans-legend__dot pdrb-vs-loans-legend__dot--selected" />
-            <span className="pdrb-vs-loans-legend__text pdrb-vs-loans-legend__text--selected">{selectedProvince}</span>
+            <span className="pdrb-vs-loans-legend__text pdrb-vs-loans-legend__text--selected">
+              {selectedProvince}
+            </span>
           </div>
         )}
       </div>
 
-      {/* Insight Note */}
       <div className="pdrb-vs-loans__insight">
         <span className="pdrb-vs-loans__insight-icon">💡</span>
         <p className="pdrb-vs-loans__insight-text">

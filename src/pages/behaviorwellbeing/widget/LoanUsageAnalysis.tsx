@@ -17,41 +17,40 @@ interface LoanUsageAnalysisProps {
 }
 
 const LoanUsageAnalysis: FC<LoanUsageAnalysisProps> = ({ profileData }) => {
-  
+  // Filter hanya yang punya pinjaman (bukan 'Tidak Ada')
+  const onlyWithLoans = useMemo(
+    () => profileData.filter(p => (p.loan_usage_purpose || '').toLowerCase() !== 'tidak ada'),
+    [profileData]
+  );
+
   const loanData = useMemo(() => {
     const purposes: Record<string, { count: number; totalDebt: number }> = {};
-    
-    profileData.forEach(p => {
+    onlyWithLoans.forEach(p => {
       const purpose = p.loan_usage_purpose || 'Tidak diketahui';
       const debt = p.outstanding_loan || 0;
-      
       if (!purposes[purpose]) {
         purposes[purpose] = { count: 0, totalDebt: 0 };
       }
       purposes[purpose].count++;
       purposes[purpose].totalDebt += debt;
     });
-    
     return Object.entries(purposes)
       .map(([purpose, data]) => ({
         purpose,
         count: data.count,
-        avgDebt: data.totalDebt / data.count / 1000000,
-        percentage: (data.count / profileData.length) * 100
+        avgDebt: data.totalDebt / data.count / 1000000, // juta
+        percentage: (data.count / onlyWithLoans.length) * 100
       }))
       .sort((a, b) => b.count - a.count);
-  }, [profileData]);
-
+  }, [onlyWithLoans]);
 
   const colors: Record<string, string> = {
     'Konsumsi': '#ef4444',
     'Pendidikan': '#3b82f6',
     'Usaha': '#10b981',
     'Gaya': '#f59e0b',
-    'Tidak Ada': '#6b7280',
     'Tidak diketahui': '#9ca3af'
   };
-
 
   const CustomTooltip = ({ active, payload }: any) => {
     if (active && payload && payload.length) {
@@ -67,10 +66,15 @@ const LoanUsageAnalysis: FC<LoanUsageAnalysisProps> = ({ profileData }) => {
     return null;
   };
 
+  const totalWithLoans = onlyWithLoans.length;
 
-  const withLoans = loanData.filter(d => d.purpose !== 'Tidak Ada').reduce((sum, d) => sum + d.count, 0);
-  const withoutLoans = loanData.find(d => d.purpose === 'Tidak Ada')?.count || 0;
-
+  // Mendapatkan rata-rata hutang keseluruhan (hanya untuk yang punya pinjaman)
+  const avgDebtAll = useMemo(() => {
+    if (totalWithLoans === 0) return 0;
+    return (
+      loanData.reduce((sum, d) => sum + (d.avgDebt * d.count), 0) / totalWithLoans
+    );
+  }, [loanData, totalWithLoans]);
 
   return (
     <div className="loan-usage-analysis">
@@ -79,14 +83,13 @@ const LoanUsageAnalysis: FC<LoanUsageAnalysisProps> = ({ profileData }) => {
           Rincian Penggunaan Pinjaman
         </h3>
         <p className="loan-usage-analysis__subtitle">
-          Tujuan pinjaman dan rata-rata hutang per kategori
+          Tujuan pinjaman dan rata-rata hutang per kategori (hanya responden dengan pinjaman)
         </p>
       </div>
 
-
-      {profileData.length === 0 ? (
+      {totalWithLoans === 0 ? (
         <div className="loan-usage-analysis__empty">
-          Tidak ada data
+          Tidak ada data peminjam
         </div>
       ) : (
         <>
@@ -94,8 +97,8 @@ const LoanUsageAnalysis: FC<LoanUsageAnalysisProps> = ({ profileData }) => {
             <ResponsiveContainer width="100%" height={280}>
               <BarChart data={loanData} margin={{ top: 20, right: 30, left: 20, bottom: 60 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-                <XAxis 
-                  dataKey="purpose" 
+                <XAxis
+                  dataKey="purpose"
                   stroke="#9ca3af"
                   angle={-25}
                   textAnchor="end"
@@ -103,7 +106,7 @@ const LoanUsageAnalysis: FC<LoanUsageAnalysisProps> = ({ profileData }) => {
                   interval={0}
                   style={{ fontSize: '11px' }}
                 />
-                <YAxis 
+                <YAxis
                   stroke="#9ca3af"
                   label={{ value: 'Jumlah', angle: -90, position: 'insideLeft', style: { fill: '#9ca3af' } }}
                 />
@@ -117,33 +120,31 @@ const LoanUsageAnalysis: FC<LoanUsageAnalysisProps> = ({ profileData }) => {
             </ResponsiveContainer>
           </div>
 
-
-          {/* Statistik */}
+          {/* Statistik jumlah peminjam dan rata-rata hutang */}
           <div className="loan-usage-analysis__stats">
             <div className="loan-stat loan-stat--with">
-              <p className="loan-stat__label">Dengan Pinjaman</p>
-              <p className="loan-stat__value">{withLoans}</p>
-              <p className="loan-stat__meta">{((withLoans / profileData.length) * 100).toFixed(1)}%</p>
-            </div>
-            <div className="loan-stat loan-stat--without">
-              <p className="loan-stat__label">Tanpa Pinjaman</p>
-              <p className="loan-stat__value">{withoutLoans}</p>
-              <p className="loan-stat__meta">{((withoutLoans / profileData.length) * 100).toFixed(1)}%</p>
+              <p className="loan-stat__label">Total Peminjam</p>
+              <p className="loan-stat__value">{totalWithLoans}</p>
+              <p className="loan-stat__meta">100%</p>
             </div>
             <div className="loan-stat loan-stat--avg">
               <p className="loan-stat__label">Rata-rata Hutang</p>
               <p className="loan-stat__value loan-stat__value--small">
-                Rp {(loanData.reduce((sum, d) => sum + (d.avgDebt * d.count), 0) / withLoans).toFixed(1)}Jt
+                Rp {avgDebtAll.toFixed(1)}Jt
               </p>
+            </div>
+            <div className="loan-stat loan-stat--popular">
+              <p className="loan-stat__label">Tujuan Terbanyak</p>
+              <p className="loan-stat__value">{loanData[0]?.purpose}</p>
+              <p className="loan-stat__meta">{loanData[0]?.percentage.toFixed(1)}%</p>
             </div>
           </div>
 
-
-          {/* Insight */}
+          {/* Insight deskriptif, netral */}
           <div className="loan-usage-analysis__insight">
             <p className="loan-usage-analysis__insight-text">
-              💰 <strong>Pola Hutang:</strong> {loanData[0]?.purpose} adalah tujuan pinjaman teratas 
-              ({loanData[0]?.percentage.toFixed(0)}%), dengan rata-rata hutang Rp {loanData[0]?.avgDebt.toFixed(1)}Jt per orang.
+              💰 Data menunjukkan bahwa <strong>{loanData[0]?.purpose}</strong> merupakan tujuan pinjaman paling banyak diambil oleh responden dengan pinjaman, sekitar {loanData[0]?.percentage.toFixed(1)}%. 
+              Rata-rata hutang di kategori ini yaitu sekitar Rp {loanData[0]?.avgDebt.toFixed(1)} juta per peminjam.
             </p>
           </div>
         </>

@@ -17,7 +17,6 @@ interface InvestmentDistributionProps {
 }
 
 const InvestmentDistribution: FC<InvestmentDistributionProps> = ({ profileData }) => {
-
   const investmentData = useMemo(() => {
     const types: Record<string, number> = {};
 
@@ -81,19 +80,19 @@ const InvestmentDistribution: FC<InvestmentDistributionProps> = ({ profileData }
         <>
           <div className="investment-distribution__chart">
             <ResponsiveContainer width="100%" height={280}>
-              <BarChart 
+              <BarChart
                 data={investmentData}
                 layout="vertical"
                 margin={{ top: 20, right: 30, left: 100, bottom: 20 }}
               >
                 <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-                <XAxis 
-                  type="number" 
+                <XAxis
+                  type="number"
                   stroke="#9ca3af"
                   label={{ value: 'Jumlah', position: 'insideBottom', offset: -10, style: { fill: '#9ca3af' } }}
                 />
-                <YAxis 
-                  type="category" 
+                <YAxis
+                  type="category"
                   dataKey="type"
                   stroke="#9ca3af"
                   width={90}
@@ -127,12 +126,11 @@ const InvestmentDistribution: FC<InvestmentDistributionProps> = ({ profileData }
             </div>
           </div>
 
-          {/* Insight */}
+          {/* Insight deskriptif, umum */}
           <div className="investment-distribution__insight">
             <p className="investment-distribution__insight-text">
-              📈 <strong>Perilaku Investasi:</strong> {investmentData[0]?.type} adalah pilihan utama 
-              ({investmentData[0]?.percentage.toFixed(0)}%), menunjukkan minat GenZ pada instrumen
-              {investmentData[0]?.type === 'Reksadana' ? ' diversifikasi risiko rendah' : ' risiko tinggi dengan imbal hasil tinggi'}.
+              📈 Data menunjukkan bahwa <strong>{investmentData[0]?.type}</strong> merupakan jenis investasi paling populer di kalangan responden GenZ dengan pangsa sekitar {investmentData[0]?.percentage.toFixed(1)}%. 
+              Ini mencerminkan variasi preferensi investasi di antara kelompok tersebut.
             </p>
           </div>
         </>

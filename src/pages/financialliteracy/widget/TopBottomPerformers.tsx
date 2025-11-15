@@ -7,7 +7,6 @@ interface TopBottomPerformersProps {
 }
 
 const TopBottomPerformers: FC<TopBottomPerformersProps> = ({ surveyData }) => {
-
   const provinceScores = useMemo(() => {
     const groups: Record<string, number[]> = {};
 
@@ -96,7 +95,7 @@ const TopBottomPerformers: FC<TopBottomPerformersProps> = ({ surveyData }) => {
           <div className="top-bottom-performers__section">
             <h4 className="top-bottom-performers__section-title top-bottom-performers__section-title--bottom">
               <span className="top-bottom-performers__section-icon">⚠️</span>
-              5 Provinsi Terendah (Perlu Intervensi)
+              5 Provinsi Terendah
             </h4>
             <div className="top-bottom-performers__list">
               {bottom5.map((item, index) => (

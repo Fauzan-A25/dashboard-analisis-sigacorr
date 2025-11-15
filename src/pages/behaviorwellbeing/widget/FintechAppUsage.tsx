@@ -17,7 +17,6 @@ interface FintechAppUsageProps {
 }
 
 const FintechAppUsage: FC<FintechAppUsageProps> = ({ profileData }) => {
-
   const appData = useMemo(() => {
     const apps: Record<string, number> = {};
 
@@ -118,12 +117,11 @@ const FintechAppUsage: FC<FintechAppUsageProps> = ({ profileData }) => {
             </div>
           </div>
 
-          {/* Insight */}
+          {/* Insight (Deskriptif, netral) */}
           <div className="fintech-app-usage__insight">
             <p className="fintech-app-usage__insight-text">
-              📱 <strong>Dominasi Aplikasi:</strong> {appData[0]?.app} memimpin dengan pangsa pasar {appData[0]?.percentage.toFixed(0)}%, 
-              diikuti oleh {appData[1]?.app} dengan {appData[1]?.percentage.toFixed(0)}%. 
-              Loyalitas merek yang kuat diamati di ruang pembayaran digital.
+              📱 Data menunjukkan bahwa aplikasi <strong>{appData[0]?.app}</strong> merupakan pilihan utama dengan pangsa pasar sekitar {appData[0]?.percentage.toFixed(1)}% di antara responden GenZ, diikuti oleh <strong>{appData[1]?.app}</strong> sekitar {appData[1]?.percentage.toFixed(1)}%. 
+              Variasi pilihan menunjukkan dinamika pasar dompet digital pada kelompok ini.
             </p>
           </div>
         </>

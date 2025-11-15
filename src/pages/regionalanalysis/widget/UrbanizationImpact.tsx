@@ -19,7 +19,6 @@ interface UrbanizationImpactProps {
 }
 
 const UrbanizationImpact: FC<UrbanizationImpactProps> = ({ surveyData, regionalData }) => {
-
   const [isDarkMode, setIsDarkMode] = useState(
     document.documentElement.classList.contains('dark')
   );

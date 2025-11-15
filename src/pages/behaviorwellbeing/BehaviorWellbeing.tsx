@@ -1,24 +1,25 @@
 import { type FC, useEffect, useState } from 'react';
 import { useStore } from '../../store/useStore';
+
 import Header from '../../components/common/Header';
 import Sidebar from '../../components/common/Sidebar';
 import FilterBar from '../../components/common/FilterBar';
+
 import { exportMultipleCSV } from '../../utils/ExportToCSV';
 
 // Reused widgets
 import IncomeVsExpenditure from './widget/IncomeVsExpenditure';
-import DigitalTimeVsAnxiety from '../dashboard/widgets/DigitalTimeVsAnxiety';
 
 // NEW Behavior widgets
 import BehaviorScoreCard from './widget/BehaviorScoreCard';
 import EWalletSpending from './widget/EWalletSpending';
 import AnxietyHeatmap from './widget/AnxietyHeatmap';
 import LoanUsageAnalysis from './widget/LoanUsageAnalysis';
-import DebtToIncomeRatio from './widget/DebtToIncomeRatio';
 import InvestmentDistribution from './widget/InvestmentDistribution';
 import SavingsRateAnalysis from './widget/SavingsRateAnalysis';
 import FintechAppUsage from './widget/FintechAppUsage';
 
+// Income range buckets with regex patterns for filtering
 const INCOME_BUCKETS = [
   { value: '<2M', label: '< Rp2Jt', pattern: /< Rp2\.000\.000/ },
   { value: '2M-4M', label: 'Rp2Jt - Rp4Jt', pattern: /Rp2\.000\.001.*Rp4\.000\.000/ },
@@ -28,6 +29,7 @@ const INCOME_BUCKETS = [
   { value: '>15M', label: '> Rp15Jt', pattern: /> Rp15\.000\.000/ },
 ] as const;
 
+// Function to determine age group based on birth year
 const getAgeGroup = (birthYear: number): string => {
   const age = 2025 - birthYear;
   if (age <= 17) return '13-17';
@@ -49,8 +51,7 @@ const BehaviorWellbeing: FC = () => {
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  // Filter Profile Data (Behavior page uses PROFILE data)
-  const filteredProfileData = profileData.filter((profile) => {
+  const filteredProfileData = profileData.filter(profile => {
     const incomeStr = String(profile.avg_monthly_income_raw || profile.avg_monthly_income || '');
 
     let incomeMatch = true;
@@ -67,8 +68,7 @@ const BehaviorWellbeing: FC = () => {
     );
   });
 
-  // Also filter survey data for behavior score
-  const filteredSurveyData = surveyData.filter((row) => {
+  const filteredSurveyData = surveyData.filter(row => {
     const province = row['Province of Origin'] || row.province;
     const education = row['Last Education'] || row.education_level;
     const birthYear = row['Year of Birth'] || row.birth_year;
@@ -154,7 +154,6 @@ const BehaviorWellbeing: FC = () => {
       />
 
       <main className="ml-[280px] pt-[70px] p-8 relative">
-
         {/* Backdrop Blur */}
         {isDropdownOpen && (
           <>
@@ -166,7 +165,7 @@ const BehaviorWellbeing: FC = () => {
                 left: 0,
                 right: 0,
                 height: '140px',
-                pointerEvents: 'none'
+                pointerEvents: 'none',
               }}
               aria-hidden="true"
             />
@@ -177,7 +176,7 @@ const BehaviorWellbeing: FC = () => {
                 marginTop: 'calc(70px + 140px)',
                 left: 0,
                 right: 0,
-                bottom: 0
+                bottom: 0,
               }}
               aria-hidden="true"
             />
@@ -213,7 +212,6 @@ const BehaviorWellbeing: FC = () => {
 
         {/* Content */}
         <div className={`relative z-1 transition-opacity duration-200 ${isDropdownOpen ? 'pointer-events-none opacity-70' : ''}`}>
-
           {/* Row 1: Overview Score Cards */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
             <BehaviorScoreCard surveyData={filteredSurveyData} />
@@ -228,13 +226,7 @@ const BehaviorWellbeing: FC = () => {
           {/* Row 3: Financial Well-being */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
             <AnxietyHeatmap profileData={filteredProfileData} />
-            <DigitalTimeVsAnxiety profileData={filteredProfileData} />
-          </div>
-
-          {/* Row 4: Debt Analysis */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
             <LoanUsageAnalysis profileData={filteredProfileData} />
-            <DebtToIncomeRatio profileData={filteredProfileData} />
           </div>
 
           {/* Row 5: Investment & Savings */}

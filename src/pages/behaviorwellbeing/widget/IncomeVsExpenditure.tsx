@@ -18,7 +18,6 @@ interface IncomeVsExpenditureProps {
 }
 
 const IncomeVsExpenditure: FC<IncomeVsExpenditureProps> = ({ profileData }) => {
-
   const parseIncomeRange = (str: string | number | undefined): number => {
     if (typeof str === 'number') return str;
     if (!str) return 0;
@@ -56,7 +55,6 @@ const IncomeVsExpenditure: FC<IncomeVsExpenditureProps> = ({ profileData }) => {
     return parseInt(matches[0].replace(/\./g, ''));
   };
 
-
   const chartData = useMemo(() => {
     if (!profileData || profileData.length === 0) {
       console.warn('⚠️ Tidak ada data profil untuk IncomeVsExpenditure');
@@ -74,12 +72,12 @@ const IncomeVsExpenditure: FC<IncomeVsExpenditureProps> = ({ profileData }) => {
         const expense = parseIncomeRange(p.avg_monthly_expense);
 
         return {
-          income: income / 1000000, // Konversi ke juta
+          income: income / 1000000, // dalam juta
           expense: expense / 1000000,
           education: p.education_level || 'Tidak diketahui',
           province: p.province || 'Tidak diketahui',
           gender: p.gender || 'Tidak diketahui',
-          employmentStatus: p.employment_status || 'Tidak diketahui',
+          employmentStatus: p.employment_status || 'Tidak diketahui'
         };
       })
       .filter(d => d.income > 0 && d.expense > 0);
@@ -159,46 +157,40 @@ const IncomeVsExpenditure: FC<IncomeVsExpenditureProps> = ({ profileData }) => {
         <>
           <div className="income-vs-expenditure__chart">
             <ResponsiveContainer width="100%" height={500}>
-              <ScatterChart 
-                margin={{ top: 20, right: 30, bottom: 80, left: 80 }}
-              >
-                <CartesianGrid 
-                  strokeDasharray="3 3" 
-                  stroke="var(--chart-grid-color)" 
-                  opacity={0.2} 
-                />
-                <XAxis 
-                  type="number" 
-                  dataKey="income" 
+              <ScatterChart margin={{ top: 20, right: 30, bottom: 80, left: 80 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="var(--chart-grid-color)" opacity={0.2} />
+                <XAxis
+                  type="number"
+                  dataKey="income"
                   name="Pendapatan Bulanan"
                   stroke="var(--text-tertiary)"
                   domain={[0, 'auto']}
                   tick={{ fill: 'var(--text-tertiary)', fontSize: 13 }}
-                  label={{ 
-                    value: 'Pendapatan Bulanan (Juta)', 
+                  label={{
+                    value: 'Pendapatan Bulanan (Juta)',
                     position: 'insideBottom',
                     offset: -60,
-                    style: { 
-                      fill: 'var(--text-secondary)', 
+                    style: {
+                      fill: 'var(--text-secondary)',
                       fontSize: 14,
                       fontWeight: 500
                     }
                   }}
                 />
-                <YAxis 
-                  type="number" 
-                  dataKey="expense" 
+                <YAxis
+                  type="number"
+                  dataKey="expense"
                   name="Pengeluaran Bulanan"
                   stroke="var(--text-tertiary)"
                   domain={[0, 'auto']}
                   tick={{ fill: 'var(--text-tertiary)', fontSize: 13 }}
-                  label={{ 
-                    value: 'Pengeluaran Bulanan (Juta)', 
-                    angle: -90, 
+                  label={{
+                    value: 'Pengeluaran Bulanan (Juta)',
+                    angle: -90,
                     position: 'insideLeft',
                     offset: -60,
-                    style: { 
-                      fill: 'var(--text-secondary)', 
+                    style: {
+                      fill: 'var(--text-secondary)',
                       fontSize: 14,
                       fontWeight: 500
                     }
@@ -207,16 +199,16 @@ const IncomeVsExpenditure: FC<IncomeVsExpenditureProps> = ({ profileData }) => {
                 <Tooltip content={<CustomTooltip />} cursor={{ strokeDasharray: '3 3' }} />
 
                 {avgIncome > 0 && (
-                  <ReferenceLine 
-                    x={avgIncome} 
-                    stroke="#3b82f6" 
-                    strokeDasharray="5 5" 
+                  <ReferenceLine
+                    x={avgIncome}
+                    stroke="#3b82f6"
+                    strokeDasharray="5 5"
                     strokeWidth={2}
                     opacity={0.6}
-                    label={{ 
-                      value: `Rata-rata: ${avgIncome.toFixed(1)}Jt`, 
-                      position: 'top', 
-                      fill: '#3b82f6', 
+                    label={{
+                      value: `Rata-rata: ${avgIncome.toFixed(1)}Jt`,
+                      position: 'top',
+                      fill: '#3b82f6',
                       fontSize: 12,
                       fontWeight: 600,
                       offset: 10
@@ -225,16 +217,16 @@ const IncomeVsExpenditure: FC<IncomeVsExpenditureProps> = ({ profileData }) => {
                 )}
 
                 {avgExpense > 0 && (
-                  <ReferenceLine 
-                    y={avgExpense} 
-                    stroke="#10b981" 
-                    strokeDasharray="5 5" 
+                  <ReferenceLine
+                    y={avgExpense}
+                    stroke="#10b981"
+                    strokeDasharray="5 5"
                     strokeWidth={2}
                     opacity={0.6}
-                    label={{ 
-                      value: `Rata-rata: ${avgExpense.toFixed(1)}Jt`, 
+                    label={{
+                      value: `Rata-rata: ${avgExpense.toFixed(1)}Jt`,
                       position: 'insideTopRight',
-                      fill: '#10b981', 
+                      fill: '#10b981',
                       fontSize: 12,
                       fontWeight: 600,
                       offset: 10
@@ -253,8 +245,8 @@ const IncomeVsExpenditure: FC<IncomeVsExpenditureProps> = ({ profileData }) => {
                   />
                 ))}
 
-                <Legend 
-                  wrapperStyle={{ 
+                <Legend
+                  wrapperStyle={{
                     position: 'absolute',
                     bottom: 2,
                     left: 0,

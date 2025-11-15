@@ -15,7 +15,6 @@ interface EWalletSpendingProps {
 }
 
 const EWalletSpending: FC<EWalletSpendingProps> = ({ profileData }) => {
-
   const formatLabel = (label: string): string => {
     if (label.includes('< Rp500')) return '< 500rb';
     if (label.includes('500.001') && label.includes('1.000.000')) return '500 rb - 1 Jt';
@@ -136,12 +135,11 @@ const EWalletSpending: FC<EWalletSpendingProps> = ({ profileData }) => {
             </div>
           </div>
 
-          {/* Insight */}
+          {/* Insight (Deskriptif, netral) */}
           <div className="ewallet-spending__insight">
             <p className="ewallet-spending__insight-text">
-              💳 <strong>Adopsi Digital:</strong> {spendingDistribution[0]?.percentage > 40 ? 'Mayoritas' : 'Sebagian besar'} GenZ 
-              menghabiskan {spendingDistribution[0]?.name} setiap bulan menggunakan e-wallet, menunjukkan{' '}
-              {spendingDistribution[0]?.percentage > 50 ? 'adopsi pembayaran digital yang kuat' : 'adopsi pembayaran digital sedang'}.
+              💳 Data menunjukkan bahwa {spendingDistribution[0]?.percentage > 40 ? 'mayoritas' : 'sebagian besar'} GenZ menghabiskan sekitar {spendingDistribution[0]?.name} setiap bulan melalui e-wallet, 
+              mengindikasikan pola penggunaan pembayaran digital yang signifikan dalam kelompok ini.
             </p>
           </div>
         </>

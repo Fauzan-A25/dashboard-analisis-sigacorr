@@ -167,9 +167,7 @@ const LiteracyDimensions: FC<Props> = ({ data = [] }) => {
 
           <div className="literacy-dimensions__insight">
             <p className="literacy-dimensions__insight-text">
-              💡 <strong>Insight:</strong> {highest.name} menunjukkan performa terbaik 
-              ({((highest.value / 25) * 100).toFixed(0)}%), sementara {lowest.name} 
-              ({((lowest.value / 25) * 100).toFixed(0)}%) perlu perbaikan di kalangan responden GenZ.
+              💡 <strong>Insight:</strong> Dimensi <strong>{highest.name}</strong> menunjukkan nilai skor tertinggi pada responden, dengan persentase sekitar {((highest.value / 25) * 100).toFixed(0)}%. Sementara itu, dimensi <strong>{lowest.name}</strong> memiliki nilai skor terendah sekitar {((lowest.value / 25) * 100).toFixed(0)}%.
             </p>
           </div>
         </>

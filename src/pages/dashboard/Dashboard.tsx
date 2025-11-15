@@ -9,10 +9,6 @@ import { getAgeGroup } from '../../utils/helpers';
 
 // Import widgets
 import KPIs from './widgets/KPIs';
-import LiteracyDimensions from '../financialliteracy/widget/LiteracyDimensions';
-import IncomeVsExpenditure from '../behaviorwellbeing/widget/IncomeVsExpenditure';
-import LiteracyVsFintechCorrelation from './widgets/LiteracyVsFintechCorrelation';
-import DigitalTimeVsAnxiety from './widgets/DigitalTimeVsAnxiety';
 import EducationEmploymentBreakdown from './widgets/EducationEmploymentBreakdown';
 
 const INCOME_BUCKETS = [
@@ -223,19 +219,7 @@ const Dashboard: FC = () => {
           {/* KPI Cards */}
           <KPIs surveyData={filteredSurveyData} />
 
-          {/* Row 1: Income vs Expenditure + Literacy vs Fintech */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-            <IncomeVsExpenditure profileData={filteredProfileData} />
-            <LiteracyVsFintechCorrelation surveyData={filteredSurveyData} />
-          </div>
-
-          {/* Row 2: Literacy Dimensions + Digital Time vs Anxiety */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-            <LiteracyDimensions data={filteredSurveyData} />
-            <DigitalTimeVsAnxiety profileData={filteredProfileData} />
-          </div>
-
-          {/* Row 3: Full-width Education x Employment Breakdown */}
+          {/* Row 2: Full-width Education x Employment Breakdown */}
           <div className="mb-6">
             <EducationEmploymentBreakdown profileData={filteredProfileData} />
           </div>

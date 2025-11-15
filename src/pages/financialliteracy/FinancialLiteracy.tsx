@@ -5,11 +5,7 @@ import Sidebar from '../../components/common/Sidebar';
 import FilterBar from '../../components/common/FilterBar';
 import { exportMultipleCSV } from '../../utils/ExportToCSV';
 
-// ✅ Overview widgets (reused)
 import LiteracyDimensions from './widget/LiteracyDimensions';
-
-// ✨ NEW LITERACY-SPECIFIC WIDGETS
-import QuestionPerformance from './widget/QuestionPerformance';
 import LiteracyByDemographics from './widget/LiteracyByDemographics';
 import DimensionComparison from './widget/DimensionComparison';
 import TopBottomPerformers from './widget/TopBottomPerformers';
@@ -180,11 +176,6 @@ const FinancialLiteracy: FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
             <LiteracyDimensions data={filteredSurveyData} />
             <TopBottomPerformers surveyData={filteredSurveyData} />
-          </div>
-
-          {/* Row 2: Question Performance (Heatmap/Bar) */}
-          <div className="mb-6">
-            <QuestionPerformance surveyData={filteredSurveyData} />
           </div>
 
           {/* Row 3: Literacy by Demographics */}

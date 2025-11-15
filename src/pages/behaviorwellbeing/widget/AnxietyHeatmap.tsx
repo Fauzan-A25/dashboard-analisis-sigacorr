@@ -17,7 +17,6 @@ interface AnxietyHeatmapProps {
 }
 
 const AnxietyHeatmap: FC<AnxietyHeatmapProps> = ({ profileData }) => {
-
   const anxietyByAge = useMemo(() => {
     const groups: Record<string, number[]> = {};
 
@@ -98,12 +97,12 @@ const AnxietyHeatmap: FC<AnxietyHeatmapProps> = ({ profileData }) => {
             <ResponsiveContainer width="100%" height={280}>
               <BarChart data={anxietyByAge} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-                <XAxis 
-                  dataKey="group" 
+                <XAxis
+                  dataKey="group"
                   stroke="#9ca3af"
                   label={{ value: 'Kelompok Umur', position: 'insideBottom', offset: -10, style: { fill: '#9ca3af' } }}
                 />
-                <YAxis 
+                <YAxis
                   domain={[0, 5]}
                   stroke="#9ca3af"
                   label={{ value: 'Skor Kecemasan', angle: -90, position: 'insideLeft', style: { fill: '#9ca3af' } }}
@@ -132,11 +131,12 @@ const AnxietyHeatmap: FC<AnxietyHeatmapProps> = ({ profileData }) => {
             </div>
           </div>
 
-          {/* Insight */}
+          {/* Insight (Umum, deskriptif, bukan rekomendasi) */}
           <div className="anxiety-heatmap__insight">
             <p className="anxiety-heatmap__insight-text">
-              😰 <strong>Peringatan Stres:</strong> Kelompok umur {highestAnxiety.group} menunjukkan tingkat kecemasan tertinggi 
-              ({highestAnxiety.anxiety.toFixed(1)}/5), kemungkinan karena tekanan {highestAnxiety.group === '21-23' ? 'transisi karir' : 'kemandirian finansial'}.
+              📊 Data menunjukkan bahwa kelompok umur <strong>{highestAnxiety.group}</strong> memiliki rata-rata 
+              skor kecemasan finansial tertinggi yaitu <strong>{highestAnxiety.anxiety.toFixed(1)}</strong> dari skala 5. 
+              Sedangkan kelompok umur <strong>{lowestAnxiety.group}</strong> memiliki rata-rata skor kecemasan terendah sebesar <strong>{lowestAnxiety.anxiety.toFixed(1)}</strong>.
             </p>
           </div>
         </>

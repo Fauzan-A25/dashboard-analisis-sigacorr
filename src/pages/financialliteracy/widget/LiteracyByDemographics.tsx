@@ -16,7 +16,6 @@ interface LiteracyByDemographicsProps {
 }
 
 const LiteracyByDemographics: FC<LiteracyByDemographicsProps> = ({ surveyData }) => {
-
   const byAgeGroup = useMemo(() => {
     const groups: Record<string, number[]> = {};
 
@@ -38,14 +37,16 @@ const LiteracyByDemographics: FC<LiteracyByDemographicsProps> = ({ surveyData })
       }
     });
 
-    return Object.entries(groups).map(([ageGroup, scores]) => ({
-      group: ageGroup,
-      score: scores.reduce((sum, s) => sum + s, 0) / scores.length,
-      count: scores.length
-    })).sort((a, b) => {
-      const order = ['18-20', '21-23', '24-25', '>25', 'Tidak diketahui'];
-      return order.indexOf(a.group) - order.indexOf(b.group);
-    });
+    return Object.entries(groups)
+      .map(([ageGroup, scores]) => ({
+        group: ageGroup,
+        score: scores.reduce((sum, s) => sum + s, 0) / scores.length,
+        count: scores.length
+      }))
+      .sort((a, b) => {
+        const order = ['18-20', '21-23', '24-25', '>25', 'Tidak diketahui'];
+        return order.indexOf(a.group) - order.indexOf(b.group);
+      });
   }, [surveyData]);
 
   const byEducation = useMemo(() => {
@@ -64,8 +65,8 @@ const LiteracyByDemographics: FC<LiteracyByDemographicsProps> = ({ surveyData })
     return Object.entries(groups)
       .map(([education, scores]) => ({
         group: education.replace('Senior High School', 'SMA')
-                         .replace('Junior High School', 'SMP')
-                         .replace('Bachelor (S1)/Diploma IV', 'Sarjana'),
+                          .replace('Junior High School', 'SMP')
+                          .replace('Bachelor (S1)/Diploma IV', 'Sarjana'),
         score: scores.reduce((sum, s) => sum + s, 0) / scores.length,
         count: scores.length
       }))
@@ -112,21 +113,21 @@ const LiteracyByDemographics: FC<LiteracyByDemographicsProps> = ({ surveyData })
               <ResponsiveContainer width="100%" height={300}>
                 <BarChart data={byAgeGroup} margin={{ top: 20, right: 30, left: 20, bottom: 40 }}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-                  <XAxis 
-                    dataKey="group" 
+                  <XAxis
+                    dataKey="group"
                     stroke="#9ca3af"
                     angle={-15}
                     textAnchor="end"
                     height={60}
                   />
-                  <YAxis 
+                  <YAxis
                     domain={[0, 4]}
                     stroke="#9ca3af"
                     label={{ value: 'Skor Literasi', angle: -90, position: 'insideLeft', style: { fill: '#9ca3af' } }}
                   />
                   <Tooltip content={<CustomTooltip />} />
-                  <Bar 
-                    dataKey="score" 
+                  <Bar
+                    dataKey="score"
                     fill="#3b82f6"
                     radius={[8, 8, 0, 0]}
                   />
@@ -144,8 +145,8 @@ const LiteracyByDemographics: FC<LiteracyByDemographicsProps> = ({ surveyData })
               <ResponsiveContainer width="100%" height={300}>
                 <BarChart data={byEducation} margin={{ top: 20, right: 30, left: 20, bottom: 60 }}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-                  <XAxis 
-                    dataKey="group" 
+                  <XAxis
+                    dataKey="group"
                     stroke="#9ca3af"
                     angle={-25}
                     textAnchor="end"
@@ -153,14 +154,14 @@ const LiteracyByDemographics: FC<LiteracyByDemographicsProps> = ({ surveyData })
                     interval={0}
                     style={{ fontSize: '11px' }}
                   />
-                  <YAxis 
+                  <YAxis
                     domain={[0, 4]}
                     stroke="#9ca3af"
                     label={{ value: 'Skor Literasi', angle: -90, position: 'insideLeft', style: { fill: '#9ca3af' } }}
                   />
                   <Tooltip content={<CustomTooltip />} />
-                  <Bar 
-                    dataKey="score" 
+                  <Bar
+                    dataKey="score"
                     fill="#10b981"
                     radius={[8, 8, 0, 0]}
                   />
@@ -176,14 +177,12 @@ const LiteracyByDemographics: FC<LiteracyByDemographicsProps> = ({ surveyData })
         <div className="literacy-by-demographics__insights">
           <div className="literacy-insight literacy-insight--age">
             <p className="literacy-insight__text">
-              📊 <strong>Insight Umur:</strong> Grup {byAgeGroup[0]?.group} mencetak skor {' '} 
-              {byAgeGroup[0]?.score > 2.5 ? 'tertinggi' : 'terendah'} dengan nilai {byAgeGroup[0]?.score.toFixed(2)}/4
+              📊 <strong>Insight Umur:</strong> Grup {byAgeGroup[0]?.group} memiliki nilai rata-rata literasi {byAgeGroup[0]?.score.toFixed(2)}/4 dengan jumlah sampel {byAgeGroup[0]?.count}.
             </p>
           </div>
           <div className="literacy-insight literacy-insight--education">
             <p className="literacy-insight__text">
-              🎓 <strong>Insight Pendidikan:</strong> {byEducation[0]?.group} memiliki skor literasi tertinggi 
-              ({byEducation[0]?.score.toFixed(2)}/4)
+              🎓 <strong>Insight Pendidikan:</strong> Kelompok {byEducation[0]?.group} memiliki skor literasi tertinggi {byEducation[0]?.score.toFixed(2)}/4 dengan {byEducation[0]?.count} responden.
             </p>
           </div>
         </div>

@@ -8,7 +8,6 @@ interface BehaviorScoreCardProps {
 }
 
 const BehaviorScoreCard: FC<BehaviorScoreCardProps> = ({ surveyData, profileData = [] }) => {
-
   const behaviorScore = useMemo(() => {
     if (surveyData.length === 0) return 0;
 
@@ -170,18 +169,13 @@ const BehaviorScoreCard: FC<BehaviorScoreCardProps> = ({ surveyData, profileData
               📊 <strong>Analisis Perilaku:</strong>{' '}
               {hasSurveyData ? (
                 <>
-                  {percentage > 40 ? 'Persentase tinggi ' : percentage > 25 ? 'Persentase sedang ' : 'Persentase rendah '} 
-                  dari responden menunjukkan kebiasaan pengeluaran yang mengkhawatirkan.
-                  {percentage > 40 && ' Program intervensi segera direkomendasikan.'}
+                  {percentage.toFixed(0)}% responden menunjukkan kebiasaan pengeluaran yang berada pada kategori tertentu, 
+                  menandai variasi dalam perilaku penganggaran.
                 </>
               ) : hasProfileData ? (
                 <>
-                  {profileMetrics.deficitPct > 30 
-                    ? `${profileMetrics.deficitPct.toFixed(0)}% pengeluaran melebihi pendapatan - perlu konseling mendesak.`
-                    : profileMetrics.deficitPct > 15
-                    ? `${profileMetrics.deficitPct.toFixed(0)}% defisit - disarankan edukasi.`
-                    : `Pengeluaran sehat dengan defisit ${profileMetrics.deficitPct.toFixed(0)}%.`
-                  }
+                  Dari data profil, {profileMetrics.deficitPct.toFixed(0)}% responden mengalami pengeluaran yang melebihi pendapatan, 
+                  dengan rata-rata kecemasan finansial sebesar {profileMetrics.avgAnxiety.toFixed(1)} dari skala 5.
                 </>
               ) : (
                 'Data perilaku tidak tersedia untuk analisis.'

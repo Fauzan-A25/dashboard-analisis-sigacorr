@@ -15,12 +15,9 @@ interface SavingsRateAnalysisProps {
 }
 
 const SavingsRateAnalysis: FC<SavingsRateAnalysisProps> = ({ profileData }) => {
-
   const parseAmount = (value: any): number => {
     if (!value) return 0;
-
     const str = typeof value === 'number' ? value.toString() : value;
-
     const cleaned = str.replace(/Rp/g, '').replace(/\s/g, '');
     if (cleaned.includes('<')) return 1;
     if (cleaned.includes('>')) return 17.5;
@@ -30,7 +27,6 @@ const SavingsRateAnalysis: FC<SavingsRateAnalysisProps> = ({ profileData }) => {
     return values.length >= 2 ? (values[0] + values[1]) / 2 : values[0];
   };
 
-
   const savingsDistribution = useMemo(() => {
     const categories = {
       'Defisit': 0,
@@ -38,21 +34,16 @@ const SavingsRateAnalysis: FC<SavingsRateAnalysisProps> = ({ profileData }) => {
       'Sedang (10-30%)': 0,
       'Tinggi (>30%)': 0
     };
-
     profileData.forEach(p => {
       const income = parseAmount(p.avg_monthly_income);
       const expense = parseAmount(p.avg_monthly_expense);
-
       if (income === 0) return;
-
       const savingsRate = ((income - expense) / income) * 100;
-
       if (savingsRate < 0) categories['Defisit']++;
       else if (savingsRate <= 10) categories['Rendah (0-10%)']++;
       else if (savingsRate <= 30) categories['Sedang (10-30%)']++;
       else categories['Tinggi (>30%)']++;
     });
-
     return Object.entries(categories).map(([name, value]) => ({
       name,
       value,
@@ -142,8 +133,8 @@ const SavingsRateAnalysis: FC<SavingsRateAnalysisProps> = ({ profileData }) => {
 
           <div className="savings-rate-analysis__insight">
             <p className="savings-rate-analysis__insight-text">
-              💰 <strong>Peringatan Tabungan:</strong> {((atRisk / profileData.length) * 100).toFixed(0)}% menghabiskan lebih banyak dari pendapatan mereka. 
-              {atRisk > (profileData.length * 0.3) && ' Program konseling anggaran sangat dibutuhkan.'}
+              💰 Data menunjukkan bahwa <strong>{((atRisk / profileData.length) * 100).toFixed(0)}%</strong> responden memiliki pengeluaran yang lebih besar dari pendapatan (kategori defisit).
+              Sementara itu, <strong>{((healthySavers / profileData.length) * 100).toFixed(0)}%</strong> responden menabung lebih dari 10% dari pendapatannya.
             </p>
           </div>
         </>

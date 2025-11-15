@@ -107,34 +107,34 @@ const DimensionComparison: FC<DimensionComparisonProps> = ({ surveyData }) => {
             <ResponsiveContainer width="100%" height={400}>
               <RadarChart data={comparisonData}>
                 <PolarGrid stroke="#374151" />
-                <PolarAngleAxis 
-                  dataKey="dimension" 
+                <PolarAngleAxis
+                  dataKey="dimension"
                   stroke="#9ca3af"
                   style={{ fontSize: '12px' }}
                 />
-                <PolarRadiusAxis 
-                  angle={90} 
+                <PolarRadiusAxis
+                  angle={90}
                   domain={[0, 25]}
                   stroke="#9ca3af"
                 />
-                <Radar 
-                  name="SMA" 
-                  dataKey="SMA" 
-                  stroke="#3b82f6" 
-                  fill="#3b82f6" 
+                <Radar
+                  name="SMA"
+                  dataKey="SMA"
+                  stroke="#3b82f6"
+                  fill="#3b82f6"
                   fillOpacity={0.3}
                   strokeWidth={2}
                 />
-                <Radar 
-                  name="Sarjana" 
-                  dataKey="Sarjana" 
-                  stroke="#10b981" 
-                  fill="#10b981" 
+                <Radar
+                  name="Sarjana"
+                  dataKey="Sarjana"
+                  stroke="#10b981"
+                  fill="#10b981"
                   fillOpacity={0.3}
                   strokeWidth={2}
                 />
                 <Tooltip content={<CustomTooltip />} />
-                <Legend 
+                <Legend
                   wrapperStyle={{ paddingTop: '20px' }}
                   iconType="circle"
                 />
@@ -144,8 +144,7 @@ const DimensionComparison: FC<DimensionComparisonProps> = ({ surveyData }) => {
 
           <div className="dimension-comparison__insight">
             <p className="dimension-comparison__insight-text">
-              🎯 <strong>Perbandingan:</strong> Pemegang gelar sarjana secara konsisten memiliki skor lebih tinggi 
-              dibanding lulusan SMA di semua dimensi, dengan perbedaan terbesar pada Pengetahuan Finansial dan Pengambilan Keputusan.
+              🎯 Berdasarkan data, skor setiap dimensi literasi keuangan pada responden sarjana cenderung lebih tinggi dibandingkan lulusan SMA di seluruh dimensi yang diukur. Selisih paling besar terlihat pada Pengetahuan Finansial dan Pengambilan Keputusan.
             </p>
           </div>
         </>
