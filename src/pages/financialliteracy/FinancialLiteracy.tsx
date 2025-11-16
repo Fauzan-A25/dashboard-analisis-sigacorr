@@ -31,11 +31,13 @@ const FinancialLiteracy: FC = () => {
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  // Filter Survey Data
-  const filteredSurveyData = surveyData.filter((row) => {
-    const province = row['Province of Origin'] || row.province;
-    const education = row['Last Education'] || row.education_level;
-    const birthYear = row['Year of Birth'] || row.birth_year;
+  // Filter Survey Data dengan pengecekan undefined dan null
+  const filteredSurveyData = (surveyData || []).filter((row) => {
+    if (!row) return false;
+    
+    const province = row?.['Province of Origin'] || row?.province || '';
+    const education = row?.['Last Education'] || row?.education_level || '';
+    const birthYear = row?.['Year of Birth'] || row?.birth_year;
 
     return (
       (!filters.province || province === filters.province) &&
@@ -78,7 +80,8 @@ const FinancialLiteracy: FC = () => {
     };
   }, []);
 
-  if (isLoading) {
+  // Pengecekan loading dengan validasi data
+  if (isLoading || !surveyData || !profileData) {
     return (
       <div className="min-h-screen bg-[var(--bg-primary)] flex items-center justify-center">
         <div className="text-center">
@@ -113,7 +116,7 @@ const FinancialLiteracy: FC = () => {
       <Header
         title="Pendalaman Literasi Keuangan"
         subtitle="Analisis mendalam tentang pengetahuan dan kompetensi keuangan GenZ"
-        totalRespondents={filteredSurveyData.length}
+        totalRespondents={filteredSurveyData?.length || 0}
         onExport={handleCustomExport}
       />
 
@@ -152,8 +155,8 @@ const FinancialLiteracy: FC = () => {
           <FilterBar
             filters={filters}
             onFilterChange={setFilters}
-            profileData={profileData}
-            surveyData={surveyData}
+            profileData={profileData || []}
+            surveyData={surveyData || []}
           />
         </div>
 
@@ -162,7 +165,9 @@ const FinancialLiteracy: FC = () => {
           <div className="flex items-center justify-between flex-wrap gap-4">
             <div className="flex gap-6">
               <span className="text-sm text-[var(--text-secondary)]">Jumlah Responden Survei:</span>
-              <span className="ml-2 text-lg font-semibold text-[var(--primary-blue)]">{filteredSurveyData.length} / {surveyData.length}</span>
+              <span className="ml-2 text-lg font-semibold text-[var(--primary-blue)]">
+                {filteredSurveyData?.length || 0} / {surveyData?.length || 0}
+              </span>
             </div>
             <div className="text-xs text-[var(--text-muted)]">
               ℹ️ Analisis literasi berdasarkan tingkat pertanyaan (Q1-Q48)
@@ -174,22 +179,22 @@ const FinancialLiteracy: FC = () => {
         <div className={`relative z-1 transition-opacity duration-200 ${isDropdownOpen ? 'pointer-events-none opacity-70' : ''}`}>
           {/* Row 1: Dimensions + Top/Bottom Performers */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-            <LiteracyDimensions data={filteredSurveyData} />
-            <TopBottomPerformers surveyData={filteredSurveyData} />
+            <LiteracyDimensions data={filteredSurveyData || []} />
+            <TopBottomPerformers surveyData={filteredSurveyData || []} />
           </div>
 
           {/* Row 2: Literacy Vs Fintech */}
           <div className="mb-6">
-            <LiteracyVsFintechCorrelation surveyData={filteredSurveyData} />
+            <LiteracyVsFintechCorrelation surveyData={filteredSurveyData || []} />
           </div>
 
           {/* Row 4: Dimension Comparison (Compare different groups) */}
           <div className="mb-6">
-            <DimensionComparison surveyData={filteredSurveyData} />
+            <DimensionComparison surveyData={filteredSurveyData || []} />
           </div>
 
           {/* No Data Message */}
-          {filteredSurveyData.length === 0 && (
+          {(!filteredSurveyData || filteredSurveyData.length === 0) && (
             <div className="glass-panel p-12 text-center">
               <div className="text-6xl mb-4">🔍</div>
               <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-2">Data Tidak Ditemukan</h3>
