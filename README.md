@@ -1,6 +1,9 @@
 # 📊 GenZ Financial Literacy Analytics Dashboard
 
-![Dashboard Preview](./docs/screenshot-overview.png)
+<img width="1919" height="974" alt="image" src="https://github.com/user-attachments/assets/082cbfd8-5c43-4605-b834-ba340b12a047" />
+<img width="1919" height="975" alt="image" src="https://github.com/user-attachments/assets/05e29ea9-8d19-4934-a728-774faada09d9" />
+
+
 
 A comprehensive analytics dashboard for analyzing financial literacy, behavior, and well-being among Generation Z in Indonesia. Built with React, TypeScript, and Recharts for rich data visualization and insights.
 
